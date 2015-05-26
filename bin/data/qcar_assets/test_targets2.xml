@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="cross_WnB" size="10.000000 10.000000" />
+    <ImageTarget name="missingLinkSymbol_BnW" size="10.000000 10.000000" />
+    <ImageTarget name="squares_WnB" size="10.000000 10.000000" />
+    <ImageTarget name="missingLinkSymbol_2_WnB" size="10.000000 10.000000" />
+    <ImageTarget name="missingLinkSymbol_WnB" size="10.000000 10.000000" />
+    <ImageTarget name="emptyBoxSymbol_WnB_1" size="10.000000 10.000000" />
+    <ImageTarget name="crossPattern_WnB" size="10.000000 10.000000" />
+    <ImageTarget name="missingLinkSymbolPattern_WnB" size="10.000000 10.000000" />
+    <ImageTarget name="texture_marker1_15_24cm" size="15.240000 6.702777" />
+    <ImageTarget name="texture_marker2_20cm" size="20.000000 8.677249" />
+  </Tracking>
+</QCARConfig>

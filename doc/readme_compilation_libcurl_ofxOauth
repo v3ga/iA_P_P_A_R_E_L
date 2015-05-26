@@ -1,0 +1,30 @@
+# https://gist.github.com/mieko/3773852/download#
+# http://curl.haxx.se/mail/lib-2014-03/0069.html
+# https://github.com/brunodecarvalho/curl-ios-build-scripts
+# 10.9.4
+# XCode 5.1.1 (5B1008)
+
+# had to add the following defines to compile
+# in lib/curl_config.h
+
+# #define USE_BLOCKING_SOCKETS 1
+# #define HAVE_SOCKET 1
+
+
+export IPHONEOS_DEPLOYMENT_TARGET=4.3
+export LDFLAGS="-arch armv7 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
+export CFLAGS="-arch armv7 -pipe -Os -gdwarf-2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
+export CC="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+
+# --without-ssl
+
+./configure --disable-shared  --with-ssl --without-libssh2 --without-ca-bundle --without-ldap --disable-ldap --host=arm-apple-darwin10
+./make
+
+
+#compilation openssl
+# https://github.com/x2on/OpenSSL-for-iPhone
+
+# avec libcurl pour indiquer les paths de compilation (.h / lib)
+# http://curl.haxx.se/docs/install.html
+

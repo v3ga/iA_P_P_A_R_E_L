@@ -1,0 +1,20 @@
+<user>
+	<!-- Period for retrieving tweets -->
+	<period>10</period>
+
+	<services>
+		<!--
+		<service name="twitter">
+			<consumer_key>mNT1q087hDYo0AEXrTLg66zxN</consumer_key>
+			<consumer_secret>aDOHcZm95Rb8fwZtRKnW4PnYmMMBnFW6TVYYP8DS1KwDxvoqK9</consumer_secret>
+		</service>
+		-->
+
+		<service name="twitterGuestIOS">
+			<!-- for API requests -->
+			<consumer_key></consumer_key>
+			<consumer_secret></consumer_secret>
+		</service>
+
+	</services>
+</user>

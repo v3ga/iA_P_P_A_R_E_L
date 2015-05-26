@@ -1,0 +1,5 @@
+ofxXmlSettings
+ofxAccelerometer
+ofxiOS
+ofxMultiTouch
+ofxQCAR

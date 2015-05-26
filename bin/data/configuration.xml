@@ -1,0 +1,19 @@
+<apparel>
+
+	<!-- Model used -->
+	<!-- Folder : data/3d -->
+	<!--
+	<model>AR_modele.dxf</model>
+	-->
+	<model>AR_model_23p.3ds</model>
+
+	<!-- Targets database used for detection  -->
+	<vuforia>
+		<target>141123_Apparel.xml</target>
+	</vuforia>
+
+	<!-- User which is used for data retrieval  -->
+	<!-- Folder : data/users/[userID] -->
+	<user>creativeclaude</user>
+
+</apparel>
