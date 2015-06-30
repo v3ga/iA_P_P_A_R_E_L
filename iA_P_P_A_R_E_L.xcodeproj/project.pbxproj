@@ -176,6 +176,10 @@
 		F9B9A2EA1B112CED00176FAA /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9B9A2E91B112CED00176FAA /* TwitterKitResources.bundle */; };
 		F9B9A2EF1B11C15F00176FAA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B9A2EE1B11C15F00176FAA /* MainStoryboard_iPhone.storyboard */; };
 		F9D35E8019ACBE5B00B63E8E /* ofxTwitter_configuration.json in Resources */ = {isa = PBXBuildFile; fileRef = F9D35E7F19ACBE5000B63E8E /* ofxTwitter_configuration.json */; };
+		F9DE833F1B41CF3C00F5A086 /* apparelMod_kawaiopathy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DE83381B41CF3C00F5A086 /* apparelMod_kawaiopathy.cpp */; };
+		F9DE83401B41CF3C00F5A086 /* apparelMod_zoopathy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DE833A1B41CF3C00F5A086 /* apparelMod_zoopathy.cpp */; };
+		F9DE83411B41CF3C00F5A086 /* apparelMod_intropathy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DE833B1B41CF3C00F5A086 /* apparelMod_intropathy.cpp */; };
+		F9DE83421B41CF3C00F5A086 /* apparelMod_selfopathy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DE833D1B41CF3C00F5A086 /* apparelMod_selfopathy.cpp */; };
 		F9F7CC3B192E5C46006F1C91 /* MyAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9F7CC37192E5C46006F1C91 /* MyAppDelegate.mm */; };
 		F9F7CC41192E5E0A006F1C91 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F7CC3E192E5E0A006F1C91 /* SystemConfiguration.framework */; };
 		F9F7CC42192E5E0A006F1C91 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F7CC3F192E5E0A006F1C91 /* Security.framework */; };
@@ -612,6 +616,13 @@
 		F9B9A2EE1B11C15F00176FAA /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		F9D35E7F19ACBE5000B63E8E /* ofxTwitter_configuration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = ofxTwitter_configuration.json; path = bin/data/ofxTwitter_configuration.json; sourceTree = "<group>"; };
 		F9D35E8119ACC3D400B63E8E /* ofxiOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ofxiOS-Info.plist"; sourceTree = "<group>"; };
+		F9DE83381B41CF3C00F5A086 /* apparelMod_kawaiopathy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = apparelMod_kawaiopathy.cpp; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod_kawaiopathy.cpp; sourceTree = "<group>"; };
+		F9DE83391B41CF3C00F5A086 /* apparelMod_kawaiopathy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = apparelMod_kawaiopathy.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod_kawaiopathy.h; sourceTree = "<group>"; };
+		F9DE833A1B41CF3C00F5A086 /* apparelMod_zoopathy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = apparelMod_zoopathy.cpp; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod_zoopathy.cpp; sourceTree = "<group>"; };
+		F9DE833B1B41CF3C00F5A086 /* apparelMod_intropathy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = apparelMod_intropathy.cpp; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod_intropathy.cpp; sourceTree = "<group>"; };
+		F9DE833C1B41CF3C00F5A086 /* apparelMod_zoopathy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = apparelMod_zoopathy.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod_zoopathy.h; sourceTree = "<group>"; };
+		F9DE833D1B41CF3C00F5A086 /* apparelMod_selfopathy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = apparelMod_selfopathy.cpp; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod_selfopathy.cpp; sourceTree = "<group>"; };
+		F9DE833E1B41CF3C00F5A086 /* apparelMod_intropathy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = apparelMod_intropathy.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod_intropathy.h; sourceTree = "<group>"; };
 		F9F7CC36192E5C46006F1C91 /* MyAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppDelegate.h; sourceTree = "<group>"; };
 		F9F7CC37192E5C46006F1C91 /* MyAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyAppDelegate.mm; sourceTree = "<group>"; };
 		F9F7CC3E192E5E0A006F1C91 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1259,6 +1270,13 @@
 		F932F0C5196D7DE300C82556 /* Mods */ = {
 			isa = PBXGroup;
 			children = (
+				F9DE83381B41CF3C00F5A086 /* apparelMod_kawaiopathy.cpp */,
+				F9DE83391B41CF3C00F5A086 /* apparelMod_kawaiopathy.h */,
+				F9DE833A1B41CF3C00F5A086 /* apparelMod_zoopathy.cpp */,
+				F9DE833B1B41CF3C00F5A086 /* apparelMod_intropathy.cpp */,
+				F9DE833C1B41CF3C00F5A086 /* apparelMod_zoopathy.h */,
+				F9DE833D1B41CF3C00F5A086 /* apparelMod_selfopathy.cpp */,
+				F9DE833E1B41CF3C00F5A086 /* apparelMod_intropathy.h */,
 				F91D62B81A338E490005E9D5 /* apparelMod_authoritopathy.cpp */,
 				F91D62B91A338E490005E9D5 /* apparelMod_authoritopathy.h */,
 				F91D62BA1A338E490005E9D5 /* apparelMod_meteopathy.cpp */,
@@ -2010,7 +2028,9 @@
 				F90794DF1B10A91C00BC96FA /* ofxQCAR_EAGLView.mm in Sources */,
 				F90794DE1B10A91C00BC96FA /* ofxQCAR.mm in Sources */,
 				F91D69061A33A01A0005E9D5 /* ofMeshFaceApparel.cpp in Sources */,
+				F9DE833F1B41CF3C00F5A086 /* apparelMod_kawaiopathy.cpp in Sources */,
 				F9489267197EA66000085C6B /* ofxSQLiteAbstract.cpp in Sources */,
+				F9DE83421B41CF3C00F5A086 /* apparelMod_selfopathy.cpp in Sources */,
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
 				F94A13C21ABCBA3D00DFC7CE /* UIPage.cpp in Sources */,
 				F96FBA4019753EEF00E58A6F /* NetworkingUtils.cpp in Sources */,
@@ -2023,7 +2043,9 @@
 				F94A13C11ABCBA3D00DFC7CE /* UIManager.cpp in Sources */,
 				F978B2D71A4028E700A98862 /* cube.cpp in Sources */,
 				F94A13CC1ABDD83000DFC7CE /* userTwitterGuestIOS.mm in Sources */,
+				F9DE83411B41CF3C00F5A086 /* apparelMod_intropathy.cpp in Sources */,
 				F9A3AB9C19F936EC00357C37 /* oscSender.cpp in Sources */,
+				F9DE83401B41CF3C00F5A086 /* apparelMod_zoopathy.cpp in Sources */,
 				F91D62C91A338E490005E9D5 /* apparelMod_pretentiopathy.cpp in Sources */,
 				F9A3AB9519F9369500357C37 /* oscSenderInterface.cpp in Sources */,
 				F91D62C71A338E490005E9D5 /* apparelMod_meteopathy.cpp in Sources */,
