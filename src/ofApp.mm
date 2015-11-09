@@ -3,6 +3,7 @@
 #include "globals.h"
 #include "apparelMod_include.h"
 #include "UI/UIPageMain.h"
+#import <TwitterKit/TwitterKit.h>
 
 
 //--------------------------------------------------------------
@@ -17,6 +18,7 @@ void ofApp::setup()
 {
 	mp_pageMain 		= 0;
 	mp_modPorcu			= 0;
+	mp_userCurrent		= 0;
 
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	OFAPPLOG->begin("ofApp::setup()");
@@ -44,28 +46,7 @@ void ofApp::setup()
 	{
 		string modelObjName = m_settings.getValue("apparel:model", "");
 		string targetName 	= m_settings.getValue("apparel:vuforia:target", "");
-		string userId		= m_settings.getValue("apparel:user", "creativeclaude");
-
-		// USER
-		OFAPPLOG->println("- user is @" + userId);
-
- 		m_user.setId(userId);
-		m_user.setModManager(&m_apparelModManager);
-		m_user.createDirectory();
-		m_user.loadConfiguration();
-
-		mp_userCurrent = &m_user;
-		GLOBALS->setUser(mp_userCurrent);
-
-		// USER TEMPLATES
-		for (int i=0;i<3;i++)
-		{
-			m_userTemplate[i].setId("template0"+ofToString(i));
-			m_userTemplate[i].setModManager(&m_apparelModManager);
-			m_userTemplate[i].createDirectory();
-			m_userTemplate[i].useTick(false);
-			m_userTemplate[i].loadConfiguration();
-		}
+		string userId		= m_settings.getValue("apparel:user", "creativeclaude"); // DEPRECATED
 
 		// SCENE
 		GLOBALS->setModel(&m_apparelModel);
@@ -90,10 +71,25 @@ void ofApp::setup()
 		m_oscReceiver.setModManager(&m_apparelModManager);
 		OFAPPLOG->println("- osc receiver port = " + ofToString(oscPort));
 
-		// USER WORDS
-		// this will initialize words count for each mod for this user
-		m_apparelModManager.countUserWords(mp_userCurrent);
+	
+		// GUI
+		mp_pageMain = new UIPageMain("PageMain",&m_uiManager);
+		mp_pageMain->setApparelModManager(&m_apparelModManager);
+		mp_pageMain->setup();
 
+
+		// USER
+		if (Twitter.sharedInstance.session != nil)
+		{
+			changeUser( Twitter.sharedInstance.session.userID.UTF8String );
+		}
+		else
+		{
+			setARMode(false);
+//			changeUser( getTemplateUserId(0) );
+			changeUser( "test" );
+
+		}
 		// VUFORIA
 #if USE_VUFORIA
 		OFAPPLOG->println("- loading vuforia targets " + targetName);
@@ -104,13 +100,8 @@ void ofApp::setup()
 		qcar->setCameraPixelsFlag(true);
 		qcar->setup();
 #endif
-	
-		// GUI
-		mp_pageMain = new UIPageMain("PageMain",&m_uiManager);
-		mp_pageMain->setApparelModManager(&m_apparelModManager);
-		mp_pageMain->setup();
 
-		setARMode(true);
+
 	}
 
 	OFAPPLOG->end();
@@ -126,17 +117,20 @@ void ofApp::qcarInitialised()
 void ofApp::setARMode(bool is)
 {
 	m_bARMode = is;
-	mp_pageMain->setUseVuforia(is);
+	if (mp_pageMain)
+		mp_pageMain->setUseVuforia(is);
 }
 
 //--------------------------------------------------------------
 void ofApp::update()
 {
+	float dt = ofGetLastFrameTime();
+
 	m_oscReceiver.update();
 	if (mp_userCurrent)
-		mp_userCurrent->update(0.0f);
- 	if (mp_pageMain)
-		mp_pageMain->update(0.0f);
+		mp_userCurrent->update(dt);
+	if (mp_pageMain)
+		mp_pageMain->update(dt);
  }
 
 //--------------------------------------------------------------
@@ -230,14 +224,46 @@ void ofApp::audioIn(float * input, int bufferSize, int nChannels)
 }
 
 //--------------------------------------------------------------
+void ofApp::changeUser(string userId, bool bTemplate)
+{
+	OFAPPLOG->begin("ofApp::changeUser('" + userId + "')");
+
+	m_user.deconnect();
+
+	m_user.setId(userId);
+	m_user.setModManager(&m_apparelModManager);
+	m_user.createDirectory();
+	m_user.loadConfiguration();
+	m_user.useTick(bTemplate ? false : true);
+	m_user.connect();
+
+	m_apparelModManager.countUserWords(&m_user);
+
+	mp_userCurrent = &m_user;
+	GLOBALS->setUser(mp_userCurrent);
+
+	OFAPPLOG->end();
+}
+
+
+//--------------------------------------------------------------
 void ofApp::onMoodSelected(int moodIndex)
 {
-	ofLog() << "moodIndex=" << moodIndex;
+	OFAPPLOG->begin("ofApp::onMoodSelected("+ofToString(moodIndex)+")");
+
+	if (moodIndex == 0)		m_apparelModManager.selectMood("Sad");
+	if (moodIndex == 1)		m_apparelModManager.selectMood("Noisopathy");
+	if (moodIndex == 2)		m_apparelModManager.selectMood("Porcupinopathy");
+
+	OFAPPLOG->end();
 }
 
 //--------------------------------------------------------------
 void ofApp::onMoodUnselect()
 {
+	OFAPPLOG->begin("ofApp::onMoodUnselect()");
+	m_apparelModManager.unselectMood();
+	OFAPPLOG->end();
 }
 
 
@@ -246,11 +272,7 @@ void ofApp::onTemplateSelected(int templateIndex)
 {
 	if (templateIndex<3)
 	{
-		mp_userCurrent = &m_userTemplate[templateIndex];
-		GLOBALS->setUser(mp_userCurrent);
-		
-//		m_apparelModManager.constructMods(&m_apparelModel);
-		m_apparelModManager.countUserWords(mp_userCurrent);
+		changeUser( getTemplateUserId(templateIndex)  ) ;
 	}
 }
 

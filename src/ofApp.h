@@ -48,6 +48,7 @@ class ofApp : public ofxQCAR_App {
 		// USER
 		user				m_user;
 		user*				mp_userCurrent;
+		void				changeUser		(string userId, bool bTemplate=false);
  
 		// USER TEMPLATES
 		user				m_userTemplate[3];
@@ -77,7 +78,8 @@ class ofApp : public ofxQCAR_App {
 		void				onMoodSelected		(int moodIndex);
 		void				onMoodUnselect		();
 		void				onTemplateSelected	(int templateIndex);
- 
+		string				getTemplateUserId	(int templateIndex){return "template0"+ofToString(templateIndex+1);}
+
 		// Filter
 		//ofxPostProcess*		mp_postProcess;
  		ofShader				m_shaderDither;

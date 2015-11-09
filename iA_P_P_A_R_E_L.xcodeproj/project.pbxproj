@@ -118,8 +118,6 @@
 		F94A13CC1ABDD83000DFC7CE /* userTwitterGuestIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = F94A13CA1ABDD83000DFC7CE /* userTwitterGuestIOS.mm */; };
 		F94A60D41A80FA1300A850FA /* configuration.xml in Resources */ = {isa = PBXBuildFile; fileRef = F94A60CF1A80FA1300A850FA /* configuration.xml */; };
 		F94A60D51A80FA1300A850FA /* data.sql in Resources */ = {isa = PBXBuildFile; fileRef = F94A60D01A80FA1300A850FA /* data.sql */; };
-		F94A60D61A80FA1300A850FA /* credentials.xml in Resources */ = {isa = PBXBuildFile; fileRef = F94A60D21A80FA1300A850FA /* credentials.xml */; };
-		F94A60D71A80FA1300A850FA /* data.xml in Resources */ = {isa = PBXBuildFile; fileRef = F94A60D31A80FA1300A850FA /* data.xml */; };
 		F94A60D91A81006A00A850FA /* wordlist.txt in Resources */ = {isa = PBXBuildFile; fileRef = F94A60D81A81006A00A850FA /* wordlist.txt */; };
 		F94A60DB1A81007E00A850FA /* wordlist.txt in Resources */ = {isa = PBXBuildFile; fileRef = F94A60DA1A81007E00A850FA /* wordlist.txt */; };
 		F94A60DD1A81008900A850FA /* wordlist.txt in Resources */ = {isa = PBXBuildFile; fileRef = F94A60DC1A81008900A850FA /* wordlist.txt */; };
@@ -166,6 +164,14 @@
 		F990FAA81B1217B700C1B8E4 /* LetterGothicStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F990FAA71B1217B700C1B8E4 /* LetterGothicStd-Bold.otf */; };
 		F990FAAA1B12188200C1B8E4 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F990FAA91B12188200C1B8E4 /* Icons.xcassets */; };
 		F990FBBB1B121D1800C1B8E4 /* ofxFXObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F990FB491B121D1800C1B8E4 /* ofxFXObject.cpp */; };
+		F99E90601BEFA76D009CC84B /* apparelMood_sad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F99E905E1BEFA76D009CC84B /* apparelMood_sad.cpp */; };
+		F99E906A1BEFD9DD009CC84B /* configuration.xml in Resources */ = {isa = PBXBuildFile; fileRef = F99E90621BEFD9CD009CC84B /* configuration.xml */; };
+		F99E906B1BEFD9DD009CC84B /* data.sql in Resources */ = {isa = PBXBuildFile; fileRef = F99E90631BEFD9CD009CC84B /* data.sql */; };
+		F99E906C1BEFD9DD009CC84B /* configuration.xml in Resources */ = {isa = PBXBuildFile; fileRef = F99E90651BEFD9CD009CC84B /* configuration.xml */; };
+		F99E906D1BEFD9DD009CC84B /* data.sql in Resources */ = {isa = PBXBuildFile; fileRef = F99E90661BEFD9CD009CC84B /* data.sql */; };
+		F99E906E1BEFD9DD009CC84B /* configuration.xml in Resources */ = {isa = PBXBuildFile; fileRef = F99E90681BEFD9CD009CC84B /* configuration.xml */; };
+		F99E906F1BEFD9DD009CC84B /* data.sql in Resources */ = {isa = PBXBuildFile; fileRef = F99E90691BEFD9CD009CC84B /* data.sql */; };
+		F99E90721BEFE1B2009CC84B /* data.sql in Resources */ = {isa = PBXBuildFile; fileRef = F99E90711BEFE1A8009CC84B /* data.sql */; };
 		F9A3AB9519F9369500357C37 /* oscSenderInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9A3AB9319F9369500357C37 /* oscSenderInterface.cpp */; };
 		F9A3AB9B19F936EC00357C37 /* oscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9A3AB9719F936EC00357C37 /* oscReceiver.cpp */; };
 		F9A3AB9C19F936EC00357C37 /* oscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9A3AB9919F936EC00357C37 /* oscSender.cpp */; };
@@ -184,8 +190,6 @@
 		F9F7CC41192E5E0A006F1C91 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F7CC3E192E5E0A006F1C91 /* SystemConfiguration.framework */; };
 		F9F7CC42192E5E0A006F1C91 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F7CC3F192E5E0A006F1C91 /* Security.framework */; };
 		F9F7CC43192E5E0A006F1C91 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F7CC40192E5E0A006F1C91 /* CoreMotion.framework */; };
-		F9FFA89419A78E9700893381 /* data.sql in Resources */ = {isa = PBXBuildFile; fileRef = F9FFA89219A78E9700893381 /* data.sql */; };
-		F9FFA89519A78E9700893381 /* credentials.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9FFA89319A78E9700893381 /* credentials.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -602,6 +606,15 @@
 		F990FB531B121D1800C1B8E4 /* ofxRipples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRipples.h; sourceTree = "<group>"; };
 		F990FB541B121D1800C1B8E4 /* ofxSubstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSubstract.h; sourceTree = "<group>"; };
 		F990FB551B121D1800C1B8E4 /* ofxThreshold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxThreshold.h; sourceTree = "<group>"; };
+		F99E905E1BEFA76D009CC84B /* apparelMood_sad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = apparelMood_sad.cpp; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMood_sad.cpp; sourceTree = "<group>"; };
+		F99E905F1BEFA76D009CC84B /* apparelMood_sad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = apparelMood_sad.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMood_sad.h; sourceTree = "<group>"; };
+		F99E90621BEFD9CD009CC84B /* configuration.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = configuration.xml; sourceTree = "<group>"; };
+		F99E90631BEFD9CD009CC84B /* data.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.sql; sourceTree = "<group>"; };
+		F99E90651BEFD9CD009CC84B /* configuration.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = configuration.xml; sourceTree = "<group>"; };
+		F99E90661BEFD9CD009CC84B /* data.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.sql; sourceTree = "<group>"; };
+		F99E90681BEFD9CD009CC84B /* configuration.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = configuration.xml; sourceTree = "<group>"; };
+		F99E90691BEFD9CD009CC84B /* data.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.sql; sourceTree = "<group>"; };
+		F99E90711BEFE1A8009CC84B /* data.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.sql; sourceTree = "<group>"; };
 		F9A3AB9319F9369500357C37 /* oscSenderInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = oscSenderInterface.cpp; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/oscSenderInterface.cpp; sourceTree = "<group>"; };
 		F9A3AB9419F9369500357C37 /* oscSenderInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = oscSenderInterface.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/oscSenderInterface.h; sourceTree = "<group>"; };
 		F9A3AB9719F936EC00357C37 /* oscReceiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = oscReceiver.cpp; sourceTree = "<group>"; };
@@ -628,8 +641,6 @@
 		F9F7CC3E192E5E0A006F1C91 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F9F7CC3F192E5E0A006F1C91 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F9F7CC40192E5E0A006F1C91 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		F9FFA89219A78E9700893381 /* data.sql */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.sql; path = bin/data/users/v3ga/data.sql; sourceTree = "<group>"; };
-		F9FFA89319A78E9700893381 /* credentials.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = credentials.xml; path = bin/data/users/v3ga/twitter/credentials.xml; sourceTree = "<group>"; };
 		FC5DA1C87211D4F6377DA719 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = tinyxmlparser.cpp; path = ../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -695,8 +706,6 @@
 				F990FAA71B1217B700C1B8E4 /* LetterGothicStd-Bold.otf */,
 				F9D35E8119ACC3D400B63E8E /* ofxiOS-Info.plist */,
 				F9D35E7F19ACBE5000B63E8E /* ofxTwitter_configuration.json */,
-				F9FFA89219A78E9700893381 /* data.sql */,
-				F9FFA89319A78E9700893381 /* credentials.xml */,
 				F907954C1B10C22B00BC96FA /* assets */,
 				F9B7BF7019339A6600EB35EE /* data */,
 				E4D8936A11527B74007E1F53 /* src */,
@@ -1239,6 +1248,7 @@
 				F96FBE891978287C00E58A6F /* Utils */,
 				F96FBE791978258000E58A6F /* User */,
 				F932F0C5196D7DE300C82556 /* Mods */,
+				F99E905D1BEFA737009CC84B /* Moods */,
 				F932F0BE196D7B8D00C82556 /* Network */,
 				F980D0C31A87BE6000D360F7 /* Sound */,
 				F95101E11B121EAE00568415 /* PostProcess */,
@@ -1287,10 +1297,6 @@
 				F91D62BF1A338E490005E9D5 /* apparelMod_pretentiopathy.h */,
 				F91D62C01A338E490005E9D5 /* apparelMod_sportopathy.cpp */,
 				F91D62C11A338E490005E9D5 /* apparelMod_sportopathy.h */,
-				F91D62C21A338E490005E9D5 /* apparelMood_noisopathy.cpp */,
-				F91D62C31A338E490005E9D5 /* apparelMood_noisopathy.h */,
-				F91D62C41A338E490005E9D5 /* apparelMood_porcupinopathy.cpp */,
-				F91D62C51A338E490005E9D5 /* apparelMood_porcupinopathy.h */,
 				F93C8B441982F93E006CC178 /* apparelMod_vulgaropathy.cpp */,
 				F93C8B451982F93E006CC178 /* apparelMod_vulgaropathy.h */,
 				F93C8B461982F93E006CC178 /* apparelMod_include.h */,
@@ -1590,6 +1596,10 @@
 		F96FBF811979D86A00E58A6F /* users */ = {
 			isa = PBXGroup;
 			children = (
+				F99E90701BEFE1A8009CC84B /* __empty__ */,
+				F99E90611BEFD9CD009CC84B /* template01 */,
+				F99E90641BEFD9CD009CC84B /* template02 */,
+				F99E90671BEFD9CD009CC84B /* template03 */,
 				F94A60CE1A80FA1300A850FA /* creativeclaude */,
 			);
 			name = users;
@@ -1757,6 +1767,54 @@
 			path = operations;
 			sourceTree = "<group>";
 		};
+		F99E905D1BEFA737009CC84B /* Moods */ = {
+			isa = PBXGroup;
+			children = (
+				F99E905E1BEFA76D009CC84B /* apparelMood_sad.cpp */,
+				F99E905F1BEFA76D009CC84B /* apparelMood_sad.h */,
+				F91D62C21A338E490005E9D5 /* apparelMood_noisopathy.cpp */,
+				F91D62C31A338E490005E9D5 /* apparelMood_noisopathy.h */,
+				F91D62C41A338E490005E9D5 /* apparelMood_porcupinopathy.cpp */,
+				F91D62C51A338E490005E9D5 /* apparelMood_porcupinopathy.h */,
+			);
+			name = Moods;
+			sourceTree = "<group>";
+		};
+		F99E90611BEFD9CD009CC84B /* template01 */ = {
+			isa = PBXGroup;
+			children = (
+				F99E90621BEFD9CD009CC84B /* configuration.xml */,
+				F99E90631BEFD9CD009CC84B /* data.sql */,
+			);
+			path = template01;
+			sourceTree = "<group>";
+		};
+		F99E90641BEFD9CD009CC84B /* template02 */ = {
+			isa = PBXGroup;
+			children = (
+				F99E90651BEFD9CD009CC84B /* configuration.xml */,
+				F99E90661BEFD9CD009CC84B /* data.sql */,
+			);
+			path = template02;
+			sourceTree = "<group>";
+		};
+		F99E90671BEFD9CD009CC84B /* template03 */ = {
+			isa = PBXGroup;
+			children = (
+				F99E90681BEFD9CD009CC84B /* configuration.xml */,
+				F99E90691BEFD9CD009CC84B /* data.sql */,
+			);
+			path = template03;
+			sourceTree = "<group>";
+		};
+		F99E90701BEFE1A8009CC84B /* __empty__ */ = {
+			isa = PBXGroup;
+			children = (
+				F99E90711BEFE1A8009CC84B /* data.sql */,
+			);
+			path = __empty__;
+			sourceTree = "<group>";
+		};
 		F9A3AB9619F936D600357C37 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -1902,18 +1960,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F99E90721BEFE1B2009CC84B /* data.sql in Resources */,
+				F99E906A1BEFD9DD009CC84B /* configuration.xml in Resources */,
+				F99E906B1BEFD9DD009CC84B /* data.sql in Resources */,
+				F99E906C1BEFD9DD009CC84B /* configuration.xml in Resources */,
+				F99E906D1BEFD9DD009CC84B /* data.sql in Resources */,
+				F99E906E1BEFD9DD009CC84B /* configuration.xml in Resources */,
+				F99E906F1BEFD9DD009CC84B /* data.sql in Resources */,
 				F90795541B10C22B00BC96FA /* grr_2.png in Resources */,
 				F9D35E8019ACBE5B00B63E8E /* ofxTwitter_configuration.json in Resources */,
 				F91D69961A33A14D0005E9D5 /* model.xml in Resources */,
 				F96DE5A01A2220AD007AD329 /* 141123_Apparel.dat in Resources */,
-				F9FFA89419A78E9700893381 /* data.sql in Resources */,
 				F91D69921A33A14D0005E9D5 /* model.xml in Resources */,
 				F903533D1A41EAEC00EF8A8A /* grr_2.png in Resources */,
 				F94A60D41A80FA1300A850FA /* configuration.xml in Resources */,
 				F903533B1A41EAEC00EF8A8A /* glagla.png in Resources */,
-				F9FFA89519A78E9700893381 /* credentials.xml in Resources */,
 				F932F0D1196D937200C82556 /* test_targets_3.dat in Resources */,
-				F94A60D71A80FA1300A850FA /* data.xml in Resources */,
 				F94A60DB1A81007E00A850FA /* wordlist.txt in Resources */,
 				F94A60D51A80FA1300A850FA /* data.sql in Resources */,
 				F932F0D2196D937200C82556 /* test_targets_3.xml in Resources */,
@@ -1967,7 +2029,6 @@
 				F90795551B10C22B00BC96FA /* sad_2.png in Resources */,
 				F94A60D91A81006A00A850FA /* wordlist.txt in Resources */,
 				F9B7BF8119339A7E00EB35EE /* test_targets.dat in Resources */,
-				F94A60D61A80FA1300A850FA /* credentials.xml in Resources */,
 				F90795531B10C22B00BC96FA /* glagla.png in Resources */,
 				F91D69931A33A14D0005E9D5 /* parameters.xml in Resources */,
 			);
@@ -2033,6 +2094,7 @@
 				F9DE83421B41CF3C00F5A086 /* apparelMod_selfopathy.cpp in Sources */,
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
 				F94A13C21ABCBA3D00DFC7CE /* UIPage.cpp in Sources */,
+				F99E90601BEFA76D009CC84B /* apparelMood_sad.cpp in Sources */,
 				F96FBA4019753EEF00E58A6F /* NetworkingUtils.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
 				F96FBE851978259000E58A6F /* userSocialFactory.cpp in Sources */,

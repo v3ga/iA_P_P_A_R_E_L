@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TwitterKit/TwitterKit.h>
+
 
 @interface ViewController_BSide : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
+-(void) retrieveUserInfo: (TWTRSession*) session;
 
 -(IBAction)selectTemplate01:(id)sender;
 -(IBAction)selectTemplate02:(id)sender;

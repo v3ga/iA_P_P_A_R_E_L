@@ -79,18 +79,40 @@
 	ofApp* pApp = (ofApp*) ofGetAppPtr();
 	if (pApp)
 	{
-		UIButton* btn = (UIButton*)sender;
-		//pApp->onMoodSelected( 0, [btn selected] );
+		pApp->onMoodSelected(0);
+	}
+}
+
+//--------------------------------------------------------------
+- (IBAction)unsetMood01:(id)sender
+{
+    NSLog(@"ViewController_ASide unsetMood01");
+	ofApp* pApp = (ofApp*) ofGetAppPtr();
+	if (pApp)
+	{
+		pApp->onMoodUnselect();
 	}
 }
 
 //--------------------------------------------------------------
 -(IBAction)setMood02:(id)sender
 {
+    NSLog(@"ViewController_ASide setMood02");
 	ofApp* pApp = (ofApp*) ofGetAppPtr();
 	if (pApp)
 	{
-//		pApp->setARMode( [toggle isOn] );
+		pApp->onMoodSelected(1);
+	}
+}
+
+//--------------------------------------------------------------
+- (IBAction)unsetMood02:(id)sender
+{
+    NSLog(@"ViewController_ASide unsetMood02");
+	ofApp* pApp = (ofApp*) ofGetAppPtr();
+	if (pApp)
+	{
+		pApp->onMoodUnselect();
 	}
 }
 
@@ -98,10 +120,21 @@
 //--------------------------------------------------------------
 -(IBAction)setMood03:(id)sender
 {
+    NSLog(@"ViewController_ASide setMood03");
 	ofApp* pApp = (ofApp*) ofGetAppPtr();
 	if (pApp)
 	{
-//		pApp->setARMode( [toggle isOn] );
+		pApp->onMoodSelected(2);
+	}
+}
+
+//--------------------------------------------------------------
+- (IBAction)unsetMood03:(id)sender {
+    NSLog(@"ViewController_ASide unsetMood03");
+	ofApp* pApp = (ofApp*) ofGetAppPtr();
+	if (pApp)
+	{
+		pApp->onMoodUnselect();
 	}
 }
 

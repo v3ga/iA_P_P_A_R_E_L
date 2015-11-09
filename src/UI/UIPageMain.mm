@@ -19,7 +19,7 @@ UIPageMain::UIPageMain(string id, UIManager* pManager) : UIPage(id, pManager)
 	mp_apparelModel			= 0;
 	mp_apparelModManager	= 0;
 	m_bUseVuforia			= false;
-	m_bDoDither				= true;
+	m_bDoDither				= false;
 	m_sceneBufferScale		= 2;
 }
 

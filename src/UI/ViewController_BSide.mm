@@ -8,6 +8,7 @@
 
 #import "ViewController_BSide.h"
 #import <TwitterKit/TwitterKit.h>
+#include "ofApp.h"
 
 //--------------------------------------------------------------
 @interface ViewController_BSide ()
@@ -42,11 +43,41 @@
 	{
 	    TWTRLogInButton *logInButton = [TWTRLogInButton buttonWithLogInCompletion:^(TWTRSession *session, NSError *error)
 		{
-        // play with Twitter session
+	        // TODO : play with Twitter session
+			// http://stackoverflow.com/questions/29120055/how-to-get-profile-url-of-the-logged-in-user-with-twitter-kit-fabric-ios
+			if (![error isEqual:nil])
+			{
+
+				ofApp* pApp = (ofApp*) ofGetAppPtr();
+				if (pApp)
+				{
+					pApp->changeUser( [[session userID] UTF8String], false );
+//					pApp->setARMode(false);
+				}
+			}
     	}];
     	logInButton.center = self.view.center;
     	[self.view addSubview:logInButton];
 	}
+}
+
+//--------------------------------------------------------------
+-(void) retrieveUserInfo: (TWTRSession*) session
+{
+ 	NSLog(@"Twitter signed in as -> name = %@ id = %@ ", [session userName],[session userID]);
+
+        /* Get user info */
+        [[[Twitter sharedInstance] APIClient] loadUserWithID:[session userID] completion:^(TWTRUser *user, NSError *error)
+        {
+            // handle the response or error
+            if (![error isEqual:nil]) {
+                NSLog(@"Twitter info   -> user = %@ ",user);
+            } else {
+                NSLog(@"Twitter error getting profile : %@", [error localizedDescription]);
+            }
+        }];
+
+
 }
 
 //--------------------------------------------------------------

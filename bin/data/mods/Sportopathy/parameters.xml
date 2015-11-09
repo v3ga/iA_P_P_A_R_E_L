@@ -1,5 +1,5 @@
 <Sportopathy>
-    <NbWordsMax>5</NbWordsMax>
-    <Weight>1</Weight>
-    <Amplitude>22.3958</Amplitude>
+    <Amplitude>50</Amplitude>
+    <WeightManual>1</WeightManual>
+    <NbWordsMax>10</NbWordsMax>
 </Sportopathy>
