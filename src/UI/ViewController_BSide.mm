@@ -41,6 +41,7 @@
 	TWTRSession* session = [[Twitter sharedInstance] session];
 	if (session == nil)
 	{
+		// https://twittercommunity.com/t/can-we-customize-the-twitter-sign-in-button-with-fabric/27880
 	    TWTRLogInButton *logInButton = [TWTRLogInButton buttonWithLogInCompletion:^(TWTRSession *session, NSError *error)
 		{
 	        // TODO : play with Twitter session

@@ -87,7 +87,7 @@ void ofApp::setup()
 		{
 			setARMode(false);
 //			changeUser( getTemplateUserId(0) );
-			changeUser( "test" );
+			changeUser( "test" ); // TEMP 
 
 		}
 		// VUFORIA
