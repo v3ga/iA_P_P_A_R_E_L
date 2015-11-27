@@ -16,6 +16,10 @@
 //--------------------------------------------------------------
 userTwitterGuestIOS::userTwitterGuestIOS(user* pUser) : userSocialInterface("Twitter", pUser)
 {
+	m_nbFollowers 	= 0;
+	m_nbFollowing	= 0;
+	
+	m_imageLoader.startThread();
 }
 
 //--------------------------------------------------------------
@@ -168,6 +172,59 @@ void userTwitterGuestIOS::saveData()
 
 	OFAPPLOG->end();
 }
+
+//--------------------------------------------------------------
+void userTwitterGuestIOS::setImageMiniUrl(string url)
+{
+	OFAPPLOG->println("userTwitterGuestIOS::setImageMiniUrl('"+url+"')");
+	m_imageMiniUrl = url;
+	loadImageMini();
+}
+
+//--------------------------------------------------------------
+void userTwitterGuestIOS::setImageLargeUrl(string url)
+{
+	OFAPPLOG->println("userTwitterGuestIOS::setImageLargeUrl('"+url+"')");
+	m_imageLargeUrl = url;
+}
+
+//--------------------------------------------------------------
+void userTwitterGuestIOS::setFollowersFollowing(int followers, int following)
+{
+	OFAPPLOG->println("userTwitterGuestIOS::setFollowersFollowing("+ofToString(followers)+","+ofToString(following)+")");
+	m_nbFollowers = followers;
+	m_nbFollowing = following;
+}
+
+//--------------------------------------------------------------
+void userTwitterGuestIOS::parseUserInfo(string str)
+{
+	ofxJSONElement json;
+	bool parseOk = json.parse(str);
+	if (parseOk)
+	{
+		int followers = json["followers_count"].asInt();
+		int following = json["friends_count"].asInt();
+		
+		setFollowersFollowing(followers, following);
+	}
+}
+
+//--------------------------------------------------------------
+void userTwitterGuestIOS::loadImageMini()
+{
+	if (m_imageMiniUrl != "")
+		m_imageLoader.loadFromURL( m_imageMini, m_imageMiniUrl );
+}
+
+//--------------------------------------------------------------
+void userTwitterGuestIOS::loadImageLarge()
+{
+	if (m_imageLargeUrl != "")
+		m_imageLoader.loadFromURL( m_imageLarge, m_imageLargeUrl );
+}
+
+
 
 
 

@@ -96,6 +96,7 @@
 		F91D699A1A33A14D0005E9D5 /* model.xml in Resources */ = {isa = PBXBuildFile; fileRef = F91D698D1A33A14D0005E9D5 /* model.xml */; };
 		F91D699B1A33A14D0005E9D5 /* parameters.xml in Resources */ = {isa = PBXBuildFile; fileRef = F91D698E1A33A14D0005E9D5 /* parameters.xml */; };
 		F91D699C1A33A14D0005E9D5 /* wordlist.txt in Resources */ = {isa = PBXBuildFile; fileRef = F91D698F1A33A14D0005E9D5 /* wordlist.txt */; };
+		F92AF8831C0920780052AAB6 /* ofxThreadedImageLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F92AF8811C0920780052AAB6 /* ofxThreadedImageLoader.cpp */; };
 		F932F072196D738C00C82556 /* apparelMod.mm in Sources */ = {isa = PBXBuildFile; fileRef = F932F070196D738C00C82556 /* apparelMod.mm */; };
 		F932F0C4196D7DBE00C82556 /* apparelModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = F932F0C2196D7DBE00C82556 /* apparelModel.mm */; };
 		F932F0CD196D855800C82556 /* configuration.xml in Resources */ = {isa = PBXBuildFile; fileRef = F932F0C9196D846900C82556 /* configuration.xml */; };
@@ -427,6 +428,8 @@
 		F91D698D1A33A14D0005E9D5 /* model.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = model.xml; sourceTree = "<group>"; };
 		F91D698E1A33A14D0005E9D5 /* parameters.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = parameters.xml; sourceTree = "<group>"; };
 		F91D698F1A33A14D0005E9D5 /* wordlist.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordlist.txt; sourceTree = "<group>"; };
+		F92AF8811C0920780052AAB6 /* ofxThreadedImageLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxThreadedImageLoader.cpp; sourceTree = "<group>"; };
+		F92AF8821C0920780052AAB6 /* ofxThreadedImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxThreadedImageLoader.h; sourceTree = "<group>"; };
 		F932F070196D738C00C82556 /* apparelMod.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = apparelMod.mm; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod.mm; sourceTree = "<group>"; };
 		F932F071196D738C00C82556 /* apparelMod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = apparelMod.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod.h; sourceTree = "<group>"; };
 		F932F0C2196D7DBE00C82556 /* apparelModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = apparelModel.mm; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelModel.mm; sourceTree = "<group>"; };
@@ -790,6 +793,7 @@
 		BB16F26B0F2B646B00518274 /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				F92AF87F1C0920780052AAB6 /* ofxThreadedImageLoader */,
 				F990FAAB1B121D1700C1B8E4 /* ofxFX */,
 				F90794EB1B10A93700BC96FA /* ofxAssimpModelLoader */,
 				F90793B91B10A91B00BC96FA /* ofxQCAR */,
@@ -1238,6 +1242,24 @@
 			);
 			name = Vulgaropathy;
 			path = bin/data/mods/Vulgaropathy;
+			sourceTree = "<group>";
+		};
+		F92AF87F1C0920780052AAB6 /* ofxThreadedImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				F92AF8801C0920780052AAB6 /* src */,
+			);
+			name = ofxThreadedImageLoader;
+			path = ../../../addons/ofxThreadedImageLoader;
+			sourceTree = "<group>";
+		};
+		F92AF8801C0920780052AAB6 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				F92AF8811C0920780052AAB6 /* ofxThreadedImageLoader.cpp */,
+				F92AF8821C0920780052AAB6 /* ofxThreadedImageLoader.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		F932F06F196D736400C82556 /* A_P_P_A_R_E_L */ = {
@@ -2073,6 +2095,7 @@
 				F91D62CC1A338E490005E9D5 /* apparelMood_porcupinopathy.cpp in Sources */,
 				F9A3AB9B19F936EC00357C37 /* oscReceiver.cpp in Sources */,
 				F90794E11B10A91C00BC96FA /* ofxVuforiaSession.mm in Sources */,
+				F92AF8831C0920780052AAB6 /* ofxThreadedImageLoader.cpp in Sources */,
 				F990FBBB1B121D1800C1B8E4 /* ofxFXObject.cpp in Sources */,
 				F96FBA4719753EEF00E58A6F /* OscTypes.cpp in Sources */,
 				F96FBE541976E35C00E58A6F /* json_value.cpp in Sources */,

@@ -9,6 +9,9 @@
 #import "ViewController_BSide.h"
 #import <TwitterKit/TwitterKit.h>
 #include "ofApp.h"
+#include "user.h"
+#include "userTwitterGuestIOS.h"
+#include "Globals.h"
 
 //--------------------------------------------------------------
 @interface ViewController_BSide ()
@@ -48,17 +51,15 @@
 			// http://stackoverflow.com/questions/29120055/how-to-get-profile-url-of-the-logged-in-user-with-twitter-kit-fabric-ios
 			if (![error isEqual:nil])
 			{
-
-				ofApp* pApp = (ofApp*) ofGetAppPtr();
-				if (pApp)
-				{
-					pApp->changeUser( [[session userID] UTF8String], false );
-//					pApp->setARMode(false);
-				}
+				[self retrieveUserInfo:session];
 			}
     	}];
     	logInButton.center = self.view.center;
     	[self.view addSubview:logInButton];
+	}
+	else
+	{
+		[self retrieveUserInfo:session];
 	}
 }
 
@@ -67,18 +68,77 @@
 {
  	NSLog(@"Twitter signed in as -> name = %@ id = %@ ", [session userName],[session userID]);
 
-        /* Get user info */
-        [[[Twitter sharedInstance] APIClient] loadUserWithID:[session userID] completion:^(TWTRUser *user, NSError *error)
-        {
-            // handle the response or error
-            if (![error isEqual:nil]) {
-                NSLog(@"Twitter info   -> user = %@ ",user);
-            } else {
-                NSLog(@"Twitter error getting profile : %@", [error localizedDescription]);
-            }
-        }];
+   /* Get user info */
+   [[[Twitter sharedInstance] APIClient] loadUserWithID:[session userID] completion:^(TWTRUser *userTwitter, NSError *error)
+   {
+	  if (![error isEqual:nil])
+	  {
+		  ofApp* pApp = (ofApp*) ofGetAppPtr();
+		  if (pApp)
+		  {
+			  // Application change user
+			  pApp->changeUser( [[session userID] UTF8String], false );
+
+			  // Get infos
+			  user* pUser = GLOBALS->getUser();
+			  if (pUser)
+			  {
+				  // TEMP ?
+				  pUser->useThread(false);
+			   
+				  // Get twitter service
+				  userTwitterGuestIOS* pUserTwitter = (userTwitterGuestIOS*) pUser->getService("Twitter");
+				  if (pUserTwitter)
+				  {
+					  // Image URLs
+					  pUserTwitter->setImageMiniUrl( [[userTwitter profileImageMiniURL] UTF8String] );
+					  pUserTwitter->setImageLargeUrl( [[userTwitter profileImageLargeURL] UTF8String] );
+
+					  // Followers / following
+					  // https://dev.twitter.com/rest/reference/get/users/show
+					  // https://docs.fabric.io/ios/twitter/access-rest-api.html
+				   
+					  TWTRAPIClient* client = [[Twitter sharedInstance] APIClient];
+					  NSString *statusesShowEndpoint = @"https://api.twitter.com/1.1/users/show.json";
+					  NSDictionary *params = @{@"user_id" : [session userID]};
+					  NSError *clientError;
+
+					 NSURLRequest *request = [client URLRequestWithMethod:@"GET" URL:statusesShowEndpoint parameters:params error:&clientError];
+
+					 if (request)
+					 {
+						 [client sendTwitterRequest:request completion:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+						 {
+							 if (data)
+							 {
+								NSString* nsJson=  [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+								if (nsJson != nil)
+								{
+									std::string json([nsJson UTF8String]);
+									pUserTwitter->parseUserInfo(json);
+							 	}
+							 }
+							 else
+							 {
+								 NSLog(@"Error: %@", connectionError);
+							 }
+						 }];
+					 }
+					 else
+					 {
+						 NSLog(@"Error: %@", clientError);
+					 }
 
 
+
+				  }
+			   }
+		   }
+	   }
+	   else {
+		   NSLog(@"Twitter error getting profile : %@", [error localizedDescription]);
+	   }
+   }];
 }
 
 //--------------------------------------------------------------
