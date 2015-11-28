@@ -45,6 +45,9 @@ void userTwitterGuestIOS::doWork()
 		NSLog(@"%@",[Twitter sharedInstance].session.userName);
 
 		NSString *statusesShowEndpoint = @"https://api.twitter.com/1.1/statuses/user_timeline.json";
+		// TODO : implement since_id variable in request
+		// https://dev.twitter.com/rest/reference/get/statuses/user_timeline
+		
 		NSDictionary *params = @{
 					@"screen_name": [Twitter sharedInstance].session.userName,
        				@"count" : @"5", @"include_rts" : @"1"};
