@@ -233,7 +233,8 @@ void ofApp::changeUser(string userId, bool bTemplate)
 	m_user.setId(userId);
 	m_user.setModManager(&m_apparelModManager);
 	m_user.createDirectory();
-	m_user.loadConfiguration();
+	if (bTemplate == false)
+		m_user.loadConfiguration(); // create social interfaces (twitter) instance here, factory call setup on social interfaces
 	m_user.useTick(bTemplate ? false : true);
 	m_user.connect();
 

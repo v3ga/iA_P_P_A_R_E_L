@@ -116,6 +116,7 @@
 								{
 									std::string json([nsJson UTF8String]);
 									pUserTwitter->parseUserInfo(json);
+									pUserTwitter->m_bSetup = true;
 							 	}
 							 }
 							 else

@@ -19,7 +19,10 @@ userTwitterGuestIOS::userTwitterGuestIOS(user* pUser) : userSocialInterface("Twi
 	m_nbFollowers 	= 0;
 	m_nbFollowing	= 0;
 	
-	m_imageLoader.startThread();
+	m_bDoAnalyzeData = false;
+	m_bAnalysingData = false;
+	
+	//m_imageLoader.startThread();
 }
 
 //--------------------------------------------------------------
@@ -40,11 +43,12 @@ void userTwitterGuestIOS::doWork()
 	OFAPPLOG->begin("userTwitterGuestIOS::doWork()");
 
 
-	if ([Twitter sharedInstance].session != nil)
+	if ([Twitter sharedInstance].session != nil && !m_bAnalysingData)
 	{
 		NSLog(@"%@",[Twitter sharedInstance].session.userName);
 
 		NSString *statusesShowEndpoint = @"https://api.twitter.com/1.1/statuses/user_timeline.json";
+		
 		// TODO : implement since_id variable in request
 		// https://dev.twitter.com/rest/reference/get/statuses/user_timeline
 		
@@ -64,6 +68,7 @@ void userTwitterGuestIOS::doWork()
 
 		if (request)
 		{
+		  m_tweetsLatest = "";
 
 		  NSLog(@" making request ");
 		  [[[Twitter sharedInstance] APIClient] sendTwitterRequest:request completion:^(NSURLResponse *response, NSData *data, NSError *connectionError)
@@ -73,34 +78,8 @@ void userTwitterGuestIOS::doWork()
 			  if (data)
 			  {
 					NSString* nsJson=  [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-
-					std::string tweets([nsJson UTF8String]);
-					ofxJSONElement jtweets;
-					if (jtweets.parse(tweets))
-					{
-						OFAPPLOG->println(" - found "+ofToString(jtweets.size()) + " tweets");
-						int nbTweets = jtweets.size();
-						string tweetText = "";
-						string tweetId = "";
-						for (int i=0;i<nbTweets;i++)
-						{
-							// Id
-							tweetId = jtweets[i]["id_str"].asString();
-
-							// Raw text
-							tweetText = jtweets[i]["text"].asString();
-
-							OFAPPLOG->println("  - "+ofToString(i)+". ["+ ofToString(tweetId) +"] - "+tweetText);
-
-							mp_user->onNewText( tweetText );
-
-							// Words
-							vector<string> words = ofSplitString(tweetText, " ",true,true); // source, delimiter,ignoreEmpty,trim
-		
-							// Lower strings
-							mp_user->onNewWords( words );
-						}
-					}
+					m_tweetsLatest = [nsJson UTF8String];
+					m_bDoAnalyzeData = true;
 			  }
 			  else {
 				  NSLog(@"Error: %@", connectionError);
@@ -115,6 +94,64 @@ void userTwitterGuestIOS::doWork()
 
 	OFAPPLOG->end();
 }
+
+//--------------------------------------------------------------
+void userTwitterGuestIOS::update(float dt)
+{
+	if (m_bDoAnalyzeData)
+	{
+		OFAPPLOG->begin("userTwitterGuestIOS::update(), m_bDoAnalyzeData = true");
+		m_bDoAnalyzeData = false;
+		m_bAnalysingData = true;
+		startThread();
+		OFAPPLOG->end();
+	}
+}
+
+//--------------------------------------------------------------
+void userTwitterGuestIOS::threadedFunction()
+{
+	analyzeData();
+
+	m_bAnalysingData = false;
+}
+//--------------------------------------------------------------
+void userTwitterGuestIOS::analyzeData()
+{
+	if (m_tweetsLatest == "" || mp_user == 0) return;
+
+   std::string tweets = m_tweetsLatest;
+   
+   mp_user->lock();
+   ofxJSONElement jtweets;
+   if (jtweets.parse(tweets))
+   {
+	   OFAPPLOG->println(" - found "+ofToString(jtweets.size()) + " tweets");
+	   int nbTweets = jtweets.size();
+	   string tweetText = "";
+	   string tweetId = "";
+	   for (int i=0;i<nbTweets;i++)
+	   {
+		   // Id
+		   tweetId = jtweets[i]["id_str"].asString();
+
+		   // Raw text
+		   tweetText = jtweets[i]["text"].asString();
+
+		   OFAPPLOG->println("  - "+ofToString(i)+". ["+ ofToString(tweetId) +"] - "+tweetText);
+
+		   mp_user->onNewText( tweetText );
+
+		   // Words
+		   vector<string> words = ofSplitString(tweetText, " ",true,true); // source, delimiter,ignoreEmpty,trim
+
+		   // Lower strings
+		   mp_user->onNewWords( words );
+	   }
+   }
+	mp_user->unlock();
+}
+
 
 //--------------------------------------------------------------
 void userTwitterGuestIOS::loadData()
@@ -181,7 +218,7 @@ void userTwitterGuestIOS::setImageMiniUrl(string url)
 {
 	OFAPPLOG->println("userTwitterGuestIOS::setImageMiniUrl('"+url+"')");
 	m_imageMiniUrl = url;
-	loadImageMini();
+	//loadImageMini();
 }
 
 //--------------------------------------------------------------

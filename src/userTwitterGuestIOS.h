@@ -11,13 +11,15 @@
 #include "userSocialInterface.h"
 #include "ofxThreadedImageLoader.h"
 
-class userTwitterGuestIOS : public userSocialInterface
+class userTwitterGuestIOS : public userSocialInterface, public ofThread
 {
 	public:
 			userTwitterGuestIOS					(user*);
 	
 			bool			setup				(ofxXmlSettings* pConfig, int serviceIndex);
+			void			update				(float dt);
 			void			doWork				();
+			void			analyzeData			();
 			void			loadData			();
 			void			saveData			();
  
@@ -29,18 +31,21 @@ class userTwitterGuestIOS : public userSocialInterface
  
 			void			setFollowersFollowing(int followers, int following);
 			void			parseUserInfo(string json);
+ 
+			void			threadedFunction	();
 
 	protected:
-			int				m_nbFollowers, m_nbFollowing;
-			string			m_imageMiniUrl;
-			string			m_imageLargeUrl;
+			string					m_tweetsLatest;
+
+			int						m_nbFollowers, m_nbFollowing;
+			string					m_imageMiniUrl;
+			string					m_imageLargeUrl;
+
  
- 
-			ofImage			m_imageMini;
-			ofImage			m_imageLarge;
- 
+			ofImage					m_imageMini;
+			ofImage					m_imageLarge;
 			ofxThreadedImageLoader	m_imageLoader;
-	
-	
-//			TWTRSession* 	mp_session;
+ 
+			bool					m_bDoAnalyzeData;
+			bool					m_bAnalysingData;
 };
