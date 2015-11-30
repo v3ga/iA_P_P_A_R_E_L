@@ -23,6 +23,8 @@ class userTwitterGuestIOS : public userSocialInterface, public ofThread
 			void			loadData			();
 			void			saveData			();
  
+			void			retrieveInfo		();
+ 
 			void			setImageMiniUrl		(string url);
 			void			setImageLargeUrl	(string url);
  

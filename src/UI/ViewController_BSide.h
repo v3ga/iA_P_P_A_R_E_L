@@ -12,7 +12,7 @@
 
 @interface ViewController_BSide : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
--(void) retrieveUserInfo: (TWTRSession*) session;
+-(void) changeUserAndRetrieveInfoUser: (TWTRSession*) session;
 
 -(IBAction)selectTemplate01:(id)sender;
 -(IBAction)selectTemplate02:(id)sender;

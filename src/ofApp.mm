@@ -3,6 +3,7 @@
 #include "globals.h"
 #include "apparelMod_include.h"
 #include "UI/UIPageMain.h"
+#include "userTwitterGuestIOS.h"
 #import <TwitterKit/TwitterKit.h>
 
 
@@ -82,6 +83,10 @@ void ofApp::setup()
 		if (Twitter.sharedInstance.session != nil)
 		{
 			changeUser( Twitter.sharedInstance.session.userID.UTF8String );
+			userTwitterGuestIOS* pTwitterIOS = (userTwitterGuestIOS*) m_user.getService("twitter");
+			if (pTwitterIOS)
+				pTwitterIOS->retrieveInfo();
+			
 		}
 		else
 		{
@@ -231,6 +236,7 @@ void ofApp::changeUser(string userId, bool bTemplate)
 	m_user.deconnect();
 
 	m_user.setId(userId);
+	m_user.setTemplate(bTemplate);
 	m_user.setModManager(&m_apparelModManager);
 	m_user.createDirectory();
 	if (bTemplate == false)
@@ -273,7 +279,7 @@ void ofApp::onTemplateSelected(int templateIndex)
 {
 	if (templateIndex<3)
 	{
-		changeUser( getTemplateUserId(templateIndex)  ) ;
+		changeUser( getTemplateUserId(templateIndex), true  ) ;
 	}
 }
 

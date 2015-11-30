@@ -14,7 +14,7 @@
 #import <Fabric/Fabric.h>
 
 //--------------------------------------------------------------
-userTwitterGuestIOS::userTwitterGuestIOS(user* pUser) : userSocialInterface("Twitter", pUser)
+userTwitterGuestIOS::userTwitterGuestIOS(user* pUser) : userSocialInterface("twitter", pUser)
 {
 	m_nbFollowers 	= 0;
 	m_nbFollowing	= 0;
@@ -35,6 +35,82 @@ bool userTwitterGuestIOS::setup(ofxXmlSettings* pConfig, int serviceIndex)
 
 	OFAPPLOG->end();
 	return true;
+}
+
+//--------------------------------------------------------------
+void userTwitterGuestIOS::retrieveInfo()
+{
+	TWTRSession* session = [[Twitter sharedInstance] session];
+
+	if (session != nil)
+	{
+	  /* Get user info */
+	  [[[Twitter sharedInstance] APIClient] loadUserWithID:[session userID] completion:^(TWTRUser *userTwitter, NSError *error)
+	  {
+		 if (![error isEqual:nil])
+		 {
+				 // Application change user
+//				 pApp->changeUser( [[session userID] UTF8String], false );
+
+				 // Get infos
+				 user* pUser = mp_user;
+				 if (pUser)
+				 {
+					 // TEMP ?
+					 pUser->useThread(false);
+				  
+					 // Get twitter service
+					 userTwitterGuestIOS* pUserTwitter = this;
+					 if (pUserTwitter)
+					 {
+						 // Image URLs
+						 pUserTwitter->setImageMiniUrl( [[userTwitter profileImageMiniURL] UTF8String] );
+						 pUserTwitter->setImageLargeUrl( [[userTwitter profileImageLargeURL] UTF8String] );
+
+						 // Followers / following
+						 // https://dev.twitter.com/rest/reference/get/users/show
+						 // https://docs.fabric.io/ios/twitter/access-rest-api.html
+					  
+						 TWTRAPIClient* client = [[Twitter sharedInstance] APIClient];
+						 NSString *statusesShowEndpoint = @"https://api.twitter.com/1.1/users/show.json";
+						 NSDictionary *params = @{@"user_id" : [session userID]};
+						 NSError *clientError;
+
+						NSURLRequest *request = [client URLRequestWithMethod:@"GET" URL:statusesShowEndpoint parameters:params error:&clientError];
+
+						if (request)
+						{
+							[client sendTwitterRequest:request completion:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+							{
+								if (data)
+								{
+								   NSString* nsJson=  [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+								   if (nsJson != nil)
+								   {
+									   std::string json([nsJson UTF8String]);
+									   pUserTwitter->parseUserInfo(json);
+									   pUserTwitter->m_bSetup = true;
+								   }
+								}
+								else
+								{
+									NSLog(@"Error: %@", connectionError);
+								}
+							}];
+						}
+						else
+						{
+							NSLog(@"Error: %@", clientError);
+						}
+				  	}
+			  	}
+		  }
+		  else
+		  {
+			  NSLog(@"Twitter error getting profile : %@", [error localizedDescription]);
+		  }
+	  }];
+   }
 }
 
 //--------------------------------------------------------------
