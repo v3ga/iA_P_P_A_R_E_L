@@ -219,6 +219,7 @@ void UIPageMain::drawModel(string markerName)
 //		glColorMask(false, false, false, false);
 		glDepthMask(true);
 
+		ofSetColor(0,255);
 		mp_apparelModel->drawFaces();
 
 		//glEnable(GL_CULL_FACE);
