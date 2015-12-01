@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 N_O_R_M_A_L_S. All rights reserved.
 //
 
+// http://codewithchris.com/common-mistakes-with-adding-custom-fonts-to-your-ios-app/
+
+
 #import "TextStyle.h"
 
 @interface TextStyle ()

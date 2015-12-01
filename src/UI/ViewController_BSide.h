@@ -13,13 +13,20 @@
 @interface ViewController_BSide : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 -(void) changeUserAndRetrieveInfoUser: (TWTRSession*) session;
+-(void) updateLayout;
+-(void) updateBtnTwitter;
 
 -(IBAction)selectTemplate01:(id)sender;
 -(IBAction)selectTemplate02:(id)sender;
 -(IBAction)selectTemplate03:(id)sender;
 
--(IBAction)selectAROn:(id)sender;
--(IBAction)selectAROff:(id)sender;
+@property (retain , nonatomic)IBOutlet UIButton *btnConnectTwitter;
+@property (retain , nonatomic)IBOutlet UIButton *btnARModeON;
+@property (retain , nonatomic)IBOutlet UIButton *btnARModeOFF;
+
+@property (retain , nonatomic)IBOutlet UIButton *btnTemplate01;
+@property (retain , nonatomic)IBOutlet UIButton *btnTemplate02;
+@property (retain , nonatomic)IBOutlet UIButton *btnTemplate03;
 
 
 @end

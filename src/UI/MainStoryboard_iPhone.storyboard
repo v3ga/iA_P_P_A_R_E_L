@@ -133,7 +133,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="selectAROn:" destination="6h4-bR-DDn" eventType="touchDown" id="0nD-AF-DOx"/>
+                                            <action selector="setARModeON:" destination="6h4-bR-DDn" eventType="touchDown" id="rBf-6V-Gu4"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMl-lf-Mhe" userLabel="ButtonAr_off" customClass="ButtonStyle">
@@ -144,7 +144,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="selectAROff:" destination="6h4-bR-DDn" eventType="touchDown" id="q52-oT-gTD"/>
+                                            <action selector="setARModeOFF:" destination="6h4-bR-DDn" eventType="touchDown" id="Qd2-00-oWo"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="AR" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oaq-tv-5BM" customClass="TextStyle">
@@ -163,7 +163,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ea-ta-fWa" userLabel="ButtonTw" customClass="ButtonStyle">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ea-ta-fWa" userLabel="ButtonTw" customClass="ButtonStyle">
                                         <rect key="frame" x="65" y="124" width="64" height="64"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -171,11 +171,15 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5N-hU-hYM" userLabel="ButtonFb" customClass="ButtonStyle">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5N-hU-hYM" userLabel="ButtonFb" customClass="ButtonStyle">
                                         <rect key="frame" x="128" y="124" width="64" height="64"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES" notEnabled="YES"/>
+                                        </accessibility>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="fb" backgroundImage="button_outline.png">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -235,6 +239,17 @@
                                         <state key="normal" title="About A P P A R E L 1.0"/>
                                         <connections>
                                             <segue destination="urV-xh-pDQ" kind="modal" modalTransitionStyle="coverVertical" id="lXk-tF-U8b"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvG-f7-D1N" userLabel="ButtonTwitter_connect" customClass="ButtonStyle">
+                                        <rect key="frame" x="65" y="188" width="190" height="64"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="CONNECT">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signInWithTwitter:" destination="6h4-bR-DDn" eventType="touchDown" id="OMt-Lb-MFi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -304,6 +319,14 @@
                             <constraint firstItem="zQa-vM-v2J" firstAttribute="leading" secondItem="2i5-7W-dqP" secondAttribute="leading" id="qPH-Fl-jeK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnARModeOFF" destination="TMl-lf-Mhe" id="cgE-YX-xgI"/>
+                        <outlet property="btnARModeON" destination="Uib-Bk-yxe" id="BUR-ZD-KI2"/>
+                        <outlet property="btnConnectTwitter" destination="KvG-f7-D1N" id="J4a-Vb-EgF"/>
+                        <outlet property="btnTemplate01" destination="aSt-Bh-hUI" id="RfY-qo-c0T"/>
+                        <outlet property="btnTemplate02" destination="FLw-6Z-ov1" id="YPX-t6-pOL"/>
+                        <outlet property="btnTemplate03" destination="S3S-6o-SRa" id="gNy-mk-zqW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUe-3i-fl9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="974-pN-lUj" userLabel="Exit" sceneMemberID="exit"/>

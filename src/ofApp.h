@@ -42,7 +42,8 @@ class ofApp : public ofxQCAR_App {
 		ofxXmlSettings		m_settings;
 
 		bool				m_bARMode;
-		void				setARMode(bool is=true);
+		void				setARMode			(bool is=true);
+		bool				getARMode			(){return m_bARMode;}
 
 
 		// USER
@@ -52,6 +53,9 @@ class ofApp : public ofxQCAR_App {
  
 		// USER TEMPLATES
 		user				m_userTemplate[3];
+		int					m_templateIndexSelected;
+
+		int					getTemplateIndexSelected(){return m_templateIndexSelected;}
  
  		// GUI
 		// TODO : not really useful, to be removed

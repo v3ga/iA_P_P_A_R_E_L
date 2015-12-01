@@ -17,9 +17,10 @@ static const string kLicenseKey = "AYJLA4X/////AAAAAQ7qnxRQs0iPmiGsXnjUeoVBg6LZe
 //--------------------------------------------------------------
 void ofApp::setup()
 {
-	mp_pageMain 		= 0;
-	mp_modPorcu			= 0;
-	mp_userCurrent		= 0;
+	mp_pageMain 				= 0;
+	mp_modPorcu					= 0;
+	mp_userCurrent				= 0;
+	m_templateIndexSelected 	= -1;
 
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	OFAPPLOG->begin("ofApp::setup()");
@@ -48,6 +49,19 @@ void ofApp::setup()
 		string modelObjName = m_settings.getValue("apparel:model", "");
 		string targetName 	= m_settings.getValue("apparel:vuforia:target", "");
 		string userId		= m_settings.getValue("apparel:user", "creativeclaude"); // DEPRECATED
+		
+		// FONTS
+/*
+		for (NSString* family in [UIFont familyNames])
+		{
+   			 NSLog(@"%@", family);
+        
+		    for (NSString* name in [UIFont fontNamesForFamilyName: family])
+    		{
+        		NSLog(@"  %@", name);
+    		}
+		}
+*/
 
 		// SCENE
 		GLOBALS->setModel(&m_apparelModel);
@@ -273,13 +287,13 @@ void ofApp::onMoodUnselect()
 	OFAPPLOG->end();
 }
 
-
 //--------------------------------------------------------------
 void ofApp::onTemplateSelected(int templateIndex)
 {
-	if (templateIndex<3)
+//	if (templateIndex<3)
 	{
-		changeUser( getTemplateUserId(templateIndex), true  ) ;
+//		changeUser( getTemplateUserId(templateIndex), true  ) ; // id, isTemplate
+		m_templateIndexSelected = templateIndex;
 	}
 }
 
