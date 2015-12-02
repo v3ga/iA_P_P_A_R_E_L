@@ -42,7 +42,7 @@
 	// Not connected
 	if (session == nil)
 	{
-	  [_btnConnectTwitter setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+	  [_btnConnectTwitter setAlpha:0.3];
 	  [_btnConnectTwitter setTitle:@"Connecting..." forState:UIControlStateNormal];
 	  _btnConnectTwitter.showsTouchWhenHighlighted = NO;
 
@@ -108,30 +108,31 @@
 		// AR
 		if (pApp->getARMode())
 		{
-			[_btnARModeOFF setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-			[_btnARModeON setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+			[_btnARModeOFF setAlpha:0.3];
+			[_btnARModeON setAlpha:1.0];
+
 		
 			_btnARModeOFF.showsTouchWhenHighlighted = NO;
 			_btnARModeON.showsTouchWhenHighlighted = YES;
 		}
 		else
 		{
-			[_btnARModeOFF setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-			[_btnARModeON setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+			[_btnARModeOFF setAlpha:1.0];
+			[_btnARModeON setAlpha:0.3];
 
 			_btnARModeOFF.showsTouchWhenHighlighted = YES;
 			_btnARModeON.showsTouchWhenHighlighted = NO;
 		}
 		
 		// Templates buttons
-		[_btnTemplate01 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-		[_btnTemplate02 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-		[_btnTemplate03 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+		[_btnTemplate01 setAlpha:0.3];
+		[_btnTemplate02 setAlpha:0.3];
+		[_btnTemplate03 setAlpha:0.3];
 
 		int templateIndex = pApp->getTemplateIndexSelected();
-		if (templateIndex == 0)	[_btnTemplate01 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-		if (templateIndex == 1)	[_btnTemplate02 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-		if (templateIndex == 2)	[_btnTemplate03 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+		if (templateIndex == 0)	[_btnTemplate01 setAlpha:1.0];
+		if (templateIndex == 1)	[_btnTemplate02 setAlpha:1.0];
+		if (templateIndex == 2)	[_btnTemplate03 setAlpha:1.0];
 	}
  
 	// Btn twitter
@@ -141,7 +142,7 @@
 //--------------------------------------------------------------
 -(void) updateBtnTwitter
 {
-	[_btnConnectTwitter setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	  [_btnConnectTwitter setAlpha:1.0];
 	_btnConnectTwitter.showsTouchWhenHighlighted = YES;
 
 	TWTRSession* session = [[Twitter sharedInstance] session];

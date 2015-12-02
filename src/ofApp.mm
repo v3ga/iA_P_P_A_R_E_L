@@ -20,6 +20,7 @@ void ofApp::setup()
 	mp_pageMain 				= 0;
 	mp_modPorcu					= 0;
 	mp_userCurrent				= 0;
+	m_doInitUser				= true;
 	m_templateIndexSelected 	= -1;
 
 	ofSetLogLevel(OF_LOG_VERBOSE);
@@ -49,19 +50,6 @@ void ofApp::setup()
 		string modelObjName = m_settings.getValue("apparel:model", "");
 		string targetName 	= m_settings.getValue("apparel:vuforia:target", "");
 		string userId		= m_settings.getValue("apparel:user", "creativeclaude"); // DEPRECATED
-		
-		// FONTS
-/*
-		for (NSString* family in [UIFont familyNames])
-		{
-   			 NSLog(@"%@", family);
-        
-		    for (NSString* name in [UIFont fontNamesForFamilyName: family])
-    		{
-        		NSLog(@"  %@", name);
-    		}
-		}
-*/
 
 		// SCENE
 		GLOBALS->setModel(&m_apparelModel);
@@ -72,6 +60,7 @@ void ofApp::setup()
 		}
 
 		// MODS
+		m_apparelModManager.forceModWeightAutomatic(true);
 		m_apparelModManager.constructMods(&m_apparelModel);
 		GLOBALS->setModManager(&m_apparelModManager);
 
@@ -94,21 +83,10 @@ void ofApp::setup()
 
 
 		// USER
-		if (Twitter.sharedInstance.session != nil)
-		{
-			changeUser( Twitter.sharedInstance.session.userID.UTF8String );
-			userTwitterGuestIOS* pTwitterIOS = (userTwitterGuestIOS*) m_user.getService("twitter");
-			if (pTwitterIOS)
-				pTwitterIOS->retrieveInfo();
-			
-		}
-		else
-		{
-			setARMode(false);
-//			changeUser( getTemplateUserId(0) );
-			changeUser( "test" ); // TEMP 
+		// > Templates
+		setupTemplates();
+		// > see update...
 
-		}
 		// VUFORIA
 #if USE_VUFORIA
 		OFAPPLOG->println("- loading vuforia targets " + targetName);
@@ -127,6 +105,29 @@ void ofApp::setup()
 }
 
 //--------------------------------------------------------------
+void ofApp::setupTemplates()
+{
+	OFAPPLOG->begin("ofApp::setupTemplates()");
+	
+	for (int i=0;i<3;i++)
+	{
+		user* pUser = new user();
+		pUser->setId(getTemplateUserId(i));
+		string pathResourcesDataSql = pUser->getPathResources("data.sql");
+		string pathDocumentDataSql 	= pUser->getPathDocument("data.sql");
+
+		if (ofFile::doesFileExist(pathResourcesDataSql,false))
+		{
+		   if (ofFile::copyFromTo(pathResourcesDataSql, pathDocumentDataSql, false, true))
+		   {
+			   OFAPPLOG->println("- OK copy done FROM\n"+pathResourcesDataSql+"\nTO\n"+pathDocumentDataSql);
+		   }
+		}
+	}
+	OFAPPLOG->end();
+}
+
+//--------------------------------------------------------------
 void ofApp::qcarInitialised()
 {
 
@@ -141,8 +142,32 @@ void ofApp::setARMode(bool is)
 }
 
 //--------------------------------------------------------------
+void ofApp::setupUser()
+{
+	if (Twitter.sharedInstance.session != nil)
+	{
+		changeUser( Twitter.sharedInstance.session.userID.UTF8String );
+		userTwitterGuestIOS* pTwitterIOS = (userTwitterGuestIOS*) m_user.getService("twitter");
+		if (pTwitterIOS)
+			pTwitterIOS->retrieveInfo();
+	}
+	else
+	{
+		setARMode(false);
+		changeUser( "template01", true); // TEMP
+	}
+}
+
+//--------------------------------------------------------------
 void ofApp::update()
 {
+	// Call this here otherwise Twitter loadUser won't work in setup
+	if (m_doInitUser)
+	{
+		m_doInitUser = false;
+		setupUser();
+	}
+
 	float dt = ofGetLastFrameTime();
 
 	m_oscReceiver.update();
@@ -253,8 +278,7 @@ void ofApp::changeUser(string userId, bool bTemplate)
 	m_user.setTemplate(bTemplate);
 	m_user.setModManager(&m_apparelModManager);
 	m_user.createDirectory();
-	if (bTemplate == false)
-		m_user.loadConfiguration(); // create social interfaces (twitter) instance here, factory call setup on social interfaces
+	m_user.loadConfiguration(); // create social interfaces (twitter) instance here, factory call setup on social interfaces (only if not template)
 	m_user.useTick(bTemplate ? false : true);
 	m_user.connect();
 
@@ -296,6 +320,8 @@ void ofApp::onTemplateSelected(int templateIndex)
 		m_templateIndexSelected = templateIndex;
 	}
 }
+
+
 
 
 

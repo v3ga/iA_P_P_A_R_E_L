@@ -117,8 +117,6 @@
 		F94A13C21ABCBA3D00DFC7CE /* UIPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F94A13BD1ABCBA3D00DFC7CE /* UIPage.cpp */; };
 		F94A13C31ABCBA3D00DFC7CE /* UIPageMain.mm in Sources */ = {isa = PBXBuildFile; fileRef = F94A13C01ABCBA3D00DFC7CE /* UIPageMain.mm */; };
 		F94A13CC1ABDD83000DFC7CE /* userTwitterGuestIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = F94A13CA1ABDD83000DFC7CE /* userTwitterGuestIOS.mm */; };
-		F94A60D41A80FA1300A850FA /* configuration.xml in Resources */ = {isa = PBXBuildFile; fileRef = F94A60CF1A80FA1300A850FA /* configuration.xml */; };
-		F94A60D51A80FA1300A850FA /* data.sql in Resources */ = {isa = PBXBuildFile; fileRef = F94A60D01A80FA1300A850FA /* data.sql */; };
 		F94A60D91A81006A00A850FA /* wordlist.txt in Resources */ = {isa = PBXBuildFile; fileRef = F94A60D81A81006A00A850FA /* wordlist.txt */; };
 		F94A60DB1A81007E00A850FA /* wordlist.txt in Resources */ = {isa = PBXBuildFile; fileRef = F94A60DA1A81007E00A850FA /* wordlist.txt */; };
 		F94A60DD1A81008900A850FA /* wordlist.txt in Resources */ = {isa = PBXBuildFile; fileRef = F94A60DC1A81008900A850FA /* wordlist.txt */; };
@@ -182,6 +180,23 @@
 		F9B7BF8719339BDE00EB35EE /* Qualcomm.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9B7BF8519339BB600EB35EE /* Qualcomm.xml */; };
 		F9B9A2EA1B112CED00176FAA /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9B9A2E91B112CED00176FAA /* TwitterKitResources.bundle */; };
 		F9B9A2EF1B11C15F00176FAA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B9A2EE1B11C15F00176FAA /* MainStoryboard_iPhone.storyboard */; };
+		F9D2531C1C0F928B00FD2FB6 /* model.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9D253081C0F928B00FD2FB6 /* model.xml */; };
+		F9D2531D1C0F928B00FD2FB6 /* parameters.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9D253091C0F928B00FD2FB6 /* parameters.xml */; };
+		F9D2531E1C0F928B00FD2FB6 /* wordlist.txt in Resources */ = {isa = PBXBuildFile; fileRef = F9D2530A1C0F928B00FD2FB6 /* wordlist.txt */; };
+		F9D2531F1C0F928B00FD2FB6 /* model.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9D2530C1C0F928B00FD2FB6 /* model.xml */; };
+		F9D253201C0F928B00FD2FB6 /* parameters.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9D2530D1C0F928B00FD2FB6 /* parameters.xml */; };
+		F9D253211C0F928B00FD2FB6 /* wordlist.txt in Resources */ = {isa = PBXBuildFile; fileRef = F9D2530E1C0F928B00FD2FB6 /* wordlist.txt */; };
+		F9D253221C0F928B00FD2FB6 /* model.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9D253101C0F928B00FD2FB6 /* model.xml */; };
+		F9D253231C0F928B00FD2FB6 /* parameters.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9D253111C0F928B00FD2FB6 /* parameters.xml */; };
+		F9D253241C0F928B00FD2FB6 /* bird.3ds in Resources */ = {isa = PBXBuildFile; fileRef = F9D253131C0F928B00FD2FB6 /* bird.3ds */; };
+		F9D253251C0F928B00FD2FB6 /* cat.3ds in Resources */ = {isa = PBXBuildFile; fileRef = F9D253141C0F928B00FD2FB6 /* cat.3ds */; };
+		F9D253261C0F928B00FD2FB6 /* distribution.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9D253151C0F928B00FD2FB6 /* distribution.xml */; };
+		F9D253271C0F928B00FD2FB6 /* dog.3ds in Resources */ = {isa = PBXBuildFile; fileRef = F9D253161C0F928B00FD2FB6 /* dog.3ds */; };
+		F9D253281C0F928B00FD2FB6 /* ears.3ds in Resources */ = {isa = PBXBuildFile; fileRef = F9D253171C0F928B00FD2FB6 /* ears.3ds */; };
+		F9D253291C0F928B00FD2FB6 /* hand.3ds in Resources */ = {isa = PBXBuildFile; fileRef = F9D253181C0F928B00FD2FB6 /* hand.3ds */; };
+		F9D2532A1C0F928B00FD2FB6 /* model.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9D253191C0F928B00FD2FB6 /* model.xml */; };
+		F9D2532B1C0F928B00FD2FB6 /* parameters.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9D2531A1C0F928B00FD2FB6 /* parameters.xml */; };
+		F9D2532C1C0F928B00FD2FB6 /* wordlist.txt in Resources */ = {isa = PBXBuildFile; fileRef = F9D2531B1C0F928B00FD2FB6 /* wordlist.txt */; };
 		F9D35E8019ACBE5B00B63E8E /* ofxTwitter_configuration.json in Resources */ = {isa = PBXBuildFile; fileRef = F9D35E7F19ACBE5000B63E8E /* ofxTwitter_configuration.json */; };
 		F9DE833F1B41CF3C00F5A086 /* apparelMod_kawaiopathy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DE83381B41CF3C00F5A086 /* apparelMod_kawaiopathy.cpp */; };
 		F9DE83401B41CF3C00F5A086 /* apparelMod_zoopathy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DE833A1B41CF3C00F5A086 /* apparelMod_zoopathy.cpp */; };
@@ -630,6 +645,23 @@
 		F9B7BF8519339BB600EB35EE /* Qualcomm.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Qualcomm.xml; sourceTree = "<group>"; };
 		F9B9A2E91B112CED00176FAA /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		F9B9A2EE1B11C15F00176FAA /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		F9D253081C0F928B00FD2FB6 /* model.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = model.xml; sourceTree = "<group>"; };
+		F9D253091C0F928B00FD2FB6 /* parameters.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = parameters.xml; sourceTree = "<group>"; };
+		F9D2530A1C0F928B00FD2FB6 /* wordlist.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordlist.txt; sourceTree = "<group>"; };
+		F9D2530C1C0F928B00FD2FB6 /* model.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = model.xml; sourceTree = "<group>"; };
+		F9D2530D1C0F928B00FD2FB6 /* parameters.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = parameters.xml; sourceTree = "<group>"; };
+		F9D2530E1C0F928B00FD2FB6 /* wordlist.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordlist.txt; sourceTree = "<group>"; };
+		F9D253101C0F928B00FD2FB6 /* model.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = model.xml; sourceTree = "<group>"; };
+		F9D253111C0F928B00FD2FB6 /* parameters.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = parameters.xml; sourceTree = "<group>"; };
+		F9D253131C0F928B00FD2FB6 /* bird.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; path = bird.3ds; sourceTree = "<group>"; };
+		F9D253141C0F928B00FD2FB6 /* cat.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; path = cat.3ds; sourceTree = "<group>"; };
+		F9D253151C0F928B00FD2FB6 /* distribution.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = distribution.xml; sourceTree = "<group>"; };
+		F9D253161C0F928B00FD2FB6 /* dog.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; path = dog.3ds; sourceTree = "<group>"; };
+		F9D253171C0F928B00FD2FB6 /* ears.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; path = ears.3ds; sourceTree = "<group>"; };
+		F9D253181C0F928B00FD2FB6 /* hand.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; path = hand.3ds; sourceTree = "<group>"; };
+		F9D253191C0F928B00FD2FB6 /* model.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = model.xml; sourceTree = "<group>"; };
+		F9D2531A1C0F928B00FD2FB6 /* parameters.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = parameters.xml; sourceTree = "<group>"; };
+		F9D2531B1C0F928B00FD2FB6 /* wordlist.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wordlist.txt; sourceTree = "<group>"; };
 		F9D35E7F19ACBE5000B63E8E /* ofxTwitter_configuration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = ofxTwitter_configuration.json; path = bin/data/ofxTwitter_configuration.json; sourceTree = "<group>"; };
 		F9D35E8119ACC3D400B63E8E /* ofxiOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ofxiOS-Info.plist"; sourceTree = "<group>"; };
 		F9DE83381B41CF3C00F5A086 /* apparelMod_kawaiopathy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = apparelMod_kawaiopathy.cpp; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod_kawaiopathy.cpp; sourceTree = "<group>"; };
@@ -1631,6 +1663,10 @@
 		F96FBF87197BFB1E00E58A6F /* mods */ = {
 			isa = PBXGroup;
 			children = (
+				F9D253071C0F928B00FD2FB6 /* Zoopathy */,
+				F9D2530B1C0F928B00FD2FB6 /* Sportopathy */,
+				F9D2530F1C0F928B00FD2FB6 /* Selfopathy */,
+				F9D253121C0F928B00FD2FB6 /* Kawaiopathy */,
 				F978B2D91A402A9600A98862 /* Porcupinopathy */,
 				F91D697D1A33A14D0005E9D5 /* Authoritopathy */,
 				F91D69801A33A14D0005E9D5 /* Noisopathy */,
@@ -1880,6 +1916,55 @@
 			path = bin/data/qcar_assets;
 			sourceTree = "<group>";
 		};
+		F9D253071C0F928B00FD2FB6 /* Zoopathy */ = {
+			isa = PBXGroup;
+			children = (
+				F9D253081C0F928B00FD2FB6 /* model.xml */,
+				F9D253091C0F928B00FD2FB6 /* parameters.xml */,
+				F9D2530A1C0F928B00FD2FB6 /* wordlist.txt */,
+			);
+			name = Zoopathy;
+			path = bin/data/mods/Zoopathy;
+			sourceTree = "<group>";
+		};
+		F9D2530B1C0F928B00FD2FB6 /* Sportopathy */ = {
+			isa = PBXGroup;
+			children = (
+				F9D2530C1C0F928B00FD2FB6 /* model.xml */,
+				F9D2530D1C0F928B00FD2FB6 /* parameters.xml */,
+				F9D2530E1C0F928B00FD2FB6 /* wordlist.txt */,
+			);
+			name = Sportopathy;
+			path = bin/data/mods/Sportopathy;
+			sourceTree = "<group>";
+		};
+		F9D2530F1C0F928B00FD2FB6 /* Selfopathy */ = {
+			isa = PBXGroup;
+			children = (
+				F9D253101C0F928B00FD2FB6 /* model.xml */,
+				F9D253111C0F928B00FD2FB6 /* parameters.xml */,
+			);
+			name = Selfopathy;
+			path = bin/data/mods/Selfopathy;
+			sourceTree = "<group>";
+		};
+		F9D253121C0F928B00FD2FB6 /* Kawaiopathy */ = {
+			isa = PBXGroup;
+			children = (
+				F9D253131C0F928B00FD2FB6 /* bird.3ds */,
+				F9D253141C0F928B00FD2FB6 /* cat.3ds */,
+				F9D253151C0F928B00FD2FB6 /* distribution.xml */,
+				F9D253161C0F928B00FD2FB6 /* dog.3ds */,
+				F9D253171C0F928B00FD2FB6 /* ears.3ds */,
+				F9D253181C0F928B00FD2FB6 /* hand.3ds */,
+				F9D253191C0F928B00FD2FB6 /* model.xml */,
+				F9D2531A1C0F928B00FD2FB6 /* parameters.xml */,
+				F9D2531B1C0F928B00FD2FB6 /* wordlist.txt */,
+			);
+			name = Kawaiopathy;
+			path = bin/data/mods/Kawaiopathy;
+			sourceTree = "<group>";
+		};
 		F9F7CC35192E5C46006F1C91 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1982,6 +2067,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9D253251C0F928B00FD2FB6 /* cat.3ds in Resources */,
+				F9D253261C0F928B00FD2FB6 /* distribution.xml in Resources */,
 				F99E90721BEFE1B2009CC84B /* data.sql in Resources */,
 				F99E906A1BEFD9DD009CC84B /* configuration.xml in Resources */,
 				F99E906B1BEFD9DD009CC84B /* data.sql in Resources */,
@@ -1995,11 +2082,13 @@
 				F96DE5A01A2220AD007AD329 /* 141123_Apparel.dat in Resources */,
 				F91D69921A33A14D0005E9D5 /* model.xml in Resources */,
 				F903533D1A41EAEC00EF8A8A /* grr_2.png in Resources */,
-				F94A60D41A80FA1300A850FA /* configuration.xml in Resources */,
 				F903533B1A41EAEC00EF8A8A /* glagla.png in Resources */,
 				F932F0D1196D937200C82556 /* test_targets_3.dat in Resources */,
 				F94A60DB1A81007E00A850FA /* wordlist.txt in Resources */,
-				F94A60D51A80FA1300A850FA /* data.sql in Resources */,
+				F9D253241C0F928B00FD2FB6 /* bird.3ds in Resources */,
+				F9D253271C0F928B00FD2FB6 /* dog.3ds in Resources */,
+				F9D253221C0F928B00FD2FB6 /* model.xml in Resources */,
+				F9D2531F1C0F928B00FD2FB6 /* model.xml in Resources */,
 				F932F0D2196D937200C82556 /* test_targets_3.xml in Resources */,
 				F932F0CD196D855800C82556 /* configuration.xml in Resources */,
 				F90795371B10A93800BC96FA /* matrix4x4.inl in Resources */,
@@ -2011,10 +2100,14 @@
 				F903533C1A41EAEC00EF8A8A /* grr.png in Resources */,
 				F91D699A1A33A14D0005E9D5 /* model.xml in Resources */,
 				F990FAA81B1217B700C1B8E4 /* LetterGothicStd-Bold.otf in Resources */,
+				F9D2532A1C0F928B00FD2FB6 /* model.xml in Resources */,
 				F96FBE521976E35C00E58A6F /* json_internalmap.inl in Resources */,
+				F9D253211C0F928B00FD2FB6 /* wordlist.txt in Resources */,
 				F91D69901A33A14D0005E9D5 /* model.xml in Resources */,
 				F907955B1B10FBB800BC96FA /* LetterGothicStd-Bold.otf in Resources */,
+				F9D253231C0F928B00FD2FB6 /* parameters.xml in Resources */,
 				F903532D1A41D8CB00EF8A8A /* Helvetica.ttf in Resources */,
+				F9D2532C1C0F928B00FD2FB6 /* wordlist.txt in Resources */,
 				F978B2DD1A402A9600A98862 /* parameters.xml in Resources */,
 				F903533F1A41EAEC00EF8A8A /* sad_2.png in Resources */,
 				F96FBE571976E35C00E58A6F /* sconscript in Resources */,
@@ -2022,6 +2115,7 @@
 				F90795351B10A93800BC96FA /* material.inl in Resources */,
 				F91D699C1A33A14D0005E9D5 /* wordlist.txt in Resources */,
 				F95101E61B12970000568415 /* AR_model_23p.3ds in Resources */,
+				F9D253201C0F928B00FD2FB6 /* parameters.xml in Resources */,
 				F90795521B10C22B00BC96FA /* button_outline.png in Resources */,
 				F90795391B10A93800BC96FA /* vector2.inl in Resources */,
 				F94A60DD1A81008900A850FA /* wordlist.txt in Resources */,
@@ -2035,10 +2129,13 @@
 				F90795381B10A93800BC96FA /* quaternion.inl in Resources */,
 				F903533E1A41EAEC00EF8A8A /* sad.png in Resources */,
 				F978B2DC1A402A9600A98862 /* model.xml in Resources */,
+				F9D253291C0F928B00FD2FB6 /* hand.3ds in Resources */,
 				F90795561B10C22B00BC96FA /* textfield_outline.png in Resources */,
+				F9D2531E1C0F928B00FD2FB6 /* wordlist.txt in Resources */,
 				F91D699B1A33A14D0005E9D5 /* parameters.xml in Resources */,
 				F957690B19363C5800609E70 /* test_targets2.dat in Resources */,
 				F9B9A2EF1B11C15F00176FAA /* MainStoryboard_iPhone.storyboard in Resources */,
+				F9D2532B1C0F928B00FD2FB6 /* parameters.xml in Resources */,
 				F91D69941A33A14D0005E9D5 /* model.xml in Resources */,
 				F9B7BF8219339A7E00EB35EE /* test_targets.xml in Resources */,
 				F90795361B10A93800BC96FA /* matrix3x3.inl in Resources */,
@@ -2047,12 +2144,15 @@
 				F90353401A41EAEC00EF8A8A /* woot.png in Resources */,
 				F990FAAA1B12188200C1B8E4 /* Icons.xcassets in Resources */,
 				F91D69981A33A14D0005E9D5 /* model.xml in Resources */,
+				F9D2531C1C0F928B00FD2FB6 /* model.xml in Resources */,
 				F91D69971A33A14D0005E9D5 /* parameters.xml in Resources */,
 				F90795551B10C22B00BC96FA /* sad_2.png in Resources */,
 				F94A60D91A81006A00A850FA /* wordlist.txt in Resources */,
 				F9B7BF8119339A7E00EB35EE /* test_targets.dat in Resources */,
+				F9D2531D1C0F928B00FD2FB6 /* parameters.xml in Resources */,
 				F90795531B10C22B00BC96FA /* glagla.png in Resources */,
 				F91D69931A33A14D0005E9D5 /* parameters.xml in Resources */,
+				F9D253281C0F928B00FD2FB6 /* ears.3ds in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

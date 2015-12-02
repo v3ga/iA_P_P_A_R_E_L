@@ -22,6 +22,8 @@ userTwitterGuestIOS::userTwitterGuestIOS(user* pUser) : userSocialInterface("twi
 	m_bDoAnalyzeData = false;
 	m_bAnalysingData = false;
 	
+	m_bSetup = false;
+	
 	//m_imageLoader.startThread();
 }
 
@@ -40,70 +42,66 @@ bool userTwitterGuestIOS::setup(ofxXmlSettings* pConfig, int serviceIndex)
 //--------------------------------------------------------------
 void userTwitterGuestIOS::retrieveInfo()
 {
+	OFAPPLOG->begin("userTwitterGuestIOS::retrieveInfo()");
 	TWTRSession* session = [[Twitter sharedInstance] session];
 
-	if (session != nil)
+	if (session != nil && m_bSetup == false)
 	{
+		OFAPPLOG->begin(" - ok session there & not set up");
+		NSLog(@"- user id = %@", [session userID]);
 	  /* Get user info */
 	  [[[Twitter sharedInstance] APIClient] loadUserWithID:[session userID] completion:^(TWTRUser *userTwitter, NSError *error)
 	  {
+		  OFAPPLOG->begin(" - loadUserWithID called");
 		 if (![error isEqual:nil])
 		 {
-				 // Application change user
-//				 pApp->changeUser( [[session userID] UTF8String], false );
+			// Get infos
+			user* pUser = mp_user;
+			if (pUser)
+			{
+				// TEMP ?
+				pUser->useThread(false);
+			 
+				// Image URLs
+				setImageMiniUrl( [[userTwitter profileImageMiniURL] UTF8String] );
+				setImageLargeUrl( [[userTwitter profileImageLargeURL] UTF8String] );
 
-				 // Get infos
-				 user* pUser = mp_user;
-				 if (pUser)
-				 {
-					 // TEMP ?
-					 pUser->useThread(false);
-				  
-					 // Get twitter service
-					 userTwitterGuestIOS* pUserTwitter = this;
-					 if (pUserTwitter)
-					 {
-						 // Image URLs
-						 pUserTwitter->setImageMiniUrl( [[userTwitter profileImageMiniURL] UTF8String] );
-						 pUserTwitter->setImageLargeUrl( [[userTwitter profileImageLargeURL] UTF8String] );
+				// Followers / following
+				// https://dev.twitter.com/rest/reference/get/users/show
+				// https://docs.fabric.io/ios/twitter/access-rest-api.html
+			 
+				TWTRAPIClient* client = [[Twitter sharedInstance] APIClient];
+				NSString *statusesShowEndpoint = @"https://api.twitter.com/1.1/users/show.json";
+				NSDictionary *params = @{@"user_id" : [session userID]};
+				NSError *clientError;
 
-						 // Followers / following
-						 // https://dev.twitter.com/rest/reference/get/users/show
-						 // https://docs.fabric.io/ios/twitter/access-rest-api.html
-					  
-						 TWTRAPIClient* client = [[Twitter sharedInstance] APIClient];
-						 NSString *statusesShowEndpoint = @"https://api.twitter.com/1.1/users/show.json";
-						 NSDictionary *params = @{@"user_id" : [session userID]};
-						 NSError *clientError;
+			   NSURLRequest *request = [client URLRequestWithMethod:@"GET" URL:statusesShowEndpoint parameters:params error:&clientError];
 
-						NSURLRequest *request = [client URLRequestWithMethod:@"GET" URL:statusesShowEndpoint parameters:params error:&clientError];
-
-						if (request)
-						{
-							[client sendTwitterRequest:request completion:^(NSURLResponse *response, NSData *data, NSError *connectionError)
-							{
-								if (data)
-								{
-								   NSString* nsJson=  [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-								   if (nsJson != nil)
-								   {
-									   std::string json([nsJson UTF8String]);
-									   pUserTwitter->parseUserInfo(json);
-									   pUserTwitter->m_bSetup = true;
-								   }
-								}
-								else
-								{
-									NSLog(@"Error: %@", connectionError);
-								}
-							}];
-						}
-						else
-						{
-							NSLog(@"Error: %@", clientError);
-						}
-				  	}
-			  	}
+			   if (request)
+			   {
+				   [client sendTwitterRequest:request completion:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+				   {
+					   if (data)
+					   {
+						  NSString* nsJson=  [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+						  if (nsJson != nil)
+						  {
+							  std::string json([nsJson UTF8String]);
+							  parseUserInfo(json);
+							  m_bSetup = true;
+						  }
+					   }
+					   else
+					   {
+						   NSLog(@"Error: %@", connectionError);
+					   }
+				   }];
+			   }
+			   else
+			   {
+				   NSLog(@"Error: %@", clientError);
+			   }
+		   	}
 		  }
 		  else
 		  {
@@ -111,6 +109,7 @@ void userTwitterGuestIOS::retrieveInfo()
 		  }
 	  }];
    }
+   OFAPPLOG->end();
 }
 
 //--------------------------------------------------------------
@@ -118,27 +117,30 @@ void userTwitterGuestIOS::doWork()
 {
 	OFAPPLOG->begin("userTwitterGuestIOS::doWork()");
 
-
 	if ([Twitter sharedInstance].session != nil && !m_bAnalysingData)
 	{
-		NSLog(@"%@",[Twitter sharedInstance].session.userName);
+		// NSLog(@"%@",[Twitter sharedInstance].session.userName);
 
 		NSString *statusesShowEndpoint = @"https://api.twitter.com/1.1/statuses/user_timeline.json";
 		
 		// TODO : implement since_id variable in request
 		// https://dev.twitter.com/rest/reference/get/statuses/user_timeline
 		
-		NSDictionary *params = @{
+		NSDictionary *params =
+		@{
 					@"screen_name": [Twitter sharedInstance].session.userName,
-       				@"count" : @"5", @"include_rts" : @"1"};
+       				@"count" : @"5",
+					@"include_rts" : @"1"
+		 };
+	 
 		NSError *clientError;
 
 	    NSURLRequest *request =
 		[[[Twitter sharedInstance] APIClient]
-			URLRequestWithMethod:@"GET"
-			URL:statusesShowEndpoint
-       		parameters: params
-			 error:&clientError
+			URLRequestWithMethod:		@"GET"
+			URL:						statusesShowEndpoint
+       		parameters: 				params
+			error:						&clientError
 		];
 
 
@@ -146,10 +148,10 @@ void userTwitterGuestIOS::doWork()
 		{
 		  m_tweetsLatest = "";
 
-		  NSLog(@" making request ");
+		  //NSLog(@" making request ");
 		  [[[Twitter sharedInstance] APIClient] sendTwitterRequest:request completion:^(NSURLResponse *response, NSData *data, NSError *connectionError)
 		  {
-			  NSLog(@" completion ");
+			  //NSLog(@" completion ");
 
 			  if (data)
 			  {
@@ -179,7 +181,10 @@ void userTwitterGuestIOS::update(float dt)
 		OFAPPLOG->begin("userTwitterGuestIOS::update(), m_bDoAnalyzeData = true");
 		m_bDoAnalyzeData = false;
 		m_bAnalysingData = true;
-		startThread();
+		startThread(false);
+
+//		[self performSelectorInBackground:@selector(saySomething) withObject:nil];
+
 		OFAPPLOG->end();
 	}
 }
@@ -198,7 +203,6 @@ void userTwitterGuestIOS::analyzeData()
 
    std::string tweets = m_tweetsLatest;
    
-   mp_user->lock();
    ofxJSONElement jtweets;
    if (jtweets.parse(tweets))
    {
@@ -214,18 +218,21 @@ void userTwitterGuestIOS::analyzeData()
 		   // Raw text
 		   tweetText = jtweets[i]["text"].asString();
 
-		   OFAPPLOG->println("  - "+ofToString(i)+". ["+ ofToString(tweetId) +"] - "+tweetText);
-
-		   mp_user->onNewText( tweetText );
-
 		   // Words
 		   vector<string> words = ofSplitString(tweetText, " ",true,true); // source, delimiter,ignoreEmpty,trim
 
-		   // Lower strings
+		   OFAPPLOG->println("  - "+ofToString(i)+". ["+ ofToString(tweetId) +"] - "+tweetText);
+
+		   //mp_user->lock();
+		 //  mp_user->onNewText( tweetText );
 		   mp_user->onNewWords( words );
+		   //mp_user->unlock();
+		
+	//	   ofThread::sleep(100.0);
+		
+		
 	   }
    }
-	mp_user->unlock();
 }
 
 

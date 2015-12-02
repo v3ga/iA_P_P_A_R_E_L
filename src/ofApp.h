@@ -49,13 +49,17 @@ class ofApp : public ofxQCAR_App {
 		// USER
 		user				m_user;
 		user*				mp_userCurrent;
+ 		bool				m_doInitUser;
+		void				setupUser		();
 		void				changeUser		(string userId, bool bTemplate=false);
+ 
  
 		// USER TEMPLATES
 		user				m_userTemplate[3];
 		int					m_templateIndexSelected;
 
-		int					getTemplateIndexSelected(){return m_templateIndexSelected;}
+		void				setupTemplates				();
+		int					getTemplateIndexSelected	(){return m_templateIndexSelected;}
  
  		// GUI
 		// TODO : not really useful, to be removed
