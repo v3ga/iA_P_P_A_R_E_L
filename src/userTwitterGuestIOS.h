@@ -48,6 +48,10 @@ class userTwitterGuestIOS : public userSocialInterface, public ofThread
 			ofImage					m_imageLarge;
 			ofxThreadedImageLoader	m_imageLoader;
  
+			int64_t					m_lastTweetId;
+			void					readLastTweetId		();
+			void					writeLastTweetId	();
+ 
 			bool					m_bDoAnalyzeData;
 			bool					m_bAnalysingData;
 };

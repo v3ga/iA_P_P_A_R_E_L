@@ -13,6 +13,15 @@
 #import <TwitterKit/TwitterKit.h>
 #import <Fabric/Fabric.h>
 
+
+//----------------------------------------
+int64_t ofToInt64(const string& intString) {
+	int64_t x = 0;
+	istringstream cur(intString);
+	cur >> x;
+	return x;
+}
+
 //--------------------------------------------------------------
 userTwitterGuestIOS::userTwitterGuestIOS(user* pUser) : userSocialInterface("twitter", pUser)
 {
@@ -23,6 +32,8 @@ userTwitterGuestIOS::userTwitterGuestIOS(user* pUser) : userSocialInterface("twi
 	m_bAnalysingData = false;
 	
 	m_bSetup = false;
+	
+	m_lastTweetId = 0;
 	
 	//m_imageLoader.startThread();
 }
@@ -61,6 +72,10 @@ void userTwitterGuestIOS::retrieveInfo()
 			{
 				// TEMP ?
 				pUser->useThread(false);
+				
+
+			 	// Last tweet ID
+				readLastTweetId();
 			 
 				// Image URLs
 				setImageMiniUrl( [[userTwitter profileImageMiniURL] UTF8String] );
@@ -126,12 +141,25 @@ void userTwitterGuestIOS::doWork()
 		// TODO : implement since_id variable in request
 		// https://dev.twitter.com/rest/reference/get/statuses/user_timeline
 		
-		NSDictionary *params =
-		@{
+		NSDictionary *params ;
+	 
+		if (m_lastTweetId==0)
+		{
+		  params = @{
 					@"screen_name": [Twitter sharedInstance].session.userName,
-       				@"count" : @"5",
+					@"count" : @"10",
 					@"include_rts" : @"1"
-		 };
+			 };
+		}
+		else
+		{
+		  params = @{
+					@"screen_name": [Twitter sharedInstance].session.userName,
+					@"count" : @"5",
+					@"include_rts" : @"1",
+			 		@"since_id" : [NSString stringWithFormat:@"%lld", m_lastTweetId]
+			 };
+		}
 	 
 		NSError *clientError;
 
@@ -210,10 +238,12 @@ void userTwitterGuestIOS::analyzeData()
 	   int nbTweets = jtweets.size();
 	   string tweetText = "";
 	   string tweetId = "";
+	   uint64_t tweetId2 = 0;
 	   for (int i=0;i<nbTweets;i++)
 	   {
 		   // Id
 		   tweetId = jtweets[i]["id_str"].asString();
+		   tweetId2 = jtweets[i]["id"].asInt64();
 
 		   // Raw text
 		   tweetText = jtweets[i]["text"].asString();
@@ -223,15 +253,16 @@ void userTwitterGuestIOS::analyzeData()
 
 		   OFAPPLOG->println("  - "+ofToString(i)+". ["+ ofToString(tweetId) +"] - "+tweetText);
 
-		   //mp_user->lock();
-		 //  mp_user->onNewText( tweetText );
 		   mp_user->onNewWords( words );
-		   //mp_user->unlock();
-		
-	//	   ofThread::sleep(100.0);
-		
-		
+
+
+			if (tweetId2 > m_lastTweetId){
+				m_lastTweetId = tweetId2;
+			}
 	   }
+
+	   if (nbTweets>0 && m_lastTweetId>0)
+			writeLastTweetId();
    }
 }
 
@@ -346,6 +377,49 @@ void userTwitterGuestIOS::loadImageLarge()
 	if (m_imageLargeUrl != "")
 		m_imageLoader.loadFromURL( m_imageLarge, m_imageLargeUrl );
 }
+
+//--------------------------------------------------------------
+void userTwitterGuestIOS::readLastTweetId()
+{
+	OFAPPLOG->begin("userTwitterGuestIOS::readLastTweetId()");
+	if (mp_user)
+	{
+		string path = mp_user->getPathDocument("twitter_last_tweet.xml");
+		ofxXmlSettings data;
+		if (data.load(path))
+		{
+			m_lastTweetId = ofToInt64(data.getValue("id", "0"));
+			OFAPPLOG->println(" - m_lastTweetId ="+ofToString(m_lastTweetId));
+		}
+		else
+		{
+			OFAPPLOG->println(" - error loading "+path);
+		}
+	}
+	OFAPPLOG->end();
+}
+
+//--------------------------------------------------------------
+void userTwitterGuestIOS::writeLastTweetId()
+{
+	OFAPPLOG->begin("userTwitterGuestIOS::readLastTweetId()");
+	OFAPPLOG->println(" - m_lastTweetId ="+ofToString(m_lastTweetId));
+	
+	string path = mp_user->getPathDocument("twitter_last_tweet.xml");
+	ofxXmlSettings data;
+	data.setValue("id", ofToString(m_lastTweetId));
+	if (data.save(path))
+	{
+		OFAPPLOG->println(" - ok saved "+path);
+	}
+	else
+	{
+		OFAPPLOG->println(" - error saving "+path);
+	}
+	
+	OFAPPLOG->end();
+}
+
 
 
 
