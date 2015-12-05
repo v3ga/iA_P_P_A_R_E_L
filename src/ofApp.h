@@ -87,6 +87,7 @@ class ofApp : public ofxQCAR_App {
 		void				onMoodUnselect		();
 		void				onTemplateSelected	(int templateIndex);
 		string				getTemplateUserId	(int templateIndex){return "template0"+ofToString(templateIndex+1);}
+		user*				getUserTemplate		(string id);
 
 		// Filter
 		//ofxPostProcess*		mp_postProcess;

@@ -206,6 +206,7 @@
 		F9F7CC41192E5E0A006F1C91 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F7CC3E192E5E0A006F1C91 /* SystemConfiguration.framework */; };
 		F9F7CC42192E5E0A006F1C91 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F7CC3F192E5E0A006F1C91 /* Security.framework */; };
 		F9F7CC43192E5E0A006F1C91 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F7CC40192E5E0A006F1C91 /* CoreMotion.framework */; };
+		F9FBC9ED1C1335C0007F3D7C /* twitter.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9FBC9EC1C1335C0007F3D7C /* twitter.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -676,6 +677,7 @@
 		F9F7CC3E192E5E0A006F1C91 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F9F7CC3F192E5E0A006F1C91 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F9F7CC40192E5E0A006F1C91 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		F9FBC9EC1C1335C0007F3D7C /* twitter.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = twitter.xml; sourceTree = "<group>"; };
 		FC5DA1C87211D4F6377DA719 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = tinyxmlparser.cpp; path = ../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -1843,6 +1845,7 @@
 			children = (
 				F99E90621BEFD9CD009CC84B /* configuration.xml */,
 				F99E90631BEFD9CD009CC84B /* data.sql */,
+				F9FBC9EC1C1335C0007F3D7C /* twitter.xml */,
 			);
 			path = template01;
 			sourceTree = "<group>";
@@ -2073,6 +2076,7 @@
 				F99E906A1BEFD9DD009CC84B /* configuration.xml in Resources */,
 				F99E906B1BEFD9DD009CC84B /* data.sql in Resources */,
 				F99E906C1BEFD9DD009CC84B /* configuration.xml in Resources */,
+				F9FBC9ED1C1335C0007F3D7C /* twitter.xml in Resources */,
 				F99E906D1BEFD9DD009CC84B /* data.sql in Resources */,
 				F99E906E1BEFD9DD009CC84B /* configuration.xml in Resources */,
 				F99E906F1BEFD9DD009CC84B /* data.sql in Resources */,

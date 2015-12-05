@@ -271,6 +271,32 @@ void userTwitterGuestIOS::analyzeData()
 void userTwitterGuestIOS::loadData()
 {
 	OFAPPLOG->begin("userTwitterGuestIOS::loadData()");
+	
+	if (mp_user->getTemplate())
+	{
+		OFAPPLOG->begin("- user is template ('"+ mp_user->getId() +"')");
+		OFAPPLOG->begin("- loading twitter.xml");
+		
+		string pathTwitter = mp_user->getPathResources("twitter.xml");
+		ofxXmlSettings twitter;
+		if (twitter.load( pathTwitter ))
+		{
+			OFAPPLOG->begin("- ok loaded "+pathTwitter);
+			
+			m_nbFollowers = twitter.getValue("followers", 0);
+			m_nbFollowing = twitter.getValue("following", 0);
+
+			OFAPPLOG->begin("- followers="+ofToString(m_nbFollowers)+" / following="+ofToString(m_nbFollowing));
+			
+			// TODO : image URL ? 
+		}
+		else
+		{
+			OFAPPLOG->begin("- error loading "+pathTwitter);
+		}
+
+	 
+	}
 /*
 	if (mp_user)
 	{

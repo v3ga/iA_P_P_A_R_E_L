@@ -111,8 +111,12 @@ void ofApp::setupTemplates()
 	
 	for (int i=0;i<3;i++)
 	{
-		user* pUser = new user();
+		user* pUser = m_userTemplate+i;
 		pUser->setId(getTemplateUserId(i));
+		pUser->setTemplate(true);
+		pUser->setModManager(&m_apparelModManager);
+		pUser->loadConfiguration();
+
 		string pathResourcesDataSql = pUser->getPathResources("data.sql");
 		string pathDocumentDataSql 	= pUser->getPathDocument("data.sql");
 
@@ -123,6 +127,9 @@ void ofApp::setupTemplates()
 			   OFAPPLOG->println("- OK copy done FROM\n"+pathResourcesDataSql+"\nTO\n"+pathDocumentDataSql);
 		   }
 		}
+
+		pUser->connect(); // connect to data.sql
+
 	}
 	OFAPPLOG->end();
 }
@@ -192,6 +199,8 @@ void ofApp::exit()
 	
 	if (mp_userCurrent)
 		mp_userCurrent->saveServicesData();
+ 
+ 
 	m_apparelModManager.saveParameters();
  
 	ofxQCAR * qcar = ofxQCAR::getInstance();
@@ -272,20 +281,32 @@ void ofApp::changeUser(string userId, bool bTemplate)
 {
 	OFAPPLOG->begin("ofApp::changeUser('" + userId + "')");
 
-	m_user.deconnect();
+	if (bTemplate)
+	{
+		mp_userCurrent = getUserTemplate( userId );
+		GLOBALS->setUser(mp_userCurrent);
 
-	m_user.setId(userId);
-	m_user.setTemplate(bTemplate);
-	m_user.setModManager(&m_apparelModManager);
-	m_user.createDirectory();
-	m_user.loadConfiguration(); // create social interfaces (twitter) instance here, factory call setup on social interfaces (only if not template)
-	m_user.useTick(bTemplate ? false : true);
-	m_user.connect();
+		m_apparelModManager.countUserWords(mp_userCurrent);
+	}
+	else
+	{
+		m_user.deconnect();
 
-	m_apparelModManager.countUserWords(&m_user);
+		m_user.setId(userId);
+		m_user.setTemplate(bTemplate);
+		m_user.setModManager(&m_apparelModManager);
+		m_user.createDirectory();
+		m_user.loadConfiguration(); // create social interfaces (twitter) instance here, factory call setup on social interfaces (only if not template)
+		m_user.useTick(bTemplate ? false : true);
+		m_user.connect();
 
-	mp_userCurrent = &m_user;
-	GLOBALS->setUser(mp_userCurrent);
+		m_apparelModManager.countUserWords(&m_user);
+
+		mp_userCurrent = &m_user;
+		GLOBALS->setUser(mp_userCurrent);
+	}
+
+
 
 	OFAPPLOG->end();
 }
@@ -314,11 +335,35 @@ void ofApp::onMoodUnselect()
 //--------------------------------------------------------------
 void ofApp::onTemplateSelected(int templateIndex)
 {
-//	if (templateIndex<3)
+	// Restore connected user
+	if (templateIndex == -1)
 	{
-//		changeUser( getTemplateUserId(templateIndex), true  ) ; // id, isTemplate
 		m_templateIndexSelected = templateIndex;
+		mp_userCurrent = &m_user;
+		GLOBALS->setUser(mp_userCurrent);
+		m_apparelModManager.countUserWords(mp_userCurrent);
 	}
+	else
+	{
+		m_templateIndexSelected = templateIndex;
+		changeUser( getTemplateUserId(templateIndex), true  ) ; // id, isTemplate
+	}
+}
+
+//--------------------------------------------------------------
+user* ofApp::getUserTemplate(string id)
+{
+	user* pUser = 0;
+	for (int i=0;i<3;i++)
+	{
+		OFAPPLOG->println(ofToString(i)+" — "+m_userTemplate[i].getId()+" / "+id);
+		if (m_userTemplate[i].getId() == id)
+		{
+			pUser = &m_userTemplate[i];
+			break;
+		}
+	}
+	return pUser;
 }
 
 
