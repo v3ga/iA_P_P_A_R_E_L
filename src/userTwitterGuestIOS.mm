@@ -7,7 +7,9 @@
 //
 
 #include "userTwitterGuestIOS.h"
+#include "apparelMod_selfopathy.h"
 #include "ofAppLog.h"
+#include "globals.h"
 #include "ofxJSONElement.h"
 
 #import <TwitterKit/TwitterKit.h>
@@ -31,9 +33,14 @@ userTwitterGuestIOS::userTwitterGuestIOS(user* pUser) : userSocialInterface("twi
 	m_bDoAnalyzeData = false;
 	m_bAnalysingData = false;
 	
+	m_bDoLoadImage	 = false;
+	m_bImageLoaded	= false;
+	
 	m_bSetup = false;
 	
 	m_lastTweetId = 0;
+	
+	mp_imageLoader = 0;
 	
 	//m_imageLoader.startThread();
 }
@@ -64,7 +71,7 @@ void userTwitterGuestIOS::retrieveInfo()
 	  [[[Twitter sharedInstance] APIClient] loadUserWithID:[session userID] completion:^(TWTRUser *userTwitter, NSError *error)
 	  {
 		  OFAPPLOG->begin(" - loadUserWithID called");
-		 if (![error isEqual:nil])
+		 if (![error isEqual:nil] && ![userTwitter isEqual:nil])
 		 {
 			// Get infos
 			user* pUser = mp_user;
@@ -104,6 +111,7 @@ void userTwitterGuestIOS::retrieveInfo()
 							  std::string json([nsJson UTF8String]);
 							  parseUserInfo(json);
 							  m_bSetup = true;
+							  m_bDoLoadImage = true;
 						  }
 					   }
 					   else
@@ -204,6 +212,32 @@ void userTwitterGuestIOS::doWork()
 //--------------------------------------------------------------
 void userTwitterGuestIOS::update(float dt)
 {
+	if (!m_bImageLoaded && m_bDoLoadImage && m_imageMiniUrl!="" && mp_imageLoader==0)
+	{
+		OFAPPLOG->println("userTwitterGuestIOS::loading image '"+m_imageMiniUrl+"'");
+		mp_imageLoader = new ofxThreadedImageLoader();
+		mp_imageLoader->loadFromURL(m_imageMini, m_imageMiniUrl);
+
+		m_bDoLoadImage = false;
+	}
+	
+	if (mp_imageLoader)
+	{
+		if (m_imageMini.isAllocated() && m_imageMini.getWidth()>0)
+		{
+			OFAPPLOG->println("userTwitterGuestIOS::loaded image '"+m_imageMiniUrl+"'");
+			delete mp_imageLoader;
+			mp_imageLoader=0;
+			m_bImageLoaded = true;
+			
+			if (GLOBALS->mp_modSelfopathy)
+				GLOBALS->mp_modSelfopathy->setImage(&m_imageMini);
+			
+		}
+	}
+
+
+
 	if (m_bDoAnalyzeData)
 	{
 		OFAPPLOG->begin("userTwitterGuestIOS::update(), m_bDoAnalyzeData = true");
@@ -393,15 +427,11 @@ void userTwitterGuestIOS::parseUserInfo(string str)
 //--------------------------------------------------------------
 void userTwitterGuestIOS::loadImageMini()
 {
-	if (m_imageMiniUrl != "")
-		m_imageLoader.loadFromURL( m_imageMini, m_imageMiniUrl );
 }
 
 //--------------------------------------------------------------
 void userTwitterGuestIOS::loadImageLarge()
 {
-	if (m_imageLargeUrl != "")
-		m_imageLoader.loadFromURL( m_imageLarge, m_imageLargeUrl );
 }
 
 //--------------------------------------------------------------

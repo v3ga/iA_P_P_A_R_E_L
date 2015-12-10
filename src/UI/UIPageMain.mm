@@ -34,6 +34,15 @@ void UIPageMain::setup()
 	else{
 		OFAPPLOG->println( "- ERROR loaded dither shaders" );
 	}
+	if ( m_shaderFlat.load("shaders/flat.vert", "shaders/flat.frag") )
+	{
+		OFAPPLOG->println( "- OK loaded flat shaders" );
+	}
+	else{
+		OFAPPLOG->println( "- ERROR loaded flat shaders" );
+	}
+
+
 	OFAPPLOG->end();
 }
 
@@ -48,6 +57,36 @@ void UIPageMain::update(float dt)
 	// Update A P P A R E L Model
 	if (mp_apparelModManager)
 		mp_apparelModManager->applyModChain();
+
+
+	// --------------------------------
+	apparelModel* pModel = mp_apparelModManager->getModelLastInChain();
+	if (pModel)
+	{
+
+		m_meshFlat.clear();
+		m_meshFlat.enableIndices();
+		m_meshFlat.enableNormals();
+		m_meshFlat.setMode(OF_PRIMITIVE_TRIANGLES);
+	
+		 vector<ofMeshFaceApparel*>& meshFacesRef = pModel->getMeshFacesRef();
+	
+		ofMeshFaceApparel* pFace;
+ 
+	 	for (int i=0; i<meshFacesRef.size();i++)
+	 	{
+			pFace 		= meshFacesRef[i];
+	
+			m_meshFlat.addVertex( pFace->getVertex(0) );
+			m_meshFlat.addVertex( pFace->getVertex(1) );
+			m_meshFlat.addVertex( pFace->getVertex(2) );
+
+			m_meshFlat.addNormal( pFace->getFaceNormal() );
+			m_meshFlat.addNormal( pFace->getFaceNormal() );
+			m_meshFlat.addNormal( pFace->getFaceNormal() );
+	
+		}
+	 }
 }
 
 //--------------------------------------------------------------
@@ -55,6 +94,7 @@ void UIPageMain::draw()
 {
 	// --------------------------------
 	allocateSceneBuffer();
+	
 
 
 	// MODE AUGMENTED REALITY
@@ -215,12 +255,22 @@ void UIPageMain::drawModel(string markerName)
     	ofPushMatrix();
     	ofMultMatrix(mp_apparelModel->getModelMatrix());
 
+		m_normalMatrix = ofMatrix4x4::getTransposedOf( ofMatrix4x4::getInverseOf(ofGetCurrentMatrix(OF_MATRIX_MODELVIEW)) );
 
 //		glColorMask(false, false, false, false);
 		glDepthMask(true);
 
 		ofSetColor(0,255);
-		mp_apparelModel->drawFaces();
+//		mp_apparelModel->drawFaces();
+
+		   ofSetColor(0,255);
+		   m_shaderFlat.begin();
+		   m_shaderFlat.setUniformMatrix4f("normalMatrix", m_normalMatrix);
+	 
+//			pMod->drawFaces();
+			m_meshFlat.draw();
+		   m_shaderFlat.end();
+
 
 		//glEnable(GL_CULL_FACE);
 		glEnable(GL_POLYGON_OFFSET_FILL);

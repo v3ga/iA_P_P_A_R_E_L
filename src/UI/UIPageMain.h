@@ -40,7 +40,11 @@ class UIPageMain : public UIPage
 
 		ofShader				m_shaderDither;
 		bool					m_bDoDither;
-	
+
+		ofShader				m_shaderFlat;
+		ofMesh					m_meshFlat;
+		ofMatrix4x4				m_normalMatrix;
+
 
 		void					allocateSceneBuffer	();
 };

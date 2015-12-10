@@ -46,7 +46,7 @@ class userTwitterGuestIOS : public userSocialInterface, public ofThread
  
 			ofImage					m_imageMini;
 			ofImage					m_imageLarge;
-			ofxThreadedImageLoader	m_imageLoader;
+			ofxThreadedImageLoader*	mp_imageLoader;
  
 			int64_t					m_lastTweetId;
 			void					readLastTweetId		();
@@ -54,4 +54,7 @@ class userTwitterGuestIOS : public userSocialInterface, public ofThread
  
 			bool					m_bDoAnalyzeData;
 			bool					m_bAnalysingData;
+ 
+			bool					m_bDoLoadImage;
+			bool					m_bImageLoaded;
 };

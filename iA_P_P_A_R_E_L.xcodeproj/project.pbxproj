@@ -202,6 +202,9 @@
 		F9DE83401B41CF3C00F5A086 /* apparelMod_zoopathy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DE833A1B41CF3C00F5A086 /* apparelMod_zoopathy.cpp */; };
 		F9DE83411B41CF3C00F5A086 /* apparelMod_intropathy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DE833B1B41CF3C00F5A086 /* apparelMod_intropathy.cpp */; };
 		F9DE83421B41CF3C00F5A086 /* apparelMod_selfopathy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DE833D1B41CF3C00F5A086 /* apparelMod_selfopathy.cpp */; };
+		F9F7A32B1C1A0D2C00346E89 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9F7A3291C1A0D2C00346E89 /* BoundingBox.cpp */; };
+		F9F7A32F1C1A1C7D00346E89 /* flat.frag in Resources */ = {isa = PBXBuildFile; fileRef = F9F7A32D1C1A1C7D00346E89 /* flat.frag */; };
+		F9F7A3301C1A1C7D00346E89 /* flat.vert in Resources */ = {isa = PBXBuildFile; fileRef = F9F7A32E1C1A1C7D00346E89 /* flat.vert */; };
 		F9F7CC3B192E5C46006F1C91 /* MyAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9F7CC37192E5C46006F1C91 /* MyAppDelegate.mm */; };
 		F9F7CC41192E5E0A006F1C91 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F7CC3E192E5E0A006F1C91 /* SystemConfiguration.framework */; };
 		F9F7CC42192E5E0A006F1C91 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F7CC3F192E5E0A006F1C91 /* Security.framework */; };
@@ -672,6 +675,11 @@
 		F9DE833C1B41CF3C00F5A086 /* apparelMod_zoopathy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = apparelMod_zoopathy.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod_zoopathy.h; sourceTree = "<group>"; };
 		F9DE833D1B41CF3C00F5A086 /* apparelMod_selfopathy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = apparelMod_selfopathy.cpp; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod_selfopathy.cpp; sourceTree = "<group>"; };
 		F9DE833E1B41CF3C00F5A086 /* apparelMod_intropathy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = apparelMod_intropathy.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod_intropathy.h; sourceTree = "<group>"; };
+		F9F7A3291C1A0D2C00346E89 /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoundingBox.cpp; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/BoundingBox.cpp; sourceTree = "<group>"; };
+		F9F7A32A1C1A0D2C00346E89 /* BoundingBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoundingBox.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/BoundingBox.h; sourceTree = "<group>"; };
+		F9F7A32C1C1A0D7D00346E89 /* apparelMod_selfopathy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = apparelMod_selfopathy.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelMod_selfopathy.h; sourceTree = "<group>"; };
+		F9F7A32D1C1A1C7D00346E89 /* flat.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = flat.frag; path = bin/data/shaders/flat.frag; sourceTree = "<group>"; };
+		F9F7A32E1C1A1C7D00346E89 /* flat.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = flat.vert; path = bin/data/shaders/flat.vert; sourceTree = "<group>"; };
 		F9F7CC36192E5C46006F1C91 /* MyAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppDelegate.h; sourceTree = "<group>"; };
 		F9F7CC37192E5C46006F1C91 /* MyAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyAppDelegate.mm; sourceTree = "<group>"; };
 		F9F7CC3E192E5E0A006F1C91 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1342,6 +1350,7 @@
 				F9DE833B1B41CF3C00F5A086 /* apparelMod_intropathy.cpp */,
 				F9DE833C1B41CF3C00F5A086 /* apparelMod_zoopathy.h */,
 				F9DE833D1B41CF3C00F5A086 /* apparelMod_selfopathy.cpp */,
+				F9F7A32C1C1A0D7D00346E89 /* apparelMod_selfopathy.h */,
 				F9DE833E1B41CF3C00F5A086 /* apparelMod_intropathy.h */,
 				F91D62B81A338E490005E9D5 /* apparelMod_authoritopathy.cpp */,
 				F91D62B91A338E490005E9D5 /* apparelMod_authoritopathy.h */,
@@ -1639,6 +1648,8 @@
 		F96FBE891978287C00E58A6F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F9F7A3291C1A0D2C00346E89 /* BoundingBox.cpp */,
+				F9F7A32A1C1A0D2C00346E89 /* BoundingBox.h */,
 				F974AB8C1A842FF300CA6FC8 /* parameterGroupLowHigh.cpp */,
 				F974AB8D1A842FF300CA6FC8 /* parameterGroupLowHigh.h */,
 				F948923F197EA5BD00085C6B /* ofxTicker.cpp */,
@@ -1890,6 +1901,7 @@
 		F9B7BF7019339A6600EB35EE /* data */ = {
 			isa = PBXGroup;
 			children = (
+				F9F7A3311C1A1C8700346E89 /* shaders */,
 				F932F0C9196D846900C82556 /* configuration.xml */,
 				F903532B1A41D8CB00EF8A8A /* GUI */,
 				F90353251A41D65C00EF8A8A /* fonts */,
@@ -1968,6 +1980,15 @@
 			path = bin/data/mods/Kawaiopathy;
 			sourceTree = "<group>";
 		};
+		F9F7A3311C1A1C8700346E89 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				F9F7A32D1C1A1C7D00346E89 /* flat.frag */,
+				F9F7A32E1C1A1C7D00346E89 /* flat.vert */,
+			);
+			name = shaders;
+			sourceTree = "<group>";
+		};
 		F9F7CC35192E5C46006F1C91 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -2027,6 +2048,11 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = SMXG2F88PB;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -2085,6 +2111,7 @@
 				F91D69961A33A14D0005E9D5 /* model.xml in Resources */,
 				F96DE5A01A2220AD007AD329 /* 141123_Apparel.dat in Resources */,
 				F91D69921A33A14D0005E9D5 /* model.xml in Resources */,
+				F9F7A3301C1A1C7D00346E89 /* flat.vert in Resources */,
 				F903533D1A41EAEC00EF8A8A /* grr_2.png in Resources */,
 				F903533B1A41EAEC00EF8A8A /* glagla.png in Resources */,
 				F932F0D1196D937200C82556 /* test_targets_3.dat in Resources */,
@@ -2156,6 +2183,7 @@
 				F9D2531D1C0F928B00FD2FB6 /* parameters.xml in Resources */,
 				F90795531B10C22B00BC96FA /* glagla.png in Resources */,
 				F91D69931A33A14D0005E9D5 /* parameters.xml in Resources */,
+				F9F7A32F1C1A1C7D00346E89 /* flat.frag in Resources */,
 				F9D253281C0F928B00FD2FB6 /* ears.3ds in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2235,6 +2263,7 @@
 				F9DE83411B41CF3C00F5A086 /* apparelMod_intropathy.cpp in Sources */,
 				F9A3AB9C19F936EC00357C37 /* oscSender.cpp in Sources */,
 				F9DE83401B41CF3C00F5A086 /* apparelMod_zoopathy.cpp in Sources */,
+				F9F7A32B1C1A0D2C00346E89 /* BoundingBox.cpp in Sources */,
 				F91D62C91A338E490005E9D5 /* apparelMod_pretentiopathy.cpp in Sources */,
 				F9A3AB9519F9369500357C37 /* oscSenderInterface.cpp in Sources */,
 				F91D62C71A338E490005E9D5 /* apparelMod_meteopathy.cpp in Sources */,
