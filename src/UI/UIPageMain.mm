@@ -10,7 +10,7 @@
 #include "ofxQCAR.h"
 #include "apparelModManager.h"
 #include "globals.h"
-#include "ofApp.h"
+#include "ofApparel.h"
 #include "apparelMod.h"
 
 //--------------------------------------------------------------

@@ -10,7 +10,7 @@
 //#import "MyAppViewController.h"
 
 //#import "ofxQCAR_ViewController.h"
-#import "ofApp.h"
+#import "ofApparel.h"
 #import <Fabric/Fabric.h>
 #import <TwitterKit/TwitterKit.h>
 @implementation MyAppDelegate

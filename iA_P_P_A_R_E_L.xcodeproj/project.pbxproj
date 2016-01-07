@@ -124,6 +124,7 @@
 		F95101E61B12970000568415 /* AR_model_23p.3ds in Resources */ = {isa = PBXBuildFile; fileRef = F95101E51B12970000568415 /* AR_model_23p.3ds */; };
 		F957690B19363C5800609E70 /* test_targets2.dat in Resources */ = {isa = PBXBuildFile; fileRef = F957690919363C5800609E70 /* test_targets2.dat */; };
 		F957690C19363C5800609E70 /* test_targets2.xml in Resources */ = {isa = PBXBuildFile; fileRef = F957690A19363C5800609E70 /* test_targets2.xml */; };
+		F96559391C20B82F00109DDE /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F96559381C20B82F00109DDE /* MainStoryboard_iPad.storyboard */; };
 		F96DE5A01A2220AD007AD329 /* 141123_Apparel.dat in Resources */ = {isa = PBXBuildFile; fileRef = F96DE59E1A2220AD007AD329 /* 141123_Apparel.dat */; };
 		F96DE5A11A2220AD007AD329 /* 141123_Apparel.xml in Resources */ = {isa = PBXBuildFile; fileRef = F96DE59F1A2220AD007AD329 /* 141123_Apparel.xml */; };
 		F96FBA3F19753EEF00E58A6F /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F96FBA1919753EEF00E58A6F /* IpEndpointName.cpp */; };
@@ -260,7 +261,7 @@
 		E41D40FD13B3A0D800A75A5D /* iOS+OFLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "iOS+OFLib.xcodeproj"; path = "../../../libs/openFrameworksCompiled/project/ios/iOS+OFLib.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		E4A823A312561BE3002F86A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E4D8936B11527B74007E1F53 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = src/main.mm; sourceTree = SOURCE_ROOT; };
-		E4D8936C11527B74007E1F53 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
+		E4D8936C11527B74007E1F53 /* ofApparel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofApparel.h; path = src/ofApparel.h; sourceTree = SOURCE_ROOT; };
 		E4D8936D11527B74007E1F53 /* ofApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ofApp.mm; path = src/ofApp.mm; sourceTree = SOURCE_ROOT; };
 		F90353261A41D65C00EF8A8A /* LetterGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterGothic.ttf; sourceTree = "<group>"; };
 		F903532C1A41D8CB00EF8A8A /* Helvetica.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica.ttf; sourceTree = "<group>"; };
@@ -507,6 +508,7 @@
 		F95101E51B12970000568415 /* AR_model_23p.3ds */ = {isa = PBXFileReference; lastKnownFileType = file; path = AR_model_23p.3ds; sourceTree = "<group>"; };
 		F957690919363C5800609E70 /* test_targets2.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_targets2.dat; sourceTree = "<group>"; };
 		F957690A19363C5800609E70 /* test_targets2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test_targets2.xml; sourceTree = "<group>"; };
+		F96559381C20B82F00109DDE /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		F96DE59E1A2220AD007AD329 /* 141123_Apparel.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = 141123_Apparel.dat; sourceTree = "<group>"; };
 		F96DE59F1A2220AD007AD329 /* 141123_Apparel.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 141123_Apparel.xml; sourceTree = "<group>"; };
 		F96FBA1919753EEF00E58A6F /* IpEndpointName.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IpEndpointName.cpp; sourceTree = "<group>"; };
@@ -903,7 +905,7 @@
 				F9A3AB9619F936D600357C37 /* Network */,
 				E4D8936B11527B74007E1F53 /* main.mm */,
 				E4D8936D11527B74007E1F53 /* ofApp.mm */,
-				E4D8936C11527B74007E1F53 /* ofApp.h */,
+				E4D8936C11527B74007E1F53 /* ofApparel.h */,
 				F93C8B4B1982FA70006CC178 /* ofApp_defines.h */,
 			);
 			path = src;
@@ -1993,6 +1995,7 @@
 			isa = PBXGroup;
 			children = (
 				F9B9A2EE1B11C15F00176FAA /* MainStoryboard_iPhone.storyboard */,
+				F96559381C20B82F00109DDE /* MainStoryboard_iPad.storyboard */,
 				F919D6961AC09DFE009BBEC6 /* TextStyle.h */,
 				F919D69D1AC09DFE009BBEC6 /* TextStyle.m */,
 				F919D6971AC09DFE009BBEC6 /* ViewController_ASide.h */,
@@ -2025,8 +2028,8 @@
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
-				F94A13CD1ABEEBA700DFC7CE /* ShellScript */,
 				9255DD331112741900D6945E /* ShellScript */,
+				F94A13CD1ABEEBA700DFC7CE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2047,7 +2050,7 @@
 				LastUpgradeCheck = 0460;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = SMXG2F88PB;
+						DevelopmentTeam = 9A84JXMA52;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 0;
@@ -2120,6 +2123,7 @@
 				F9D253271C0F928B00FD2FB6 /* dog.3ds in Resources */,
 				F9D253221C0F928B00FD2FB6 /* model.xml in Resources */,
 				F9D2531F1C0F928B00FD2FB6 /* model.xml in Resources */,
+				F96559391C20B82F00109DDE /* MainStoryboard_iPad.storyboard in Resources */,
 				F932F0D2196D937200C82556 /* test_targets_3.xml in Resources */,
 				F932F0CD196D855800C82556 /* configuration.xml in Resources */,
 				F90795371B10A93800BC96FA /* matrix4x4.inl in Resources */,
@@ -2333,6 +2337,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2376,8 +2381,9 @@
 					/Users/julien/Dev/C/of_v20150518_ios_release/addons/ofxAssimpModelLoader/libs/assimp/lib/osx,
 				);
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Debug;
 		};
@@ -2388,6 +2394,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2431,8 +2438,9 @@
 					/Users/julien/Dev/C/of_v20150518_ios_release/addons/ofxAssimpModelLoader/libs/assimp/lib/osx,
 				);
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Release;
 		};
@@ -2501,7 +2509,7 @@
 				COMPRESS_PNG_FILES = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;

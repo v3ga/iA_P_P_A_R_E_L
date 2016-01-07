@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="H3R-ef-44Y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14F27" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="H3R-ef-44Y">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--View ControllerA Side-->
@@ -120,6 +120,9 @@
                                         <state key="normal" title="ON" backgroundImage="button_outline.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="setARModeON:" destination="ZrR-aR-zie" eventType="touchDown" id="cr7-0b-Puh"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTP-D9-Vli" userLabel="ButtonAr_off" customClass="ButtonStyle">
                                         <rect key="frame" x="415" y="228" width="64" height="64"/>
@@ -128,6 +131,9 @@
                                         <state key="normal" title="OFF" backgroundImage="button_outline.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="setARModeOFF:" destination="ZrR-aR-zie" eventType="touchDown" id="id1-jg-aKn"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="AR" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2Q-JL-sGM" customClass="TextStyle">
                                         <rect key="frame" x="289" y="228" width="64" height="64"/>
@@ -151,6 +157,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssd-uQ-u7k" userLabel="ButtonFb" customClass="ButtonStyle">
                                         <rect key="frame" x="352" y="354" width="64" height="64"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES" notEnabled="YES"/>
+                                        </accessibility>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="fb" backgroundImage="button_outline.png">
@@ -177,6 +186,9 @@
                                         <state key="normal" title="3" backgroundImage="button_outline.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="selectTemplate03:" destination="ZrR-aR-zie" eventType="touchDown" id="eKh-fj-CDe"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEW-rW-s2W" userLabel="ButtonTemp2" customClass="ButtonStyle">
                                         <rect key="frame" x="352" y="543" width="64" height="64"/>
@@ -185,6 +197,9 @@
                                         <state key="normal" title="2" backgroundImage="button_outline.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="selectTemplate02:" destination="ZrR-aR-zie" eventType="touchDown" id="eo6-Ju-oiE"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7M8-MM-oaB" userLabel="ButtonTemp1" customClass="ButtonStyle">
                                         <rect key="frame" x="289" y="543" width="64" height="64"/>
@@ -193,6 +208,9 @@
                                         <state key="normal" title="1" backgroundImage="button_outline.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="selectTemplate01:" destination="ZrR-aR-zie" eventType="touchDown" id="tHg-vg-HG3"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSe-QA-mBv" userLabel="ButtonAbout" customClass="ButtonStyle">
                                         <rect key="frame" x="289" y="669" width="190" height="64"/>
@@ -204,6 +222,17 @@
                                         <state key="normal" title="About A P P A R E L 1.0"/>
                                         <connections>
                                             <segue destination="ftR-kt-U4D" kind="modal" modalTransitionStyle="coverVertical" id="gZj-W5-UYX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPD-XQ-Roh" userLabel="ButtonTwitter_connect" customClass="ButtonStyle">
+                                        <rect key="frame" x="289" y="417" width="190" height="64"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="CONNECT">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signInWithTwitter:" destination="ZrR-aR-zie" eventType="touchDown" id="djb-Uk-Vc9"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -270,6 +299,14 @@
                             <constraint firstItem="ocy-zV-gEY" firstAttribute="leading" secondItem="1Fl-1x-DNx" secondAttribute="leading" id="oxX-mO-su8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnARModeOFF" destination="RTP-D9-Vli" id="pdt-ZP-n3Y"/>
+                        <outlet property="btnARModeON" destination="j9U-2i-p3h" id="0Qx-bj-KGk"/>
+                        <outlet property="btnConnectTwitter" destination="mPD-XQ-Roh" id="VQn-8p-wlJ"/>
+                        <outlet property="btnTemplate01" destination="7M8-MM-oaB" id="SK6-b4-hsG"/>
+                        <outlet property="btnTemplate02" destination="xEW-rW-s2W" id="OJW-Eh-iVi"/>
+                        <outlet property="btnTemplate03" destination="Ufw-vg-C8C" id="cHq-pY-Nc2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0k-32-8Ht" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wrk-0n-6jS" userLabel="Exit" sceneMemberID="exit"/>

@@ -8,7 +8,7 @@
 
 #import "ViewController_BSide.h"
 #import <TwitterKit/TwitterKit.h>
-#include "ofApp.h"
+#include "ofApparel.h"
 #include "user.h"
 #include "userTwitterGuestIOS.h"
 #include "Globals.h"

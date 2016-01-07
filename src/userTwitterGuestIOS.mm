@@ -66,7 +66,7 @@ void userTwitterGuestIOS::retrieveInfo()
 	if (session != nil && m_bSetup == false)
 	{
 		OFAPPLOG->begin(" - ok session there & not set up");
-		NSLog(@"- user id = %@", [session userID]);
+		// NSLog(@"- user id = %@", [session userID]);
 	  /* Get user info */
 	  [[[Twitter sharedInstance] APIClient] loadUserWithID:[session userID] completion:^(TWTRUser *userTwitter, NSError *error)
 	  {

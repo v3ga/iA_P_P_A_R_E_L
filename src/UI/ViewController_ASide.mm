@@ -7,7 +7,7 @@
 //
 
 #import "ViewController_ASide.h"
-#import "ofApp.h"
+#import "ofApparel.h"
 
 //--------------------------------------------------------------
 @interface ViewController_ASide ()
