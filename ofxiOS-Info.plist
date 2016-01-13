@@ -8,6 +8,8 @@
 	<string>A P P A R E L</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIcons</key>
@@ -58,6 +60,8 @@
 			</dict>
 		</array>
 	</dict>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIAppFonts</key>
@@ -65,20 +69,18 @@
 		<string>LetterGothicStd-Bold.otf</string>
 	</array>
 	<key>UIApplicationExitsOnSuspend</key>
-	<true/>
+	<false/>
 	<key>UIFileSharingEnabled</key>
-	<true/>
+	<false/>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard_iPhone</string>
 	<key>UIMainStoryboardFile~iphone</key>
-	<string>MainStoryboard_iPad</string>
+	<string>MainStoryboard_iPhone</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

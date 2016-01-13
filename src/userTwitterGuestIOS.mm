@@ -232,7 +232,7 @@ void userTwitterGuestIOS::update(float dt)
 			
 			if (GLOBALS->mp_modSelfopathy)
 				GLOBALS->mp_modSelfopathy->setImage(&m_imageMini);
-			
+
 		}
 	}
 
@@ -308,25 +308,28 @@ void userTwitterGuestIOS::loadData()
 	
 	if (mp_user->getTemplate())
 	{
-		OFAPPLOG->begin("- user is template ('"+ mp_user->getId() +"')");
-		OFAPPLOG->begin("- loading twitter.xml");
+		OFAPPLOG->println("- user is template ('"+ mp_user->getId() +"')");
+		OFAPPLOG->println("- loading twitter.xml");
 		
 		string pathTwitter = mp_user->getPathResources("twitter.xml");
 		ofxXmlSettings twitter;
 		if (twitter.load( pathTwitter ))
 		{
-			OFAPPLOG->begin("- ok loaded "+pathTwitter);
+			OFAPPLOG->println("- ok loaded "+pathTwitter);
 			
 			m_nbFollowers = twitter.getValue("followers", 0);
 			m_nbFollowing = twitter.getValue("following", 0);
 
-			OFAPPLOG->begin("- followers="+ofToString(m_nbFollowers)+" / following="+ofToString(m_nbFollowing));
+			OFAPPLOG->println("- followers="+ofToString(m_nbFollowers)+" / following="+ofToString(m_nbFollowing));
 			
-			// TODO : image URL ? 
+		   	m_imageMiniUrl = m_imageLargeUrl = twitter.getValue("image", "images/twitterImageDefault.png");
+			bool ok = m_imageMini.load(m_imageMiniUrl);
+	
+		   OFAPPLOG->println("- imageMiniUrl="+m_imageMiniUrl+" / " + (ok ? "loaded" : "error loading"));
 		}
 		else
 		{
-			OFAPPLOG->begin("- error loading "+pathTwitter);
+			OFAPPLOG->println("- error loading "+pathTwitter);
 		}
 
 	 

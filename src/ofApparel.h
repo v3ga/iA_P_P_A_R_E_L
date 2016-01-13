@@ -70,7 +70,7 @@ class ofApp : public ofxQCAR_App {
 		apparelModel		m_apparelModel;
 		apparelModManager	m_apparelModManager;
  
-		apparelMod*			mp_modPorcu;
+		//apparelMod*			mp_modPorcu;
 
 		// OSC
 		oscReceiver			m_oscReceiver;

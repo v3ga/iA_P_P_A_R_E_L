@@ -11,7 +11,7 @@
 
 class ofApp;
 @protocol ofAppDelegate <NSObject>
-- (void) didPressButton:(ofApp *)controller;
+//- (void) didPressButton:(ofApp *)controller;
 @end
 
 

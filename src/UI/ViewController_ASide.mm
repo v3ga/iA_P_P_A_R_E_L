@@ -50,9 +50,12 @@
     
     NSLog(@"ViewController_ASide view loaded");
 
-    // initialise a new OF app when view is loading
-    ofApp* myApp = new ofApp();
-    [self initWithFrame:[[UIScreen mainScreen] bounds] app:myApp ];
+	if (ofGetAppPtr() == 0)
+	{
+	    // initialise a new OF app when view is loading
+    	ofApp* myApp = new ofApp();
+    	[self initWithFrame:[[UIScreen mainScreen] bounds] app:myApp ];
+	}
 }
 
 

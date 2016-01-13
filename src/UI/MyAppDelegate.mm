@@ -58,7 +58,7 @@
     navigationController = [[storyboard instantiateInitialViewController] retain];
     [self.window setRootViewController:self.navigationController];
  
-     [Fabric with:@[TwitterKit]];
+	[Fabric with:@[TwitterKit]];
 
     return YES;
 }

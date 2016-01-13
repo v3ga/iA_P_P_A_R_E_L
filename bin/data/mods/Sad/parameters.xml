@@ -1,4 +1,6 @@
 <Sad>
-    <WeightManual>0</WeightManual>
-    <NbWordsMax>5</NbWordsMax>
+    <zEmitDrop>50</zEmitDrop>
+    <zRemoveDrop>-50</zRemoveDrop>
+    <zSpeedDrop>27.1875</zSpeedDrop>
+    <lengthDrop>4.32292</lengthDrop>
 </Sad>

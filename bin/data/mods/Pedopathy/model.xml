@@ -5,5 +5,11 @@
         <index>6</index>
         <index>12</index>
     </faces>
-    <vertices></vertices>
+    <vertices>
+        <index>22</index>
+        <index>18</index>
+        <index>3</index>
+        <index>5</index>
+        <index>19</index>
+    </vertices>
 </mod>

@@ -28,8 +28,12 @@ class userTwitterGuestIOS : public userSocialInterface, public ofThread
 			void			setImageMiniUrl		(string url);
 			void			setImageLargeUrl	(string url);
  
+			string			getImageMiniUrl		(){return m_imageMiniUrl;}
+ 
 			void			loadImageMini		();
 			void			loadImageLarge		();
+ 
+			ofImage*		getImageMini		(){return &m_imageMini;}
  
 			void			setFollowersFollowing(int followers, int following);
 			void			parseUserInfo(string json);

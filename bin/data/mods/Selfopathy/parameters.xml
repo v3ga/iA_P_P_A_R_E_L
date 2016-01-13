@@ -1,6 +1,5 @@
 <Selfopathy>
-    <Amplitude>36.7188</Amplitude>
-    <Subdivision>2.625</Subdivision>
     <WeightManual>0</WeightManual>
-    <NbWordsMax>5</NbWordsMax>
+    <NbWordsMax>20</NbWordsMax>
+    <Amplitude>50</Amplitude>
 </Selfopathy>

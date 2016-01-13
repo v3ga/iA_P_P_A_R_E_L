@@ -13,12 +13,15 @@
 
 //--------------------------------------------------------------
 static const string kLicenseKey = "AYJLA4X/////AAAAAQ7qnxRQs0iPmiGsXnjUeoVBg6LZewn8RdmNIDATnu/qc3Y9MYazpU6Gig1at3yF98S5Od5Wu4VZLiwhfvIv4PDYSfNCfphxQOwGTf7ifee69o2xBhwmGn5yNXddYoQjqdrEhNpj3M7WlBjMujiU2KDk4yucMr4hfc0+wsivYM9Vva90oJ5IK1wBzWa7P2s/t8Ags4Wzjlae8asQVb6406J0OkHwiNhneVdLTBNRERGJ0JLWbQMfHpnSRHGZaN33dqs1pLsxNSHMPAPhEqUzCav55eo5GGf/iZdO+EcK6qjnO2ySSkz7Cw26vezTSx5fLMa2ZlaNJsK92IBP00heA/Hlf27pDPA5KONuMmrEjV+Y";
-
+static bool setupOnce = false;
 //--------------------------------------------------------------
 void ofApp::setup()
 {
+	if (setupOnce == true) return;
+	setupOnce = true;
+
 	mp_pageMain 				= 0;
-	mp_modPorcu					= 0;
+//	mp_modPorcu					= 0;
 	mp_userCurrent				= 0;
 	m_doInitUser				= true;
 	m_templateIndexSelected 	= -1;
@@ -64,7 +67,7 @@ void ofApp::setup()
 		m_apparelModManager.constructMods(&m_apparelModel);
 		GLOBALS->setModManager(&m_apparelModManager);
 
-		mp_modPorcu = m_apparelModManager.getMod("Porcupinopathy");
+		//mp_modPorcu = m_apparelModManager.getMod("Porcupinopathy");
 		
 		// SOUND
 		m_soundInput.setup(0, 1);
@@ -116,18 +119,19 @@ void ofApp::setupTemplates()
 		pUser->setTemplate(true);
 		pUser->setModManager(&m_apparelModManager);
 		pUser->loadConfiguration();
+		
+/*
+		//string pathResourcesDataSql = pUser->getPathResources("data.sql");
+		//string pathDocumentDataSql 	= pUser->getPathDocument("data.sql");
 
-		string pathResourcesDataSql = pUser->getPathResources("data.sql");
-		string pathDocumentDataSql 	= pUser->getPathDocument("data.sql");
-
-		if (ofFile::doesFileExist(pathResourcesDataSql,false))
+		//if (ofFile::doesFileExist(pathResourcesDataSql,false))
 		{
 		   if (ofFile::copyFromTo(pathResourcesDataSql, pathDocumentDataSql, false, true))
 		   {
 			   OFAPPLOG->println("- OK copy done FROM\n"+pathResourcesDataSql+"\nTO\n"+pathDocumentDataSql);
 		   }
 		}
-
+*/
 		pUser->connect(); // connect to data.sql
 
 	}
@@ -285,6 +289,7 @@ void ofApp::changeUser(string userId, bool bTemplate)
 	{
 		mp_userCurrent = getUserTemplate( userId );
 		GLOBALS->setUser(mp_userCurrent);
+		GLOBALS->mp_modSelfopathy->setImage( mp_userCurrent->getServicePropertyImage("twitter_image_object") );
 
 		m_apparelModManager.countUserWords(mp_userCurrent);
 	}

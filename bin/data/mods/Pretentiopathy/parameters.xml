@@ -1,11 +1,11 @@
 <Pretentiopathy>
-    <scale>48.75</scale>
+    <scale>34.6875</scale>
     <position>
         <min>0</min>
-        <low>19.7917</low>
-        <high>88.0208</high>
+        <low>3.64583</low>
+        <high>25</high>
         <max>100</max>
     </position>
     <WeightManual>0</WeightManual>
-    <NbWordsMax>5</NbWordsMax>
+    <NbWordsMax>20</NbWordsMax>
 </Pretentiopathy>
