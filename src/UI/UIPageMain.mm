@@ -264,8 +264,7 @@ void UIPageMain::drawModel(string markerName)
 {
 	if (mp_apparelModManager == 0) return;
 
-	mp_apparelModel 		= mp_apparelModManager->getModelLastInChain();
-	apparelMod*	  pMod 		= mp_apparelModManager->getModLastInChain();
+	mp_apparelModel = mp_apparelModManager->getModelLastInChain();
 	
 	if (mp_apparelModel)
 	{
@@ -281,78 +280,15 @@ void UIPageMain::drawModel(string markerName)
 
     	ofPushMatrix();
     	ofMultMatrix(mp_apparelModel->getModelMatrix());
-
-//		m_normalMatrix = ofMatrix4x4::getTransposedOf( ofMatrix4x4::getInverseOf(ofGetCurrentMatrix(OF_MATRIX_MODELVIEW)) );
-
-//		glColorMask(false, false, false, false);
 		glDepthMask(true);
 
-		ofSetColor(0,255);
-//		mp_apparelModel->drawFaces();
-
-		   ofSetColor(255,255);
-//		   m_shaderFlat.begin();
-//		   m_shaderFlat.setUniformMatrix4f("normalMatrix", m_normalMatrix);
-	 
-//			pMod->drawFaces();
-		ofDrawAxis(40);
-			m_meshFlat.draw();
-//		   m_shaderFlat.end();
-//		   if (pMod)
-//			   pMod->drawFaces();
-
-		// Normals
-//		vector<ofIndexType> m_meshFlat
-/*		int nbVertices = (int) m_meshFlat.getNumVertices();
-		
-		ofSetColor(200,0,0);
-		ofVec3f* pNormal;
-		ofVec3f* pVertex;
-		for (int i=0; i<nbVertices;i++)
-		{
-			pVertex = m_meshFlat.getVerticesPointer() + i;
-			pNormal = m_meshFlat.getNormalsPointer() + i;
-
-			ofDrawLine( *pVertex, *pVertex + 5.0f*(*pNormal) );
-		}
-*/
-
-
-		//glEnable(GL_CULL_FACE);
-//		glEnable(GL_POLYGON_OFFSET_FILL);
-  //  	glPolygonOffset(-2,-2);
-
-	//	glColorMask(true,true,true,true);
-		//glDepthMask(true);
-
-    //	ofSetColor(255);
-/*		vector<ofMeshFaceApparel*>&	faces = mp_apparelModel->getMeshFacesRef();
-		int nbFaces = (int)faces.size();
-		ofSetLineWidth(1);
-		for (int i=0; i<nbFaces; i++)
-		{
-			ofMeshFaceApparel* pFace = faces[i];
-	
-	 		ofDrawLine(*pFace->getVertexPointer(0),*pFace->getVertexPointer(1));
-	 		ofDrawLine(*pFace->getVertexPointer(1),*pFace->getVertexPointer(2));
-	 		ofDrawLine(*pFace->getVertexPointer(2),*pFace->getVertexPointer(0));
-		}
-*/
-//		   if (pMod)
-//			   pMod->drawWireframe();
-//m_meshFlat.drawWireframe();
-
-//		glDisable(GL_POLYGON_OFFSET_FILL);
-//		glDisable(GL_CULL_FACE);
-//		ofSetLineWidth(1);
+		ofSetColor(255,255);
+		m_meshFlat.draw();
 
 		mp_apparelModManager->drawModsExtra();
 
     	ofPopMatrix();
     	ofPopMatrix();
-
-
-
 	}
 }
 
