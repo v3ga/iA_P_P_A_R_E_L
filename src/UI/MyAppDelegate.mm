@@ -54,6 +54,11 @@
     //[viewController release];
 */
 
+
+	// http://pinkstone.co.uk/how-to-load-a-different-storyboard-depending-on-screen-size-in-ios/
+	// https://github.com/versluis/ScreenSize/blob/master/ScreenSize/AppDelegate.m
+	
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     navigationController = [[storyboard instantiateInitialViewController] retain];
     [self.window setRootViewController:self.navigationController];

@@ -16,12 +16,15 @@
 
 #include "UI/UIManager.h"
 
+#import <UIKit/UIKit.h>
+
 class UIPageMain;
 class ofApp : public ofxQCAR_App {
 	
     public:
         void setup();
-		void qcarInitialised();
+		void qcarInitARDone(NSError * error);
+
         void update();
         void draw();
 		void drawModel();
@@ -38,14 +41,31 @@ class ofApp : public ofxQCAR_App {
         void gotMemoryWarning();
         void deviceOrientationChanged(int newOrientation);
 
+
 		// SETTINGS
 		ofxXmlSettings		m_settings;
 
+
+		// APP state
+		ofxXmlSettings 		m_appState;
+		bool				m_bLaunchFirstTime;
 		bool				m_bARMode;
+
 		void				setARMode			(bool is=true);
 		bool				getARMode			(){return m_bARMode;}
 
+		void				setLaunchFirstTime	(bool is=true);
 
+		void				copyAppStateFileToDocuments	();
+		void				beginTimerForInfoAlert		();
+		void				cancelTimerForInfoAlert		();
+		void				increaseNbLaunches			();
+ 
+		bool				m_bWillShowInfoAlert;
+		float				m_timeShowAlert;
+		int					m_nbLaunches;
+
+ 
 		// USER
 		user				m_user;
 		user*				mp_userCurrent;
@@ -61,16 +81,26 @@ class ofApp : public ofxQCAR_App {
 		void				setupTemplates				();
 		int					getTemplateIndexSelected	(){return m_templateIndexSelected;}
  
+ 		// QCAR
+		bool				m_bQCARInitDone;
+ 
  		// GUI
 		// TODO : not really useful, to be removed
 		UIPageMain*			mp_pageMain;
 		UIManager			m_uiManager;
+ 
+
+		void				setViewController			(UIView* p){mp_viewInfo = p;}
+		UIView*				mp_viewInfo;
+
+ 
+ 
+		void				saveAppState		();
 
 		// MODS
 		apparelModel		m_apparelModel;
 		apparelModManager	m_apparelModManager;
  
-		//apparelMod*			mp_modPorcu;
 
 		// OSC
 		oscReceiver			m_oscReceiver;
@@ -88,6 +118,11 @@ class ofApp : public ofxQCAR_App {
 		void				onTemplateSelected	(int templateIndex);
 		string				getTemplateUserId	(int templateIndex){return "template0"+ofToString(templateIndex+1);}
 		user*				getUserTemplate		(string id);
+
+		// UI events from alert view
+ 		void				onAlertInfoSwitch	();
+
+ 
 
 		// Filter
 		//ofxPostProcess*		mp_postProcess;

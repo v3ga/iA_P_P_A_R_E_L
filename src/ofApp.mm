@@ -4,34 +4,94 @@
 #include "apparelMod_include.h"
 #include "UI/UIPageMain.h"
 #include "userTwitterGuestIOS.h"
+
 #import <TwitterKit/TwitterKit.h>
+#import "UI/AppAlert.h"
 
 
 //--------------------------------------------------------------
 #define USE_VUFORIA				true
 #define LOG_DEBUG				false
+#define USE_OSC					false
 
 //--------------------------------------------------------------
 static const string kLicenseKey = "AYJLA4X/////AAAAAQ7qnxRQs0iPmiGsXnjUeoVBg6LZewn8RdmNIDATnu/qc3Y9MYazpU6Gig1at3yF98S5Od5Wu4VZLiwhfvIv4PDYSfNCfphxQOwGTf7ifee69o2xBhwmGn5yNXddYoQjqdrEhNpj3M7WlBjMujiU2KDk4yucMr4hfc0+wsivYM9Vva90oJ5IK1wBzWa7P2s/t8Ags4Wzjlae8asQVb6406J0OkHwiNhneVdLTBNRERGJ0JLWbQMfHpnSRHGZaN33dqs1pLsxNSHMPAPhEqUzCav55eo5GGf/iZdO+EcK6qjnO2ySSkz7Cw26vezTSx5fLMa2ZlaNJsK92IBP00heA/Hlf27pDPA5KONuMmrEjV+Y";
 static bool setupOnce = false;
+
+//--------------------------------------------------------------
+void ofApp::saveAppState()
+{
+	OFAPPLOG->begin("ofApp::saveAppState");
+
+	m_appState.setValue("launchFirstTime", m_bLaunchFirstTime ? 1 : 0);
+	m_appState.setValue("ar", m_bARMode ? 1 : 0);
+	m_appState.setValue("launches", m_nbLaunches);
+
+	OFAPPLOG->println("- m_bLaunchFirstTime="+ofToString(m_bLaunchFirstTime));
+	OFAPPLOG->println("- m_bARMode="+ofToString(m_bARMode));
+	OFAPPLOG->println("- m_nbLaunches="+ofToString(m_nbLaunches));
+
+	m_appState.save(ofxiOSGetDocumentsDirectory()+"appstate.xml");
+
+	OFAPPLOG->end();
+}
+
+//--------------------------------------------------------------
+void ofApp::copyAppStateFileToDocuments()
+{
+	OFAPPLOG->begin("ofApp::copyAppStateFileToDocuments");
+
+	string pathFileResources = ofToDataPath("appstate.xml");
+	string pathFileDocuments = ofxiOSGetDocumentsDirectory() + "appstate.xml";
+	
+	ofFile fDocuments(pathFileDocuments);
+	if ( !fDocuments.exists() )
+	{
+		OFAPPLOG->begin(" - "+pathFileDocuments+" does not exist, copying from resources)");
+		if (ofFile::copyFromTo(pathFileResources, pathFileDocuments, false, false))
+		{
+			OFAPPLOG->begin("- copied OK");
+		}
+	}
+	
+	OFAPPLOG->end();
+}
+
+//--------------------------------------------------------------
+void ofApp::beginTimerForInfoAlert()
+{
+	m_bWillShowInfoAlert = true;
+}
+
+//--------------------------------------------------------------
+void ofApp::cancelTimerForInfoAlert()
+{
+	m_bWillShowInfoAlert = false;
+}
+
 //--------------------------------------------------------------
 void ofApp::setup()
 {
 	if (setupOnce == true) return;
 	setupOnce = true;
 
+	OFAPPLOG->begin("ofApp::setup()");
+
 	mp_pageMain 				= 0;
-//	mp_modPorcu					= 0;
+	mp_viewInfo					= 0;
+
 	mp_userCurrent				= 0;
 	m_doInitUser				= true;
 	m_templateIndexSelected 	= -1;
+	
+	m_bWillShowInfoAlert		= false;
+	m_timeShowAlert				= 5.0f;
+	m_nbLaunches				= 1;
 
-	ofSetLogLevel(OF_LOG_VERBOSE);
-	OFAPPLOG->begin("ofApp::setup()");
+	m_bQCARInitDone				= false;
 	
 	ofSetLogLevel(OF_LOG_NOTICE);
 
-	
 	// DEBUG STUFF
 	#if LOG_DEBUG
 		OFAPPLOG->println("- OF renderer="+ofGetCurrentRenderer()->getType());
@@ -39,6 +99,45 @@ void ofApp::setup()
 		OFAPPLOG->println("- GL version="+ofToString(glGetString(GL_VERSION)));
 		OFAPPLOG->println("- size = "+ofToString(ofGetWidth())+","+ofToString(ofGetHeight()));
 	#endif
+	
+	// APP State
+	copyAppStateFileToDocuments();
+	
+	m_bLaunchFirstTime			= true;
+	if (m_appState.load(ofxiOSGetDocumentsDirectory()+"appstate.xml"))
+	{
+		OFAPPLOG->println("- ok loaded appstate.xml (in documents)");
+
+		
+		m_bLaunchFirstTime 	= m_appState.getValue("launchFirstTime", 1) > 0;
+		m_bARMode 			= m_appState.getValue("ar", 1) > 0;
+		m_nbLaunches		= m_appState.getValue("nbLaunches", 1);
+
+		OFAPPLOG->begin("");
+		OFAPPLOG->println("- m_bLaunchFirstTime="+ofToString(m_bLaunchFirstTime));
+		OFAPPLOG->println("- m_bARMode="+ofToString(m_bARMode));
+		OFAPPLOG->println("- m_nbLaunches="+ofToString(m_nbLaunches));
+		OFAPPLOG->end();
+
+		
+	}
+
+	if (m_nbLaunches == 1)
+	{
+		m_timeShowAlert = 5.0f;
+		beginTimerForInfoAlert();
+	}
+	else if (m_nbLaunches<=3)
+	{
+		m_timeShowAlert = 30.0f;
+		beginTimerForInfoAlert();
+	}
+	else
+	{
+		cancelTimerForInfoAlert();
+	}
+	
+	
 
 	// GLOBAL STUFF
 	ofBackground(0);
@@ -73,16 +172,24 @@ void ofApp::setup()
 		m_soundInput.setup(0, 1);
 
 		// NETWORK
+		#if USE_OSC
 		int oscPort = 1235;
 		m_oscReceiver.setup(oscPort);
 		m_oscReceiver.setModManager(&m_apparelModManager);
 		OFAPPLOG->println("- osc receiver port = " + ofToString(oscPort));
-
+		#endif
 	
 		// GUI
 		mp_pageMain = new UIPageMain("PageMain",&m_uiManager);
 		mp_pageMain->setApparelModManager(&m_apparelModManager);
 		mp_pageMain->setup();
+		
+/*
+		if (mp_viewInfo)
+		{
+			[mp_viewInfo setHidden:YES ];
+		}
+*/
 
 
 		// USER
@@ -100,8 +207,6 @@ void ofApp::setup()
 		qcar->setCameraPixelsFlag(true);
 		qcar->setup();
 #endif
-
-
 	}
 
 	OFAPPLOG->end();
@@ -138,10 +243,27 @@ void ofApp::setupTemplates()
 	OFAPPLOG->end();
 }
 
-//--------------------------------------------------------------
-void ofApp::qcarInitialised()
-{
 
+//--------------------------------------------------------------
+void ofApp::qcarInitARDone(NSError * error)
+{
+	OFAPPLOG->begin("ofApp::qcarInitARDone()");
+	OFAPPLOG->println("setARMode("+ofToString(m_bARMode)+")");
+	setARMode(m_bARMode);
+	if (mp_pageMain)
+		mp_pageMain->setQCARInit(true);
+
+	m_bQCARInitDone = true;
+
+	OFAPPLOG->end();
+}
+
+
+//--------------------------------------------------------------
+void ofApp::setLaunchFirstTime(bool is)
+{
+	m_bLaunchFirstTime = is;
+	saveAppState();
 }
 
 //--------------------------------------------------------------
@@ -150,6 +272,7 @@ void ofApp::setARMode(bool is)
 	m_bARMode = is;
 	if (mp_pageMain)
 		mp_pageMain->setUseVuforia(is);
+	saveAppState();
 }
 
 //--------------------------------------------------------------
@@ -164,14 +287,16 @@ void ofApp::setupUser()
 	}
 	else
 	{
-		setARMode(false);
-		changeUser( "template01", true); // TEMP
+//		setARMode(false);
+		changeUser( "template01", true);
 	}
 }
 
 //--------------------------------------------------------------
 void ofApp::update()
 {
+	float dt = ofGetLastFrameTime();
+
 	// Call this here otherwise Twitter loadUser won't work in setup
 	if (m_doInitUser)
 	{
@@ -179,9 +304,22 @@ void ofApp::update()
 		setupUser();
 	}
 
-	float dt = ofGetLastFrameTime();
+	if (m_bQCARInitDone && m_bWillShowInfoAlert && m_bARMode && !mp_pageMain->hasFoundMarker())
+	{
+		m_timeShowAlert -= dt;
+		if (m_timeShowAlert <= 0.0f)
+		{
+			AppAlert* pAlert = [[AppAlert alloc] init];
+			[pAlert show];
+		
+	 		cancelTimerForInfoAlert();
+		}
+	}
 
+	#if USE_OSC
 	m_oscReceiver.update();
+	#endif
+	
 	if (mp_userCurrent)
 		mp_userCurrent->update(dt);
 	if (mp_pageMain)
@@ -371,6 +509,15 @@ user* ofApp::getUserTemplate(string id)
 	return pUser;
 }
 
+//--------------------------------------------------------------
+void ofApp::onAlertInfoSwitch()
+{
+	OFAPPLOG->begin("ofApp::onAlertInfoSwitch()");
+
+	setARMode(false);
+
+	OFAPPLOG->end();
+}
 
 
 

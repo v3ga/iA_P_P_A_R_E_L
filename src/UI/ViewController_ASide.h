@@ -17,10 +17,14 @@ class ofApp;
 
 @interface ViewController_ASide : ofxiOSViewController<ofAppDelegate>
 
+@property (retain, nonatomic) IBOutlet UIView *info;
+@property (assign, nonatomic) BOOL m_bViewDidLoad;
 
--(IBAction)setMood01:(id)sender;
--(IBAction)setMood02:(id)sender;
--(IBAction)setMood03:(id)sender;
+
+- (IBAction)setMood01:(id)sender;
+- (IBAction)setMood02:(id)sender;
+- (IBAction)setMood03:(id)sender;
+- (IBAction)btnInfoOK:(id)sender;
 
 
 @end

@@ -11,11 +11,13 @@
 
 //--------------------------------------------------------------
 @interface ViewController_ASide ()
-
 @end
+
+
 
 //--------------------------------------------------------------
 @implementation ViewController_ASide
+
 
 - (IBAction)unwindToASide:(UIStoryboardSegue *)unwindSegue
 {
@@ -30,8 +32,22 @@
 //--------------------------------------------------------------
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+	if (!self.m_bViewDidLoad)
+	{
+	    NSLog(@"ViewController_ASide view did load");
+    	[super viewDidLoad];
+    	// Do any additional setup after loading the view.
+		ofApp* pApp = (ofApp*) ofGetAppPtr();
+		if (pApp)
+		{
+	 		if (pApp->m_bLaunchFirstTime == false)
+			{
+				[_info setHidden:YES];
+			}
+		}
+	
+		self.m_bViewDidLoad = YES;
+	}
 }
 
 //--------------------------------------------------------------
@@ -55,6 +71,7 @@
 	    // initialise a new OF app when view is loading
     	ofApp* myApp = new ofApp();
     	[self initWithFrame:[[UIScreen mainScreen] bounds] app:myApp ];
+		// myApp->setViewController( self );
 	}
 }
 
@@ -167,6 +184,18 @@
 
 }
 
+//--------------------------------------------------------------
+- (IBAction)btnInfoOK:(id)sender
+{
+	[_info setHidden:YES];
+	ofApp* pApp = (ofApp*) ofGetAppPtr();
+	if (pApp)
+	{
+		pApp->setLaunchFirstTime(false);
+		pApp->beginTimerForInfoAlert();
+	}
+}
+
 
 
 /*
@@ -180,4 +209,8 @@
 }
 */
 
+- (void)dealloc {
+    [_info release];
+    [super dealloc];
+}
 @end

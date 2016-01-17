@@ -21,6 +21,9 @@ UIPageMain::UIPageMain(string id, UIManager* pManager) : UIPage(id, pManager)
 	m_bUseVuforia			= false;
 	m_bDoDither				= true;
 	m_sceneBufferScale		= 2;
+	
+	m_bQCARInit				= false;
+	m_bQCARHasFoundMarker 	= false;
 }
 
 //--------------------------------------------------------------
@@ -34,14 +37,14 @@ void UIPageMain::setup()
 	else{
 		OFAPPLOG->println( "- ERROR loaded dither shaders" );
 	}
-	if ( m_shaderFlat.load("shaders/flat.vert", "shaders/flat.frag") )
+/*	if ( m_shaderFlat.load("shaders/flat.vert", "shaders/flat.frag") )
 	{
 		OFAPPLOG->println( "- OK loaded flat shaders" );
 	}
 	else{
 		OFAPPLOG->println( "- ERROR loaded flat shaders" );
 	}
-
+*/
 
 	OFAPPLOG->end();
 }
@@ -64,7 +67,6 @@ void UIPageMain::update(float dt)
 	if (pModel)
 	{
 
-
 		m_meshFlat.clear();
 		m_meshFlat.enableIndices();
 		m_meshFlat.enableNormals();
@@ -85,10 +87,6 @@ void UIPageMain::update(float dt)
 			m_meshFlat.addVertex( *pFace->getVertexPointer(1) );
 			m_meshFlat.addVertex( *pFace->getVertexPointer(2) );
 	
-//			m_meshFlat.addVertex( pFace->getVertex(0) );
-//			m_meshFlat.addVertex( pFace->getVertex(1) );
-//			m_meshFlat.addVertex( pFace->getVertex(2) );
-			
 			n = pFace->getFaceNormal();
 
 
@@ -110,83 +108,96 @@ void UIPageMain::update(float dt)
 //--------------------------------------------------------------
 void UIPageMain::draw()
 {
+
 	// --------------------------------
 	allocateSceneBuffer();
-	
 
 
-	// MODE AUGMENTED REALITY
-	// --------------------------------
-	if (m_bUseVuforia)
+	// Setup is called only when QCAR is initialized
+	if (!m_bQCARInit)
 	{
-	    ofxQCAR * qcar = ofxQCAR::getInstance();
-		if (qcar == 0) return ;
-	
-	    qcar->draw();
-
-		if (m_bDoDither)
-		{
-			m_sceneBuffer.begin();
-			ofClear(0);
-		}
-		
-	    if(qcar->hasFoundMarker())
-		{
-			ofxQCAR_Marker marker = qcar->getMarker();
-
-        	ofEnableDepthTest();
-	        ofSetColor(ofColor::white);
-    	    ofSetLineWidth(1);
-		 
-	        qcar->begin();
-				//ofDrawAxis(40);
-				drawModel(marker.markerName);
-	        qcar->end();
-	
-			ofDisableDepthTest();
-		}
-
-
-		if (m_bDoDither)
-		{
-			m_sceneBuffer.end();
-			drawDither();
-		}
-
-		drawInfos();
-		
+		ofBackground(0);
 	}
-	// MODE DEMO
-	// --------------------------------
 	else
 	{
-		if (m_bDoDither)
+
+		// MODE AUGMENTED REALITY
+		// --------------------------------
+		if (m_bUseVuforia)
 		{
-			m_sceneBuffer.begin();
-			ofClear(0);
-			m_cam.begin( ofRectangle(0,0,m_sceneBuffer.getWidth(),m_sceneBuffer.getHeight()) );
+			ofxQCAR * qcar = ofxQCAR::getInstance();
+			if (qcar == 0) return ;
+		
+			qcar->draw();
+
+			if (m_bDoDither)
+			{
+				m_sceneBuffer.begin();
+				ofClear(0);
+			}
+			
+			if(qcar->hasFoundMarker())
+			{
+				if (!m_bQCARHasFoundMarker) m_bQCARHasFoundMarker = true;
+			
+			
+				ofxQCAR_Marker marker = qcar->getMarker();
+
+				ofEnableDepthTest();
+				ofSetColor(ofColor::white);
+				ofSetLineWidth(1);
+			 
+				qcar->begin();
+					//ofDrawAxis(40);
+					drawModel(marker.markerName);
+				qcar->end();
+		
+				ofDisableDepthTest();
+			}
+
+
+			if (m_bDoDither)
+			{
+				m_sceneBuffer.end();
+				drawDither();
+			}
+
+			drawInfos();
+			
 		}
+		// MODE DEMO
+		// --------------------------------
 		else
 		{
-			m_cam.begin();
+			if (m_bDoDither)
+			{
+				m_sceneBuffer.begin();
+				ofClear(0);
+				m_cam.begin( ofRectangle(0,0,m_sceneBuffer.getWidth(),m_sceneBuffer.getHeight()) );
+			}
+			else
+			{
+				m_cam.begin();
+			}
+			m_cam.setDistance(100);
+			ofEnableDepthTest();
+			ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+
+
+
+			drawModel();
+			m_cam.end();
+
+			ofDisableBlendMode();
+			ofDisableDepthTest();
+
+			if (m_bDoDither)
+			{
+				m_sceneBuffer.end();
+				drawDither();
+			}
 		}
-		m_cam.setDistance(100);
-		ofEnableDepthTest();
-	    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 
-
-
-		drawModel();
-		m_cam.end();
-
-	    ofDisableBlendMode();
-		ofDisableDepthTest();
-
-		if (m_bDoDither)
-		{
-			m_sceneBuffer.end();
-			drawDither();
-		}
 	}
 }
 

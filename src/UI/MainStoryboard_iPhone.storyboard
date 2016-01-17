@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
@@ -93,16 +94,75 @@
                                     <constraint firstItem="Vhp-gE-8qG" firstAttribute="top" secondItem="5RA-Xh-Cxe" secondAttribute="top" id="xKQ-1s-OL1"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.79999999999999982" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPr-g9-U4f">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="24" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="190" translatesAutoresizingMaskIntoConstraints="NO" id="HTh-vr-Zqs" customClass="TextStyle">
+                                        <rect key="frame" x="65" y="66" width="190" height="315"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
+                                        </accessibility>
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <string key="content">Apparel by Normals is an Augmented Reality app. 
+
+Point the camera at a valid Apparel target, either by viewing the piece in real life, or on a test target available at apparel.normalfutu.re.</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="13" name="LetterGothicStd"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="leftToRight" lineHeightMultiple="1.5"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvi-Tc-UbY" userLabel="ButtonOK" customClass="ButtonStyle">
+                                        <rect key="frame" x="128" y="389" width="64" height="64"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="OK" backgroundImage="button_outline.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnInfoOK:" destination="vXZ-lx-hvc" eventType="touchDown" id="a0t-Tx-rHr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.1002394153" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="HTh-vr-Zqs" secondAttribute="trailing" constant="65" id="71b-u0-qeT"/>
+                                    <constraint firstItem="Tvi-Tc-UbY" firstAttribute="top" secondItem="HTh-vr-Zqs" secondAttribute="bottom" constant="8" symbolic="YES" id="7wk-iO-sjc"/>
+                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="top" secondItem="pPr-g9-U4f" secondAttribute="top" constant="66" id="EA3-dJ-Fuk"/>
+                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="top" secondItem="pPr-g9-U4f" secondAttribute="top" constant="66" id="G4L-iR-k4D"/>
+                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="leading" secondItem="pPr-g9-U4f" secondAttribute="leading" constant="65" id="Izq-hv-d9R"/>
+                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="centerX" secondItem="pPr-g9-U4f" secondAttribute="centerX" id="KoF-UA-u9l"/>
+                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="leading" secondItem="pPr-g9-U4f" secondAttribute="leading" constant="65" id="M25-oc-w71"/>
+                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="leading" secondItem="pPr-g9-U4f" secondAttribute="leading" constant="65" id="T69-aP-Ya4"/>
+                                    <constraint firstItem="Tvi-Tc-UbY" firstAttribute="centerX" secondItem="pPr-g9-U4f" secondAttribute="centerX" id="TNR-Ot-D8D"/>
+                                    <constraint firstItem="Tvi-Tc-UbY" firstAttribute="leading" secondItem="pPr-g9-U4f" secondAttribute="leading" constant="128" id="UnF-jH-Mll"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tvi-Tc-UbY" secondAttribute="bottom" constant="115" id="YW4-I5-2fF"/>
+                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="centerX" secondItem="Tvi-Tc-UbY" secondAttribute="centerX" id="h5n-Rj-Wht"/>
+                                    <constraint firstItem="Tvi-Tc-UbY" firstAttribute="leading" secondItem="pPr-g9-U4f" secondAttribute="leading" constant="128" id="jhZ-ju-m6K"/>
+                                    <constraint firstItem="Tvi-Tc-UbY" firstAttribute="top" secondItem="HTh-vr-Zqs" secondAttribute="bottom" constant="8" id="mEY-RE-VtG"/>
+                                    <constraint firstItem="Tvi-Tc-UbY" firstAttribute="top" secondItem="pPr-g9-U4f" secondAttribute="top" constant="389" id="nkR-AS-jzm"/>
+                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="top" secondItem="pPr-g9-U4f" secondAttribute="top" constant="66" id="riu-gp-Vd7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.14208984375" green="0.14208984375" blue="0.14208984375" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="O6g-uu-D5N" secondAttribute="centerX" id="0GY-H5-9SC"/>
+                            <constraint firstItem="pPr-g9-U4f" firstAttribute="leading" secondItem="O6g-uu-D5N" secondAttribute="leading" id="9gu-75-ozE"/>
                             <constraint firstItem="O6g-uu-D5N" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Ni0-62-171"/>
+                            <constraint firstItem="pPr-g9-U4f" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="XvO-cZ-iJS"/>
                             <constraint firstAttribute="bottom" secondItem="O6g-uu-D5N" secondAttribute="bottom" id="htt-Xa-olH"/>
                             <constraint firstAttribute="trailing" secondItem="O6g-uu-D5N" secondAttribute="trailing" id="onk-lC-dzT"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="info" destination="pPr-g9-U4f" id="k4D-Sq-irm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,7 +246,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5N-hU-hYM" userLabel="ButtonFb" customClass="ButtonStyle">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5N-hU-hYM" userLabel="ButtonFb" customClass="ButtonStyle">
                                         <rect key="frame" x="128" y="124" width="64" height="64"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" none="YES" button="YES" notEnabled="YES"/>
@@ -198,7 +258,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <textField clipsSubviews="YES" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" adjustsFontSizeToFit="NO" minimumFontSize="13" background="textfield_outline.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jtd-AT-lNt" userLabel="text_field">
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="13" background="textfield_outline.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jtd-AT-lNt" userLabel="text_field">
                                         <rect key="frame" x="65" y="187" width="190" height="64"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>

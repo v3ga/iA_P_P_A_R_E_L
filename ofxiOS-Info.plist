@@ -83,7 +83,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright Normals 2016</string>
+	<string>Copyright © 2015 N O R M A L S All rights reserved</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
