@@ -14,7 +14,7 @@
 - (void) show
 {
 	UIAlertView *myAlert = [[UIAlertView alloc]
-    	                        initWithTitle:@"Switch to Non-AR Mode"
+    	                        initWithTitle:@"Switch AR off"
         	                    message:@"No target has been detected. Try the app on a demo target at http://apparel.normalfutu.re or switch to non-AR mode."
             	                delegate:self
                 	            cancelButtonTitle:@"Cancel"

@@ -25,7 +25,7 @@ void ofApp::saveAppState()
 
 	m_appState.setValue("launchFirstTime", m_bLaunchFirstTime ? 1 : 0);
 	m_appState.setValue("ar", m_bARMode ? 1 : 0);
-	m_appState.setValue("launches", m_nbLaunches);
+	m_appState.setValue("nbLaunches", m_nbLaunches);
 
 	OFAPPLOG->println("- m_bLaunchFirstTime="+ofToString(m_bLaunchFirstTime));
 	OFAPPLOG->println("- m_bARMode="+ofToString(m_bARMode));
@@ -122,10 +122,11 @@ void ofApp::setup()
 		
 	}
 
+	// APP : nb launches
 	if (m_nbLaunches == 1)
 	{
 		m_timeShowAlert = 5.0f;
-		beginTimerForInfoAlert();
+//		beginTimerForInfoAlert(); // <- will be launched when ok clicked (see viewController_ASide)
 	}
 	else if (m_nbLaunches<=3)
 	{
@@ -137,7 +138,7 @@ void ofApp::setup()
 		cancelTimerForInfoAlert();
 	}
 	
-	
+	increaseNbLaunches();
 
 	// GLOBAL STUFF
 	ofBackground(0);
@@ -183,14 +184,6 @@ void ofApp::setup()
 		mp_pageMain = new UIPageMain("PageMain",&m_uiManager);
 		mp_pageMain->setApparelModManager(&m_apparelModManager);
 		mp_pageMain->setup();
-		
-/*
-		if (mp_viewInfo)
-		{
-			[mp_viewInfo setHidden:YES ];
-		}
-*/
-
 
 		// USER
 		// > Templates
@@ -272,6 +265,13 @@ void ofApp::setARMode(bool is)
 	m_bARMode = is;
 	if (mp_pageMain)
 		mp_pageMain->setUseVuforia(is);
+	saveAppState();
+}
+
+//--------------------------------------------------------------
+void ofApp::increaseNbLaunches()
+{
+	m_nbLaunches++;
 	saveAppState();
 }
 
