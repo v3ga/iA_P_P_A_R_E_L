@@ -24,6 +24,12 @@ class ofApp;
 - (IBAction)setMood01:(id)sender;
 - (IBAction)setMood02:(id)sender;
 - (IBAction)setMood03:(id)sender;
+
+- (IBAction)unsetMood01:(id)sender;
+- (IBAction)unsetMood02:(id)sender;
+- (IBAction)unsetMood03:(id)sender;
+
+
 - (IBAction)btnInfoOK:(id)sender;
 
 

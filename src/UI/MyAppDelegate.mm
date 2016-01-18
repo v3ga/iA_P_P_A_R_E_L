@@ -17,6 +17,7 @@
 
 @synthesize navigationController;
 
+//--------------------------------------------------------------
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     [super applicationDidFinishLaunching: application];
@@ -59,8 +60,10 @@
 	// https://github.com/versluis/ScreenSize/blob/master/ScreenSize/AppDelegate.m
 	
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    navigationController = [[storyboard instantiateInitialViewController] retain];
+    // UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+	UIStoryboard *storyboard = [self grabStoryboard];
+ 
+	navigationController = [[storyboard instantiateInitialViewController] retain];
     [self.window setRootViewController:self.navigationController];
  
 	[Fabric with:@[TwitterKit]];
@@ -68,14 +71,43 @@
     return YES;
 }
 
+//--------------------------------------------------------------
 // drop in replacement for ofxiOSGetViewController() as glViewController = nil
-- (UIViewController*) getViewController {
+- (UIViewController*) getViewController
+{
     return [self.navigationController visibleViewController];
 }
 
+//--------------------------------------------------------------
 - (void) dealloc {
     self.navigationController = nil;
     [ super dealloc ];
+}
+
+//--------------------------------------------------------------
+- (UIStoryboard *)grabStoryboard
+{
+    
+    // determine screen size
+    int screenHeight = [UIScreen mainScreen].bounds.size.height;
+    UIStoryboard *storyboard;
+    
+    switch (screenHeight)
+	{
+        case 480: // iPhone 4s
+		case 568: // iPhone 5s
+		case 667: // iPhone 6
+		case 736: // iPhone 6 Plus
+            storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+		break;
+	  
+        default:
+            // it's an iPad
+            storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+		break;
+    }
+    
+    return storyboard;
 }
 
 @end

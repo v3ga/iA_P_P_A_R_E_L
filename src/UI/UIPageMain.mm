@@ -297,6 +297,7 @@ void UIPageMain::drawModel(string markerName)
 		m_meshFlat.draw();
 
 		mp_apparelModManager->drawModsExtra();
+		mp_apparelModManager->drawLoader();
 
     	ofPopMatrix();
     	ofPopMatrix();

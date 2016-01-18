@@ -30,8 +30,8 @@
                                         </state>
                                         <connections>
                                             <action selector="setMood01:" destination="vXZ-lx-hvc" eventType="touchDown" id="VpV-TY-U45"/>
-                                            <action selector="unsetMood01:" destination="vXZ-lx-hvc" eventType="valueChanged" id="N7h-4X-C9z"/>
                                             <action selector="unsetMood01:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dhw-1R-JEE"/>
+                                            <action selector="unsetMood01:" destination="vXZ-lx-hvc" eventType="touchUpOutside" id="fIk-cH-QZQ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RA-Xh-Cxe" userLabel="Button2">
@@ -43,7 +43,7 @@
                                         <connections>
                                             <action selector="setMood02:" destination="vXZ-lx-hvc" eventType="touchDown" id="f30-rW-egg"/>
                                             <action selector="unsetMood02:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GcR-pM-uxX"/>
-                                            <action selector="unsetMood02:" destination="vXZ-lx-hvc" eventType="valueChanged" id="bk9-Hu-75A"/>
+                                            <action selector="unsetMood02:" destination="vXZ-lx-hvc" eventType="touchUpOutside" id="zgK-ef-3hI"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNi-tH-jo8" userLabel="Button3">

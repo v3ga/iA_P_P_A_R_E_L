@@ -176,6 +176,7 @@
 		F9B9A2EF1B11C15F00176FAA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B9A2EE1B11C15F00176FAA /* MainStoryboard_iPhone.storyboard */; };
 		F9BCEF151C4A920300BBA84F /* appstate.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9BCEF141C4A920300BBA84F /* appstate.xml */; };
 		F9BCEF191C4B033C00BBA84F /* AppAlert.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9BCEF181C4B033C00BBA84F /* AppAlert.mm */; };
+		F9BCEF201C4C3B5100BBA84F /* apparelModLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9BCEF1E1C4C3B5100BBA84F /* apparelModLoader.cpp */; };
 		F9C8E6831C4446E2000E3222 /* twitter.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9C8E6821C4446E2000E3222 /* twitter.xml */; };
 		F9C8E6851C4446EF000E3222 /* twitter.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9C8E6841C4446EF000E3222 /* twitter.xml */; };
 		F9C8E68F1C444D2C000E3222 /* model.xml in Resources */ = {isa = PBXBuildFile; fileRef = F9C8E6891C444CB9000E3222 /* model.xml */; };
@@ -235,7 +236,7 @@
 /* Begin PBXFileReference section */
 		01DCC0911400F9ACF5B65578 /* ofxXmlSettings.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxXmlSettings.h; path = ../../../addons/ofxXmlSettings/src/ofxXmlSettings.h; sourceTree = SOURCE_ROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* A P P A R E L.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A P P A R E L.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Apparel by Normals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apparel by Normals.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2B40EDA85BEB63E46785BC29 /* tinyxml.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = tinyxml.cpp; path = ../../../addons/ofxXmlSettings/libs/tinyxml.cpp; sourceTree = SOURCE_ROOT; };
@@ -651,6 +652,8 @@
 		F9BCEF141C4A920300BBA84F /* appstate.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = appstate.xml; sourceTree = "<group>"; };
 		F9BCEF171C4B033C00BBA84F /* AppAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAlert.h; sourceTree = "<group>"; };
 		F9BCEF181C4B033C00BBA84F /* AppAlert.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppAlert.mm; sourceTree = "<group>"; };
+		F9BCEF1E1C4C3B5100BBA84F /* apparelModLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = apparelModLoader.cpp; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelModLoader.cpp; sourceTree = "<group>"; };
+		F9BCEF1F1C4C3B5100BBA84F /* apparelModLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = apparelModLoader.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/apparelModLoader.h; sourceTree = "<group>"; };
 		F9C8E6821C4446E2000E3222 /* twitter.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = twitter.xml; sourceTree = "<group>"; };
 		F9C8E6841C4446EF000E3222 /* twitter.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = twitter.xml; sourceTree = "<group>"; };
 		F9C8E6891C444CB9000E3222 /* model.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = model.xml; sourceTree = "<group>"; };
@@ -736,7 +739,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* A P P A R E L.app */,
+				1D6058910D05DD3D006BFB54 /* Apparel by Normals.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1317,6 +1320,8 @@
 				F932F0C3196D7DBE00C82556 /* apparelModel.h */,
 				F96FBE76197823AB00E58A6F /* apparelModManager.cpp */,
 				F96FBE77197823AB00E58A6F /* apparelModManager.h */,
+				F9BCEF1E1C4C3B5100BBA84F /* apparelModLoader.cpp */,
+				F9BCEF1F1C4C3B5100BBA84F /* apparelModLoader.h */,
 				F91D69051A33A01A0005E9D5 /* ofMeshFaceApparel.h */,
 				F91D69041A33A01A0005E9D5 /* ofMeshFaceApparel.cpp */,
 				F94A13CA1ABDD83000DFC7CE /* userTwitterGuestIOS.mm */,
@@ -2027,9 +2032,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* A P P A R E L */ = {
+		1D6058900D05DD3D006BFB54 /* Apparel by Normals */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "A P P A R E L" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Apparel by Normals" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -2042,9 +2047,9 @@
 			dependencies = (
 				E41D410413B3A11300A75A5D /* PBXTargetDependency */,
 			);
-			name = "A P P A R E L";
+			name = "Apparel by Normals";
 			productName = iPhone;
-			productReference = 1D6058910D05DD3D006BFB54 /* A P P A R E L.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Apparel by Normals.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2085,7 +2090,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* A P P A R E L */,
+				1D6058900D05DD3D006BFB54 /* Apparel by Normals */,
 			);
 		};
 /* End PBXProject section */
@@ -2253,6 +2258,7 @@
 				F96FBA4C19753EEF00E58A6F /* ofxOscSender.cpp in Sources */,
 				E4D8936F11527B74007E1F53 /* ofApp.mm in Sources */,
 				F90794DF1B10A91C00BC96FA /* ofxQCAR_EAGLView.mm in Sources */,
+				F9BCEF201C4C3B5100BBA84F /* apparelModLoader.cpp in Sources */,
 				F90794DE1B10A91C00BC96FA /* ofxQCAR.mm in Sources */,
 				F91D69061A33A01A0005E9D5 /* ofMeshFaceApparel.cpp in Sources */,
 				F9DE833F1B41CF3C00F5A086 /* apparelMod_kawaiopathy.cpp in Sources */,
@@ -2559,7 +2565,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "A P P A R E L" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Apparel by Normals" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,

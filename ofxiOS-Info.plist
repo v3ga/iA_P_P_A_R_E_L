@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>A P P A R E L</string>
+	<string>Apparel by Normals</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
@@ -64,6 +64,8 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2015 N O R M A L S All rights reserved</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>LetterGothicStd-Bold.otf</string>
@@ -82,8 +84,6 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2015 N O R M A L S All rights reserved</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

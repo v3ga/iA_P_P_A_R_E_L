@@ -12,4 +12,6 @@
 
 @property (nonatomic, retain) UINavigationController * navigationController;
 
+- (UIStoryboard *) grabStoryboard;
+
 @end

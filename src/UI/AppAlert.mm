@@ -11,6 +11,7 @@
 
 @implementation AppAlert 
 
+//--------------------------------------------------------------
 - (void) show
 {
 	UIAlertView *myAlert = [[UIAlertView alloc]
@@ -24,6 +25,7 @@
     [myAlert release];
 }
 
+//--------------------------------------------------------------
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 

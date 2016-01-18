@@ -28,6 +28,11 @@
                                         <state key="normal" image="glagla.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="setMood01:" destination="H3R-ef-44Y" eventType="touchDown" id="KuW-SS-6vb"/>
+                                            <action selector="unsetMood01:" destination="H3R-ef-44Y" eventType="touchUpInside" id="1M9-OD-jmn"/>
+                                            <action selector="unsetMood01:" destination="H3R-ef-44Y" eventType="touchUpOutside" id="6tg-3U-wmB"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwT-2F-fqN" userLabel="Button2">
                                         <rect key="frame" x="321" y="0.0" width="64" height="64"/>
@@ -35,6 +40,11 @@
                                         <state key="normal" image="grr_2.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="setMood02:" destination="H3R-ef-44Y" eventType="touchDown" id="Olx-ma-Odd"/>
+                                            <action selector="unsetMood02:" destination="H3R-ef-44Y" eventType="touchUpOutside" id="4TI-Nd-qwi"/>
+                                            <action selector="unsetMood02:" destination="H3R-ef-44Y" eventType="touchUpInside" id="TE0-yX-Kqq"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NT8-6t-PEx" userLabel="Button3">
                                         <rect key="frame" x="384" y="0.0" width="64" height="64"/>
@@ -45,6 +55,11 @@
                                         <state key="normal" image="sad_2.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="setMood03:" destination="H3R-ef-44Y" eventType="touchDown" id="YVq-Nn-IQK"/>
+                                            <action selector="unsetMood03:" destination="H3R-ef-44Y" eventType="touchUpInside" id="EN8-gM-MLU"/>
+                                            <action selector="unsetMood03:" destination="H3R-ef-44Y" eventType="touchUpOutside" id="kbo-kR-GBI"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkp-6i-Te3" userLabel="Button4">
                                         <rect key="frame" x="447" y="0.0" width="64" height="64"/>
@@ -108,6 +123,9 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                                         <state key="normal" title="OK" backgroundImage="button_outline.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="btnInfoOK:" destination="H3R-ef-44Y" eventType="touchDown" id="cak-gn-leY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.1002394153" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,6 +157,9 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="info" destination="tDJ-C9-MMJ" id="bVS-Zi-KoN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gfi-u9-9x9" sceneMemberID="firstResponder"/>
             </objects>
