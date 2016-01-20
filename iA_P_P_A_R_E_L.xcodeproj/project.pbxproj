@@ -148,6 +148,7 @@
 		F96FBE831978259000E58A6F /* userSocialInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F96FBE7C1978259000E58A6F /* userSocialInterface.cpp */; };
 		F96FBE851978259000E58A6F /* userSocialFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F96FBE801978259000E58A6F /* userSocialFactory.cpp */; };
 		F96FBE8C1978288A00E58A6F /* ofAppLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F96FBE8A1978288A00E58A6F /* ofAppLog.cpp */; };
+		F96FD6E01C4D82F70007E6F3 /* AppAlertNoConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = F96FD6DF1C4D82F70007E6F3 /* AppAlertNoConnection.mm */; };
 		F974AB8E1A842FF300CA6FC8 /* parameterGroupLowHigh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F974AB8C1A842FF300CA6FC8 /* parameterGroupLowHigh.cpp */; };
 		F978B2C01A40283C00A98862 /* cubic_spline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F978B28C1A40283C00A98862 /* cubic_spline.cpp */; };
 		F978B2C11A40283C00A98862 /* ofxButterfly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F978B28E1A40283C00A98862 /* ofxButterfly.cpp */; };
@@ -570,6 +571,8 @@
 		F96FBE811978259000E58A6F /* userSocialFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = userSocialFactory.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/userSocialFactory.h; sourceTree = "<group>"; };
 		F96FBE8A1978288A00E58A6F /* ofAppLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofAppLog.cpp; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/ofAppLog.cpp; sourceTree = "<group>"; };
 		F96FBE8B1978288A00E58A6F /* ofAppLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofAppLog.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/ofAppLog.h; sourceTree = "<group>"; };
+		F96FD6DE1C4D82F70007E6F3 /* AppAlertNoConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAlertNoConnection.h; sourceTree = "<group>"; };
+		F96FD6DF1C4D82F70007E6F3 /* AppAlertNoConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppAlertNoConnection.mm; sourceTree = "<group>"; };
 		F974AB8C1A842FF300CA6FC8 /* parameterGroupLowHigh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = parameterGroupLowHigh.cpp; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/parameterGroupLowHigh.cpp; sourceTree = "<group>"; };
 		F974AB8D1A842FF300CA6FC8 /* parameterGroupLowHigh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = parameterGroupLowHigh.h; path = ../../../../../of_v0.8.1_osx_release/apps/myApps/A_P_P_A_R_E_L/src/parameterGroupLowHigh.h; sourceTree = "<group>"; };
 		F978B28C1A40283C00A98862 /* cubic_spline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cubic_spline.cpp; sourceTree = "<group>"; };
@@ -2025,6 +2028,8 @@
 				F9F7CC37192E5C46006F1C91 /* MyAppDelegate.mm */,
 				F9BCEF171C4B033C00BBA84F /* AppAlert.h */,
 				F9BCEF181C4B033C00BBA84F /* AppAlert.mm */,
+				F96FD6DE1C4D82F70007E6F3 /* AppAlertNoConnection.h */,
+				F96FD6DF1C4D82F70007E6F3 /* AppAlertNoConnection.mm */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -2307,6 +2312,7 @@
 				F978B2C11A40283C00A98862 /* ofxButterfly.cpp in Sources */,
 				F932F072196D738C00C82556 /* apparelMod.mm in Sources */,
 				F91D62CA1A338E490005E9D5 /* apparelMod_sportopathy.cpp in Sources */,
+				F96FD6E01C4D82F70007E6F3 /* AppAlertNoConnection.mm in Sources */,
 				F932F0D5196D978C00C82556 /* oscDefs.cpp in Sources */,
 				F96FBCA41976DF6A00E58A6F /* ofxJSONElement.cpp in Sources */,
 				F919D6A41AC09E0E009BBEC6 /* ButtonStyle.m in Sources */,
@@ -2387,7 +2393,7 @@
 					../../../addons/ofxAssimpModelLoader/libs/assimp/include,
 				);
 				INFOPLIST_FILE = "ofxiOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/julien/Dev/C/of_v20150518_ios_release/addons/ofxQCAR/libs/qcar/lib/arm,
@@ -2444,7 +2450,7 @@
 					../../../addons/ofxAssimpModelLoader/libs/assimp/include,
 				);
 				INFOPLIST_FILE = "ofxiOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/julien/Dev/C/of_v20150518_ios_release/addons/ofxQCAR/libs/qcar/lib/arm,

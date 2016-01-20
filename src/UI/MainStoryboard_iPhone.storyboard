@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
@@ -183,8 +182,11 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l58-ks-l3a" userLabel="TopBar">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2G-t5-qnB" userLabel="ButtonBack" customClass="ButtonStyle">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2G-t5-qnB" userLabel="ButtonBack" customClass="ButtonStyle">
                                         <rect key="frame" x="40" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="oez-mq-jWh"/>
+                                        </constraints>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <state key="normal" title="&lt;">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -196,11 +198,16 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                                 </subviews>
                                 <color key="backgroundColor" white="0.1002394153" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.1002394153" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="k2G-t5-qnB" firstAttribute="top" secondItem="l58-ks-l3a" secondAttribute="top" id="ZbC-wS-sym"/>
+                                    <constraint firstAttribute="bottom" secondItem="k2G-t5-qnB" secondAttribute="bottom" id="uyb-hk-NiJ"/>
+                                    <constraint firstItem="k2G-t5-qnB" firstAttribute="leading" secondItem="l58-ks-l3a" secondAttribute="leading" constant="40" id="zIS-Pk-6nU"/>
+                                </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="zQa-vM-v2J">
-                                <rect key="frame" x="0.0" y="63" width="320" height="505"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="zQa-vM-v2J">
+                                <rect key="frame" x="0.0" y="63" width="320" height="506"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uib-Bk-yxe" userLabel="ButtonAr_on" customClass="ButtonStyle">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uib-Bk-yxe" userLabel="ButtonAr_on" customClass="ButtonStyle">
                                         <rect key="frame" x="128" y="0.0" width="64" height="64"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -211,7 +218,7 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                                             <action selector="setARModeON:" destination="6h4-bR-DDn" eventType="touchDown" id="rBf-6V-Gu4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMl-lf-Mhe" userLabel="ButtonAr_off" customClass="ButtonStyle">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMl-lf-Mhe" userLabel="ButtonAr_off" customClass="ButtonStyle">
                                         <rect key="frame" x="191" y="0.0" width="64" height="64"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -271,7 +278,7 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3S-6o-SRa" userLabel="ButtonTemp3" customClass="ButtonStyle">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3S-6o-SRa" userLabel="ButtonTemp3" customClass="ButtonStyle">
                                         <rect key="frame" x="191" y="315" width="64" height="64"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -282,7 +289,7 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                                             <action selector="selectTemplate03:" destination="6h4-bR-DDn" eventType="touchDown" id="Unk-Rf-NJl"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLw-6Z-ov1" userLabel="ButtonTemp2" customClass="ButtonStyle">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLw-6Z-ov1" userLabel="ButtonTemp2" customClass="ButtonStyle">
                                         <rect key="frame" x="128" y="315" width="64" height="64"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -293,7 +300,7 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                                             <action selector="selectTemplate02:" destination="6h4-bR-DDn" eventType="touchDown" id="juq-Ph-k4K"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSt-Bh-hUI" userLabel="ButtonTemp1" customClass="ButtonStyle">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSt-Bh-hUI" userLabel="ButtonTemp1" customClass="ButtonStyle">
                                         <rect key="frame" x="65" y="315" width="64" height="64"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -304,7 +311,7 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                                             <action selector="selectTemplate01:" destination="6h4-bR-DDn" eventType="touchDown" id="Fku-Ko-Mgy"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g79-5q-GFe" userLabel="ButtonAbout" customClass="ButtonStyle">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g79-5q-GFe" userLabel="ButtonAbout" customClass="ButtonStyle">
                                         <rect key="frame" x="65" y="441" width="190" height="64"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" none="YES" link="YES"/>
@@ -316,7 +323,7 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                                             <segue destination="urV-xh-pDQ" kind="modal" modalTransitionStyle="coverVertical" id="lXk-tF-U8b"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvG-f7-D1N" userLabel="ButtonTwitter_connect" customClass="ButtonStyle">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvG-f7-D1N" userLabel="ButtonTwitter_connect" customClass="ButtonStyle">
                                         <rect key="frame" x="65" y="188" width="190" height="64"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -485,7 +492,7 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.1002394153" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.4322987432" green="0.4322987432" blue="0.4322987432" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="l58-ks-l3a" firstAttribute="leading" secondItem="2i5-7W-dqP" secondAttribute="leading" id="3i0-lo-f8s"/>
@@ -528,9 +535,12 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JH2-vb-Epm" userLabel="TopBar">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVC-fo-4Lj" userLabel="ButtonBack" customClass="ButtonStyle">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVC-fo-4Lj" userLabel="ButtonBack" customClass="ButtonStyle">
                                         <rect key="frame" x="40" y="0.0" width="64" height="64"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="5iR-NV-mmz"/>
+                                        </constraints>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="&lt;">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -541,47 +551,64 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                                 </subviews>
                                 <color key="backgroundColor" white="0.1002394153" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.1002394153" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="zVC-fo-4Lj" firstAttribute="top" secondItem="JH2-vb-Epm" secondAttribute="top" id="4wG-vJ-dH3"/>
+                                    <constraint firstItem="zVC-fo-4Lj" firstAttribute="leading" secondItem="JH2-vb-Epm" secondAttribute="leading" constant="40" id="W0z-Mg-A1c"/>
+                                    <constraint firstAttribute="bottom" secondItem="zVC-fo-4Lj" secondAttribute="bottom" id="lIS-zH-mRE"/>
+                                </constraints>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="24" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="190" translatesAutoresizingMaskIntoConstraints="NO" id="Nud-gE-8X8" customClass="TextStyle">
-                                <rect key="frame" x="65" y="63" width="190" height="435"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">A P P A R E L 1.0 is an experiment in future fashion based on the N O R M A L S universe.
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="E1R-6C-Mvd">
+                                <rect key="frame" x="0.0" y="63" width="320" height="505"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="24" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="190" translatesAutoresizingMaskIntoConstraints="NO" id="Nud-gE-8X8" customClass="TextStyle">
+                                        <rect key="frame" x="65" y="35" width="190" height="435"/>
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <string key="content">A P P A R E L 1.0 is an experiment in future fashion based on the N O R M A L S universe.
 
 All code by v3ga.
 
 Made with the generous support of ‘Le Centre National de la Cinématographie’—DICRéAM between 2014 and 2015.
 </string>
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="13" name="LetterGothicStd"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineHeightMultiple="1.5"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </label>
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="13" name="LetterGothicStd"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineHeightMultiple="1.5"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.1002394153" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.1038936491935484" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Nud-gE-8X8" firstAttribute="centerY" secondItem="E1R-6C-Mvd" secondAttribute="centerY" id="4v1-2E-dIh"/>
+                                    <constraint firstItem="Nud-gE-8X8" firstAttribute="top" secondItem="E1R-6C-Mvd" secondAttribute="top" constant="35" id="ZEd-Qd-obj"/>
+                                    <constraint firstAttribute="bottom" secondItem="Nud-gE-8X8" secondAttribute="bottom" constant="35" id="eZM-Y1-xnm"/>
+                                    <constraint firstItem="Nud-gE-8X8" firstAttribute="centerX" secondItem="E1R-6C-Mvd" secondAttribute="centerX" id="kxq-us-HJr"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nud-gE-8X8" secondAttribute="trailing" constant="65" id="zz0-jB-aYp"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.1002394153" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.1002394153" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Nud-gE-8X8" firstAttribute="top" secondItem="Ngi-Kc-EUf" secondAttribute="bottom" constant="43" id="2Rb-Hu-ekd"/>
-                            <constraint firstItem="Nud-gE-8X8" firstAttribute="centerX" secondItem="JH2-vb-Epm" secondAttribute="centerX" id="61I-LV-VCF"/>
-                            <constraint firstItem="Nud-gE-8X8" firstAttribute="leading" secondItem="ju5-nX-DSN" secondAttribute="leading" constant="65" id="AAX-pb-lwb"/>
-                            <constraint firstItem="MJU-d7-wY8" firstAttribute="top" secondItem="JH2-vb-Epm" secondAttribute="bottom" constant="504" id="F5d-H0-cBO"/>
-                            <constraint firstItem="MJU-d7-wY8" firstAttribute="top" secondItem="Nud-gE-8X8" secondAttribute="bottom" constant="70" id="GgE-ta-cdb"/>
-                            <constraint firstAttribute="trailing" secondItem="JH2-vb-Epm" secondAttribute="trailing" id="HfQ-N5-cyu"/>
-                            <constraint firstItem="JH2-vb-Epm" firstAttribute="top" secondItem="ju5-nX-DSN" secondAttribute="top" id="SAA-GK-lzV"/>
-                            <constraint firstItem="JH2-vb-Epm" firstAttribute="leading" secondItem="ju5-nX-DSN" secondAttribute="leading" id="U1v-4P-3bL"/>
-                            <constraint firstAttribute="centerX" secondItem="Nud-gE-8X8" secondAttribute="centerX" id="fy8-oo-aZh"/>
-                            <constraint firstAttribute="trailing" secondItem="Nud-gE-8X8" secondAttribute="trailing" constant="65" id="h6S-02-kkO"/>
+                            <constraint firstItem="JH2-vb-Epm" firstAttribute="leading" secondItem="E1R-6C-Mvd" secondAttribute="leading" id="R6q-kd-TSp"/>
+                            <constraint firstItem="JH2-vb-Epm" firstAttribute="trailing" secondItem="E1R-6C-Mvd" secondAttribute="trailing" id="XIG-Gs-SCs"/>
+                            <constraint firstItem="JH2-vb-Epm" firstAttribute="top" secondItem="ju5-nX-DSN" secondAttribute="top" id="gkf-ag-1Ub"/>
+                            <constraint firstItem="MJU-d7-wY8" firstAttribute="top" secondItem="JH2-vb-Epm" secondAttribute="bottom" constant="504" id="mo4-xH-imS"/>
+                            <constraint firstItem="E1R-6C-Mvd" firstAttribute="bottom" secondItem="MJU-d7-wY8" secondAttribute="top" id="pUt-d2-QsM"/>
+                            <constraint firstItem="E1R-6C-Mvd" firstAttribute="top" secondItem="Ngi-Kc-EUf" secondAttribute="bottom" constant="43" id="qdg-7P-OCB"/>
+                            <constraint firstAttribute="trailing" secondItem="JH2-vb-Epm" secondAttribute="trailing" id="rUb-Y5-AIR"/>
+                            <constraint firstItem="E1R-6C-Mvd" firstAttribute="leading" secondItem="ju5-nX-DSN" secondAttribute="leading" id="z9i-cq-X3S"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g4N-NG-z9I" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="VVq-d5-Y4e" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-692" y="-334"/>
+            <point key="canvasLocation" x="-723" y="-334"/>
         </scene>
     </scenes>
     <resources>

@@ -15,8 +15,8 @@
 - (void) show
 {
 	UIAlertView *myAlert = [[UIAlertView alloc]
-    	                        initWithTitle:@"Switch AR off"
-        	                    message:@"No target has been detected. Try the app on a demo target at http://apparel.normalfutu.re or switch to non-AR mode."
+    	                        initWithTitle:@"Switch to Non-AR Mode"
+        	                    message:@"No target has been detected. Try the app on a demo target at apparel.normalfutu.re or switch to AR off."
             	                delegate:self
                 	            cancelButtonTitle:@"Cancel"
                     	        otherButtonTitles:@"Switch", nil];
@@ -43,6 +43,8 @@
 			pApp->onAlertInfoSwitch();
 		}
 	}
+	
+	[self release];
 
 }
 

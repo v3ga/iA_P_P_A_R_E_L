@@ -77,6 +77,8 @@ class ofApp : public ofxQCAR_App {
 		// USER TEMPLATES
 		user				m_userTemplate[3];
 		int					m_templateIndexSelected;
+ 
+		user				m_userEmpty;
 
 		void				setupTemplates				();
 		int					getTemplateIndexSelected	(){return m_templateIndexSelected;}

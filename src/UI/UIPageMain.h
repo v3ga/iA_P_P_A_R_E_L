@@ -37,6 +37,8 @@ class UIPageMain : public UIPage
 		apparelModel			m_apparelModel;
 		apparelModel*			mp_apparelModel;
 		apparelModManager*		mp_apparelModManager;
+ 
+		ofMesh					m_meshExtra;
 
 		ofFbo					m_sceneBuffer;
 		float					m_sceneBufferScale; // relative to screen

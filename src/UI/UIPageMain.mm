@@ -12,6 +12,8 @@
 #include "globals.h"
 #include "ofApparel.h"
 #include "apparelMod.h"
+#include "ofxAssimpModelLoader.h"
+
 
 //--------------------------------------------------------------
 UIPageMain::UIPageMain(string id, UIManager* pManager) : UIPage(id, pManager)
@@ -37,15 +39,21 @@ void UIPageMain::setup()
 	else{
 		OFAPPLOG->println( "- ERROR loaded dither shaders" );
 	}
-/*	if ( m_shaderFlat.load("shaders/flat.vert", "shaders/flat.frag") )
-	{
-		OFAPPLOG->println( "- OK loaded flat shaders" );
-	}
-	else{
-		OFAPPLOG->println( "- ERROR loaded flat shaders" );
-	}
-*/
 
+	ofxAssimpModelLoader loader;
+ 	bool bLoaded = loader.loadModel("3d/AR_model_23p_BASE.3ds", false);
+
+	if (bLoaded)
+	{
+		m_meshExtra = loader.getMesh(0);
+		m_meshExtra.mergeDuplicateVertices();
+		
+		m_meshExtra.setMode(OF_PRIMITIVE_TRIANGLES);
+		m_meshExtra.enableIndices();
+
+	   	OFAPPLOG->println("- loaded 3d/AR_model_23p_BASE.3ds");
+	}
+	
 	OFAPPLOG->end();
 }
 
@@ -63,7 +71,7 @@ void UIPageMain::update(float dt)
 
 
 	// --------------------------------
-	apparelModel* pModel = mp_apparelModManager->getModelLastInChain();
+	apparelModel* pModel = GLOBALS->getUser() ? mp_apparelModManager->getModelLastInChain() : GLOBALS->getModel();
 	if (pModel)
 	{
 
@@ -73,7 +81,10 @@ void UIPageMain::update(float dt)
 		m_meshFlat.enableColors();
 		m_meshFlat.setMode(OF_PRIMITIVE_TRIANGLES);
 	
+	
 		vector<ofMeshFaceApparel*>& meshFacesRef = pModel->getMeshFacesRef();
+
+
 		ofMeshFaceApparel* pFace;
 		ofFloatColor vColor;
 		float d=0.0f;
@@ -144,6 +155,7 @@ void UIPageMain::draw()
 				ofxQCAR_Marker marker = qcar->getMarker();
 
 				ofEnableDepthTest();
+				ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 				ofSetColor(ofColor::white);
 				ofSetLineWidth(1);
 			 
@@ -183,8 +195,6 @@ void UIPageMain::draw()
 			ofEnableDepthTest();
 			ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 
-
-
 			drawModel();
 			m_cam.end();
 
@@ -196,6 +206,9 @@ void UIPageMain::draw()
 				m_sceneBuffer.end();
 				drawDither();
 			}
+			
+			m_cam.begin();
+			m_cam.end();
 		}
 
 	}
@@ -293,11 +306,35 @@ void UIPageMain::drawModel(string markerName)
     	ofMultMatrix(mp_apparelModel->getModelMatrix());
 		glDepthMask(true);
 
+		if (m_bUseVuforia)
+		{
+			glEnable(GL_CULL_FACE);
+			glCullFace(GL_BACK);
+			glFrontFace(GL_CW);
+		}
+	
+		if (!m_bUseVuforia && !mp_apparelModManager->isBusy())
+		{
+			ofSetColor(0,255);
+			glEnable(GL_POLYGON_OFFSET_FILL);
+		   	glPolygonOffset(1,1);
+			m_meshExtra.drawFaces();
+			glDisable(GL_POLYGON_OFFSET_FILL);
+		}
+	
 		ofSetColor(255,255);
 		m_meshFlat.draw();
-
-		mp_apparelModManager->drawModsExtra();
-		mp_apparelModManager->drawLoader();
+	
+		if (m_bUseVuforia)
+		{
+			glDisable(GL_CULL_FACE);
+		}
+	
+		if (GLOBALS->getUser())
+		{
+			mp_apparelModManager->drawModsExtra();
+			mp_apparelModManager->drawLoader();
+		}
 
     	ofPopMatrix();
     	ofPopMatrix();

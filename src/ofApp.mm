@@ -287,8 +287,7 @@ void ofApp::setupUser()
 	}
 	else
 	{
-//		setARMode(false);
-		changeUser( "template01", true);
+//		changeUser( "template01", true);
 	}
 }
 
@@ -311,7 +310,7 @@ void ofApp::update()
 		{
 			AppAlert* pAlert = [[AppAlert alloc] init];
 			[pAlert show];
-		
+
 	 		cancelTimerForInfoAlert();
 		}
 	}
@@ -407,8 +406,9 @@ void ofApp::gotMemoryWarning(){
 }
 
 //--------------------------------------------------------------
-void ofApp::deviceOrientationChanged(int newOrientation){
-
+void ofApp::deviceOrientationChanged(int newOrientation)
+{
+	
 }
 
 
@@ -433,6 +433,8 @@ void ofApp::changeUser(string userId, bool bTemplate)
 	}
 	else
 	{
+
+
 		m_user.deconnect();
 
 		m_user.setId(userId);
@@ -447,6 +449,7 @@ void ofApp::changeUser(string userId, bool bTemplate)
 
 		mp_userCurrent = &m_user;
 		GLOBALS->setUser(mp_userCurrent);
+		GLOBALS->mp_modSelfopathy->setImage( mp_userCurrent->getServicePropertyImage("twitter_image_object") );
 	}
 
 
@@ -497,16 +500,25 @@ void ofApp::onTemplateSelected(int templateIndex)
 user* ofApp::getUserTemplate(string id)
 {
 	user* pUser = 0;
-	for (int i=0;i<3;i++)
+	if (id == "__empty__")
 	{
-		OFAPPLOG->println(ofToString(i)+" — "+m_userTemplate[i].getId()+" / "+id);
-		if (m_userTemplate[i].getId() == id)
+		pUser = &m_userEmpty;
+	}
+	else
+	{
+		for (int i=0;i<3;i++)
 		{
-			pUser = &m_userTemplate[i];
-			break;
+			OFAPPLOG->println(ofToString(i)+" — "+m_userTemplate[i].getId()+" / "+id);
+			if (m_userTemplate[i].getId() == id)
+			{
+				pUser = &m_userTemplate[i];
+				break;
+			}
 		}
 	}
+	
 	return pUser;
+
 }
 
 //--------------------------------------------------------------

@@ -136,6 +136,7 @@ void userTwitterGuestIOS::retrieveInfo()
 }
 
 //--------------------------------------------------------------
+
 void userTwitterGuestIOS::doWork()
 {
 	OFAPPLOG->begin("userTwitterGuestIOS::doWork()");
@@ -285,10 +286,11 @@ void userTwitterGuestIOS::analyzeData()
 		   // Words
 		   vector<string> words = ofSplitString(tweetText, " ",true,true); // source, delimiter,ignoreEmpty,trim
 
-		   OFAPPLOG->println("  - "+ofToString(i)+". ["+ ofToString(tweetId) +"] - "+tweetText);
+		   OFAPPLOG->begin("- "+ofToString(i)+". ["+ ofToString(tweetId) +"] - "+tweetText);
 
 		   mp_user->onNewWords( words );
 
+			OFAPPLOG->end();
 
 			if (tweetId2 > m_lastTweetId){
 				m_lastTweetId = tweetId2;

@@ -12,6 +12,7 @@
 #include "user.h"
 #include "userTwitterGuestIOS.h"
 #include "Globals.h"
+#import "AppAlertNoConnection.h"
 
 
 //--------------------------------------------------------------
@@ -49,9 +50,15 @@
 	  [[Twitter sharedInstance] logInWithCompletion:^(TWTRSession *session, NSError *error)
 	  {
 		 // http://stackoverflow.com/questions/29120055/how-to-get-profile-url-of-the-logged-in-user-with-twitter-kit-fabric-ios
-		 if (![error isEqual:nil])
+		 if (session)
 		 {
 			 [self changeUserAndRetrieveInfoUser:session];
+		 }
+		 else
+		 {
+//			   AppAlertNoConnection
+//				AppAlertNoConnection* pAlert = [[AppAlertNoConnection alloc] init];
+//				[pAlert show];
 		 }
 	   
 		 [self updateBtnTwitter];
