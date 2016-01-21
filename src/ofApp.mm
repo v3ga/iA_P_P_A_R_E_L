@@ -217,19 +217,6 @@ void ofApp::setupTemplates()
 		pUser->setTemplate(true);
 		pUser->setModManager(&m_apparelModManager);
 		pUser->loadConfiguration();
-		
-/*
-		//string pathResourcesDataSql = pUser->getPathResources("data.sql");
-		//string pathDocumentDataSql 	= pUser->getPathDocument("data.sql");
-
-		//if (ofFile::doesFileExist(pathResourcesDataSql,false))
-		{
-		   if (ofFile::copyFromTo(pathResourcesDataSql, pathDocumentDataSql, false, true))
-		   {
-			   OFAPPLOG->println("- OK copy done FROM\n"+pathResourcesDataSql+"\nTO\n"+pathDocumentDataSql);
-		   }
-		}
-*/
 		pUser->connect(); // connect to data.sql
 
 	}
@@ -427,7 +414,8 @@ void ofApp::changeUser(string userId, bool bTemplate)
 	{
 		mp_userCurrent = getUserTemplate( userId );
 		GLOBALS->setUser(mp_userCurrent);
-		GLOBALS->mp_modSelfopathy->setImage( mp_userCurrent->getServicePropertyImage("twitter_image_object") );
+		if (GLOBALS->mp_modSelfopathy)
+			GLOBALS->mp_modSelfopathy->setImage( mp_userCurrent->getServicePropertyImage("twitter_image_object") );
 
 		m_apparelModManager.countUserWords(mp_userCurrent);
 	}
@@ -449,7 +437,8 @@ void ofApp::changeUser(string userId, bool bTemplate)
 
 		mp_userCurrent = &m_user;
 		GLOBALS->setUser(mp_userCurrent);
-		GLOBALS->mp_modSelfopathy->setImage( mp_userCurrent->getServicePropertyImage("twitter_image_object") );
+		if (GLOBALS->mp_modSelfopathy)
+			GLOBALS->mp_modSelfopathy->setImage( mp_userCurrent->getServicePropertyImage("twitter_image_object") );
 	}
 
 
