@@ -34,7 +34,7 @@
 {
 	if (!self.m_bViewDidLoad)
 	{
-	    NSLog(@"ViewController_ASide view did load");
+	//    //NSLog(@"ViewController_ASide view did load");
     	[super viewDidLoad];
     	// Do any additional setup after loading the view.
 		ofApp* pApp = (ofApp*) ofGetAppPtr();
@@ -64,7 +64,7 @@
 {
     [super loadView];
     
-    NSLog(@"ViewController_ASide view loaded");
+    // //NSLog(@"ViewController_ASide view loaded");
 
 	if (ofGetAppPtr() == 0)
 	{
@@ -95,7 +95,7 @@
 //--------------------------------------------------------------
 -(IBAction)setMood01:(id)sender
 {
-    NSLog(@"ViewController_ASide setMood01");
+    //NSLog(@"ViewController_ASide setMood01");
 	ofApp* pApp = (ofApp*) ofGetAppPtr();
 	if (pApp)
 	{
@@ -106,7 +106,7 @@
 //--------------------------------------------------------------
 - (IBAction)unsetMood01:(id)sender
 {
-    NSLog(@"ViewController_ASide unsetMood01");
+    ////NSLog(@"ViewController_ASide unsetMood01");
 	ofApp* pApp = (ofApp*) ofGetAppPtr();
 	if (pApp)
 	{
@@ -117,7 +117,7 @@
 //--------------------------------------------------------------
 -(IBAction)setMood02:(id)sender
 {
-    NSLog(@"ViewController_ASide setMood02");
+    //NSLog(@"ViewController_ASide setMood02");
 	ofApp* pApp = (ofApp*) ofGetAppPtr();
 	if (pApp)
 	{
@@ -128,7 +128,7 @@
 //--------------------------------------------------------------
 - (IBAction)unsetMood02:(id)sender
 {
-    NSLog(@"ViewController_ASide unsetMood02");
+    //NSLog(@"ViewController_ASide unsetMood02");
 	ofApp* pApp = (ofApp*) ofGetAppPtr();
 	if (pApp)
 	{
@@ -140,7 +140,7 @@
 //--------------------------------------------------------------
 -(IBAction)setMood03:(id)sender
 {
-    NSLog(@"ViewController_ASide setMood03");
+    //NSLog(@"ViewController_ASide setMood03");
 	ofApp* pApp = (ofApp*) ofGetAppPtr();
 	if (pApp)
 	{
@@ -150,7 +150,7 @@
 
 //--------------------------------------------------------------
 - (IBAction)unsetMood03:(id)sender {
-    NSLog(@"ViewController_ASide unsetMood03");
+    //NSLog(@"ViewController_ASide unsetMood03");
 	ofApp* pApp = (ofApp*) ofGetAppPtr();
 	if (pApp)
 	{

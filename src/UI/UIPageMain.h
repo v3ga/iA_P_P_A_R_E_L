@@ -29,7 +29,8 @@ class UIPageMain : public UIPage
 		void					drawInfos			();
  
 		void					setQCARInit			(bool is=true){m_bQCARInit=is;}
-		bool					hasFoundMarker		(){return m_bQCARHasFoundMarker;}
+		bool					hasFoundOneMarker	(){return m_bQCARHasFoundOneMarker;}
+		bool					hasMarker			();
 
 	private:
 		bool					m_bUseVuforia;
@@ -51,7 +52,7 @@ class UIPageMain : public UIPage
 		ofMatrix4x4				m_normalMatrix;
 
 		bool					m_bQCARInit;
-		bool					m_bQCARHasFoundMarker;
+		bool					m_bQCARHasFoundOneMarker;
 
 
 		void					allocateSceneBuffer	();

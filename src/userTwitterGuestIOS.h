@@ -35,10 +35,10 @@ class userTwitterGuestIOS : public userSocialInterface, public ofThread
  
 			ofImage*		getImageMini		(){return &m_imageMini;}
  
-			void			setFollowersFollowing(int followers, int following);
-			void			parseUserInfo(string json);
+			void			setFollowersFollowing	(int followers, int following);
+			void			parseUserInfo			(string json);
  
-			void			threadedFunction	();
+			void			threadedFunction		();
 
 	protected:
 			string					m_tweetsLatest;
@@ -61,4 +61,7 @@ class userTwitterGuestIOS : public userSocialInterface, public ofThread
  
 			bool					m_bDoLoadImage;
 			bool					m_bImageLoaded;
+ 
+			void					updateImageLoading	();
+			void					onImageLoaded		();
 };

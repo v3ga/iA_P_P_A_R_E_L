@@ -13,6 +13,7 @@
 #define USE_VUFORIA				true
 #define LOG_DEBUG				false
 #define USE_OSC					false
+#define APPAREL_RELEASE			true
 
 //--------------------------------------------------------------
 static const string kLicenseKey = "AYJLA4X/////AAAAAQ7qnxRQs0iPmiGsXnjUeoVBg6LZewn8RdmNIDATnu/qc3Y9MYazpU6Gig1at3yF98S5Od5Wu4VZLiwhfvIv4PDYSfNCfphxQOwGTf7ifee69o2xBhwmGn5yNXddYoQjqdrEhNpj3M7WlBjMujiU2KDk4yucMr4hfc0+wsivYM9Vva90oJ5IK1wBzWa7P2s/t8Ags4Wzjlae8asQVb6406J0OkHwiNhneVdLTBNRERGJ0JLWbQMfHpnSRHGZaN33dqs1pLsxNSHMPAPhEqUzCav55eo5GGf/iZdO+EcK6qjnO2ySSkz7Cw26vezTSx5fLMa2ZlaNJsK92IBP00heA/Hlf27pDPA5KONuMmrEjV+Y";
@@ -75,6 +76,14 @@ void ofApp::setup()
 	if (setupOnce == true) return;
 	setupOnce = true;
 
+	ofSetLogLevel(OF_LOG_NOTICE);
+
+	#if APPAREL_RELEASE
+	ofSetLogLevel(OF_LOG_SILENT);
+	OFAPPLOG->disable();
+	#endif
+
+
 	OFAPPLOG->begin("ofApp::setup()");
 
 	mp_pageMain 				= 0;
@@ -90,7 +99,6 @@ void ofApp::setup()
 
 	m_bQCARInitDone				= false;
 	
-	ofSetLogLevel(OF_LOG_NOTICE);
 
 	// DEBUG STUFF
 	#if LOG_DEBUG
@@ -272,10 +280,13 @@ void ofApp::setupUser()
 		if (pTwitterIOS)
 			pTwitterIOS->retrieveInfo();
 	}
+/*
 	else
 	{
 //		changeUser( "template01", true);
 	}
+*/
+
 }
 
 //--------------------------------------------------------------
@@ -290,7 +301,7 @@ void ofApp::update()
 		setupUser();
 	}
 
-	if (m_bQCARInitDone && m_bWillShowInfoAlert && m_bARMode && !mp_pageMain->hasFoundMarker())
+	if (m_bQCARInitDone && m_bWillShowInfoAlert && m_bARMode && !mp_pageMain->hasFoundOneMarker())
 	{
 		m_timeShowAlert -= dt;
 		if (m_timeShowAlert <= 0.0f)
@@ -302,12 +313,16 @@ void ofApp::update()
 		}
 	}
 
+	// OSC
 	#if USE_OSC
 	m_oscReceiver.update();
 	#endif
-	
+
+	// USER
 	if (mp_userCurrent)
 		mp_userCurrent->update(dt);
+
+	// PAGE : mods, etc..
 	if (mp_pageMain)
 		mp_pageMain->update(dt);
  }
@@ -324,17 +339,20 @@ void ofApp::draw()
 void ofApp::exit()
 {
 	OFAPPLOG->begin("ofApp::exit()");
-	
+ 
+	// Users
 	if (mp_userCurrent)
 		mp_userCurrent->saveServicesData();
  
- 
+ 	// Mods
 	m_apparelModManager.saveParameters();
  
+ 	// QCAR
 	ofxQCAR * qcar = ofxQCAR::getInstance();
 	if (qcar)
 		qcar->exit();
 
+	// SOUND
 	m_soundInput.stop();
 	
 	OFAPPLOG->end();
@@ -421,6 +439,12 @@ void ofApp::changeUser(string userId, bool bTemplate)
 	}
 	else
 	{
+		// Reset template index
+		m_templateIndexSelected = -1;
+	
+		// Reset selfopathy
+		if (GLOBALS->mp_modSelfopathy)
+			GLOBALS->mp_modSelfopathy->setImage( 0 );
 
 
 		m_user.deconnect();
@@ -437,8 +461,6 @@ void ofApp::changeUser(string userId, bool bTemplate)
 
 		mp_userCurrent = &m_user;
 		GLOBALS->setUser(mp_userCurrent);
-		if (GLOBALS->mp_modSelfopathy)
-			GLOBALS->mp_modSelfopathy->setImage( mp_userCurrent->getServicePropertyImage("twitter_image_object") );
 	}
 
 
@@ -455,6 +477,13 @@ void ofApp::onMoodSelected(int moodIndex)
 	if (moodIndex == 0)		m_apparelModManager.selectMood("Sad");
 	if (moodIndex == 1)		m_apparelModManager.selectMood("Noisopathy");
 	if (moodIndex == 2)		m_apparelModManager.selectMood("Porcupinopathy");
+
+	if (m_bQCARInitDone && getARMode() && !mp_pageMain->hasMarker())
+	{
+		AppAlert* pAlert = [[AppAlert alloc] init];
+		[pAlert show];
+		cancelTimerForInfoAlert();
+	}
 
 	OFAPPLOG->end();
 }
@@ -489,26 +518,27 @@ void ofApp::onTemplateSelected(int templateIndex)
 user* ofApp::getUserTemplate(string id)
 {
 	user* pUser = 0;
-	if (id == "__empty__")
+	for (int i=0;i<3;i++)
 	{
-		pUser = &m_userEmpty;
-	}
-	else
-	{
-		for (int i=0;i<3;i++)
+		OFAPPLOG->println(ofToString(i)+" — "+m_userTemplate[i].getId()+" / "+id);
+		if (m_userTemplate[i].getId() == id)
 		{
-			OFAPPLOG->println(ofToString(i)+" — "+m_userTemplate[i].getId()+" / "+id);
-			if (m_userTemplate[i].getId() == id)
-			{
-				pUser = &m_userTemplate[i];
-				break;
-			}
+			pUser = &m_userTemplate[i];
+			break;
 		}
 	}
 	
 	return pUser;
 
 }
+
+//--------------------------------------------------------------
+bool ofApp::isUserTemplate()
+{
+	if (mp_userCurrent && mp_userCurrent->getTemplate()) return true;
+	return false;
+}
+
 
 //--------------------------------------------------------------
 void ofApp::onAlertInfoSwitch()

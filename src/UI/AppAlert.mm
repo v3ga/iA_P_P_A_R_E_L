@@ -31,7 +31,7 @@
 
 	if (buttonIndex == 0)
 	{
-        NSLog(@"user pressed Cancel");
+        // NSLog(@"user pressed Cancel");
     }
     else
 	{

@@ -17,7 +17,8 @@
 
 
 //----------------------------------------
-int64_t ofToInt64(const string& intString) {
+int64_t ofToInt64(const string& intString)
+{
 	int64_t x = 0;
 	istringstream cur(intString);
 	cur >> x;
@@ -65,12 +66,12 @@ void userTwitterGuestIOS::retrieveInfo()
 
 	if (session != nil && m_bSetup == false)
 	{
-		OFAPPLOG->begin(" - ok session there & not set up");
+		OFAPPLOG->println(" - ok session there & not set up");
 		// NSLog(@"- user id = %@", [session userID]);
 	  /* Get user info */
 	  [[[Twitter sharedInstance] APIClient] loadUserWithID:[session userID] completion:^(TWTRUser *userTwitter, NSError *error)
 	  {
-		  OFAPPLOG->begin(" - loadUserWithID called");
+		  OFAPPLOG->println(" - loadUserWithID called");
 		 if (![error isEqual:nil] && ![userTwitter isEqual:nil])
 		 {
 			// Get infos
@@ -110,8 +111,8 @@ void userTwitterGuestIOS::retrieveInfo()
 						  {
 							  std::string json([nsJson UTF8String]);
 							  parseUserInfo(json);
-							  m_bSetup = true;
-							  m_bDoLoadImage = true;
+							  // m_bSetup = true; // ONLY if image is loaded
+							  m_bDoLoadImage = true; // load image in update
 						  }
 					   }
 					   else
@@ -213,31 +214,7 @@ void userTwitterGuestIOS::doWork()
 //--------------------------------------------------------------
 void userTwitterGuestIOS::update(float dt)
 {
-	if (!m_bImageLoaded && m_bDoLoadImage && m_imageMiniUrl!="" && mp_imageLoader==0)
-	{
-		OFAPPLOG->println("userTwitterGuestIOS::loading image '"+m_imageMiniUrl+"'");
-		mp_imageLoader = new ofxThreadedImageLoader();
-		mp_imageLoader->loadFromURL(m_imageMini, m_imageMiniUrl);
-
-		m_bDoLoadImage = false;
-	}
-	
-	if (mp_imageLoader)
-	{
-		if (m_imageMini.isAllocated() && m_imageMini.getWidth()>0)
-		{
-			OFAPPLOG->println("userTwitterGuestIOS::loaded image '"+m_imageMiniUrl+"'");
-			delete mp_imageLoader;
-			mp_imageLoader=0;
-			m_bImageLoaded = true;
-			
-			if (GLOBALS->mp_modSelfopathy)
-				GLOBALS->mp_modSelfopathy->setImage(&m_imageMini);
-
-		}
-	}
-
-
+	updateImageLoading();
 
 	if (m_bDoAnalyzeData)
 	{
@@ -251,6 +228,76 @@ void userTwitterGuestIOS::update(float dt)
 		OFAPPLOG->end();
 	}
 }
+
+//--------------------------------------------------------------
+void userTwitterGuestIOS::updateImageLoading()
+{
+	if (!m_bImageLoaded && m_bDoLoadImage && m_imageMiniUrl!="" && mp_imageLoader==0)
+	{
+		OFAPPLOG->println("userTwitterGuestIOS::loading image '"+m_imageMiniUrl+"'");
+		
+		// Try loading cache image
+		string pathImage = mp_user->getPathDocument("twitter_image.jpg");
+		ofFile fImage( pathImage );
+		bool bImageLoaded = false;
+		if (fImage.exists())
+		{
+			OFAPPLOG->println("- cache file exists @ '"+pathImage+"', loading it");
+
+			bImageLoaded = m_imageMini.load( pathImage );
+			if (bImageLoaded) onImageLoaded();
+		}
+
+		OFAPPLOG->println("- unable to load image in cache, trying from URL (async)");
+		
+		// If not success, try loading online with m_imageMini
+		if (bImageLoaded == false)
+		{
+			mp_imageLoader = new ofxThreadedImageLoader();
+			mp_imageLoader->loadFromURL(m_imageMini, m_imageMiniUrl);
+		}
+
+		m_bDoLoadImage = false;
+	}
+	
+	if (mp_imageLoader)
+	{
+		if (m_imageMini.isAllocated() && m_imageMini.getWidth()>0)
+		{
+			OFAPPLOG->println("userTwitterGuestIOS::loaded image '"+m_imageMiniUrl+"'");
+
+			// Remove image loader
+			delete mp_imageLoader;
+			mp_imageLoader=0;
+
+			// Image -> cache
+			string pathImage = mp_user->getPathDocument("twitter_image.jpg");
+			m_imageMini.save( pathImage );
+			OFAPPLOG->println("- saving into cache @'"+pathImage+"'");
+
+			// We are done now
+			onImageLoaded();
+		}
+	}
+}
+
+//--------------------------------------------------------------
+void userTwitterGuestIOS::onImageLoaded()
+{
+	// Ok, loaded
+	m_bImageLoaded = true;
+
+	// pass image to selfopathy mod
+   	if (GLOBALS->mp_modSelfopathy)
+		GLOBALS->mp_modSelfopathy->setImage(&m_imageMini);
+	
+
+	// check user::update
+	// need that services are setup to call the user::doWork function ( = check tweets & analyze them)
+	m_bSetup = true;
+
+}
+
 
 //--------------------------------------------------------------
 void userTwitterGuestIOS::threadedFunction()
@@ -306,10 +353,10 @@ void userTwitterGuestIOS::analyzeData()
 //--------------------------------------------------------------
 void userTwitterGuestIOS::loadData()
 {
-	OFAPPLOG->begin("userTwitterGuestIOS::loadData()");
 	
 	if (mp_user->getTemplate())
 	{
+		OFAPPLOG->begin("userTwitterGuestIOS::loadData()");
 		OFAPPLOG->println("- user is template ('"+ mp_user->getId() +"')");
 		OFAPPLOG->println("- loading twitter.xml");
 		
@@ -335,6 +382,7 @@ void userTwitterGuestIOS::loadData()
 		}
 
 	 
+		OFAPPLOG->end();
 	}
 /*
 	if (mp_user)
@@ -363,7 +411,6 @@ void userTwitterGuestIOS::loadData()
 		}else{ OFAPPLOG->println("-error loading file"); }
 	}
 */
-	OFAPPLOG->end();
 }
 
 //--------------------------------------------------------------

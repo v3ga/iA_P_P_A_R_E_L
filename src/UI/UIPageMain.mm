@@ -25,7 +25,7 @@ UIPageMain::UIPageMain(string id, UIManager* pManager) : UIPage(id, pManager)
 	m_sceneBufferScale		= 2;
 	
 	m_bQCARInit				= false;
-	m_bQCARHasFoundMarker 	= false;
+	m_bQCARHasFoundOneMarker = false;
 }
 
 //--------------------------------------------------------------
@@ -149,7 +149,7 @@ void UIPageMain::draw()
 			
 			if(qcar->hasFoundMarker())
 			{
-				if (!m_bQCARHasFoundMarker) m_bQCARHasFoundMarker = true;
+				if (!m_bQCARHasFoundOneMarker) m_bQCARHasFoundOneMarker = true;
 			
 			
 				ofxQCAR_Marker marker = qcar->getMarker();
@@ -213,6 +213,16 @@ void UIPageMain::draw()
 
 	}
 }
+
+//--------------------------------------------------------------
+bool UIPageMain::hasMarker()
+{
+	ofxQCAR * qcar = ofxQCAR::getInstance();
+	if (qcar && qcar->hasFoundMarker())
+		return true;
+	return false;
+}
+
 
 //--------------------------------------------------------------
 void UIPageMain::drawInfos()

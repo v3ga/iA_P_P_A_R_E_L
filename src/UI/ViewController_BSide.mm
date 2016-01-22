@@ -53,6 +53,8 @@
 		 if (session)
 		 {
 			 [self changeUserAndRetrieveInfoUser:session];
+			 //[self performSegueWithIdentifier:@"loginMainSegue" sender:self];
+			[self performSegueWithIdentifier:@"segueUnwindToASide" sender:self];
 		 }
 		 else
 		 {
@@ -166,7 +168,7 @@
 //--------------------------------------------------------------
 -(void) changeUserAndRetrieveInfoUser: (TWTRSession*) session
 {
- 	NSLog(@"Twitter signed in as -> name = %@ id = %@ ", [session userName],[session userID]);
+ 	//NSLog(@"Twitter signed in as -> name = %@ id = %@ ", [session userName],[session userID]);
 	ofApp* pApp = GLOBALS->getApp();
 	if (pApp)
 	{
@@ -210,25 +212,44 @@
 -(IBAction)selectTemplate01:(id)sender
 {
 	int templateIndex = GLOBALS->getApp()->getTemplateIndexSelected();
-	GLOBALS->getApp()->onTemplateSelected(templateIndex == 0 ? -1 : 0);
-	[self updateLayout];
+//	GLOBALS->getApp()->onTemplateSelected(templateIndex == 0 ? -1 : 0);
+	if (templateIndex != 0)
+	{
+		GLOBALS->getApp()->onTemplateSelected(0);
+		[self updateLayout];
+		[[Twitter sharedInstance] logOut];
+		[self updateBtnTwitter];
+	}
 }
 
 //--------------------------------------------------------------
 -(IBAction)selectTemplate02:(id)sender
 {
 	int templateIndex = GLOBALS->getApp()->getTemplateIndexSelected();
-	GLOBALS->getApp()->onTemplateSelected(templateIndex == 1 ? -1 : 1);
-	[self updateLayout];
+//	GLOBALS->getApp()->onTemplateSelected(templateIndex == 1 ? -1 : 1);
+	if (templateIndex != 1)
+	{
+		GLOBALS->getApp()->onTemplateSelected(1);
+		[self updateLayout];
+		[[Twitter sharedInstance] logOut];
+		[self updateBtnTwitter];
+	}
 }
 
 //--------------------------------------------------------------
 -(IBAction)selectTemplate03:(id)sender
 {
 	int templateIndex = GLOBALS->getApp()->getTemplateIndexSelected();
-	GLOBALS->getApp()->onTemplateSelected(templateIndex == 2 ? -1 : 2);
-	[self updateLayout];
+//	GLOBALS->getApp()->onTemplateSelected(templateIndex == 2 ? -1 : 2);
+	if (templateIndex != 2)
+	{
+		GLOBALS->getApp()->onTemplateSelected(2);
+		[self updateLayout];
+		[[Twitter sharedInstance] logOut];
+		[self updateBtnTwitter];
+	}
 }
+
 
 /*
 #pragma mark - Navigation

@@ -1349,8 +1349,8 @@
 			children = (
 				F9DE83381B41CF3C00F5A086 /* apparelMod_kawaiopathy.cpp */,
 				F9DE83391B41CF3C00F5A086 /* apparelMod_kawaiopathy.h */,
-				F9DE833A1B41CF3C00F5A086 /* apparelMod_zoopathy.cpp */,
 				F9DE833B1B41CF3C00F5A086 /* apparelMod_intropathy.cpp */,
+				F9DE833A1B41CF3C00F5A086 /* apparelMod_zoopathy.cpp */,
 				F9DE833C1B41CF3C00F5A086 /* apparelMod_zoopathy.h */,
 				F9DE833D1B41CF3C00F5A086 /* apparelMod_selfopathy.cpp */,
 				F9F7A32C1C1A0D7D00346E89 /* apparelMod_selfopathy.h */,
