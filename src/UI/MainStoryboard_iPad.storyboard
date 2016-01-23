@@ -192,7 +192,7 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="wrk-0n-6jS" kind="unwind" unwindAction="unwindToASide:" id="QvV-5s-h5V"/>
+                                            <segue destination="wrk-0n-6jS" kind="unwind" identifier="segueUnwindToASide" unwindAction="unwindToASide:" id="QvV-5s-h5V"/>
                                         </connections>
                                     </button>
                                 </subviews>
