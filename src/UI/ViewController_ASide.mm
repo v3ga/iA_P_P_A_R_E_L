@@ -34,6 +34,17 @@
 {
 	if (!self.m_bViewDidLoad)
 	{
+	// TEMP
+//	_btnMood01.transform = CGAffineTransformMakeRotation(M_PI);
+
+		[[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+		[[NSNotificationCenter defaultCenter]
+   				addObserver:self selector:@selector(orientationChanged:)
+			    name:UIDeviceOrientationDidChangeNotification
+			   object:[UIDevice currentDevice]];
+
+
+
 	//    //NSLog(@"ViewController_ASide view did load");
     	[super viewDidLoad];
     	// Do any additional setup after loading the view.
@@ -48,6 +59,56 @@
 	
 		self.m_bViewDidLoad = YES;
 	}
+}
+
+//--------------------------------------------------------------
+- (void) orientationChanged:(NSNotification *)note
+{
+   UIDevice * device = note.object;
+
+	ofApp* pApp = (ofApp*) ofGetAppPtr();
+
+   switch(device.orientation)
+   {
+       case UIDeviceOrientationPortrait:
+    //   NSLog(@"UIDeviceOrientationPortrait");
+	_btnMood01.transform = CGAffineTransformMakeRotation(0);
+	_btnMood02.transform = CGAffineTransformMakeRotation(0);
+	_btnMood03.transform = CGAffineTransformMakeRotation(0);
+
+		pApp->onViewAOrientationChanged(0);
+       break;
+
+       case UIDeviceOrientationLandscapeRight:
+       /* start special animation */
+      // NSLog(@"UIDeviceOrientationLandscapeRight");
+	_btnMood01.transform = CGAffineTransformMakeRotation(-M_PI/2);
+	_btnMood02.transform = CGAffineTransformMakeRotation(-M_PI/2);
+	_btnMood03.transform = CGAffineTransformMakeRotation(-M_PI/2);
+		pApp->onViewAOrientationChanged(1);
+       break;
+
+       case UIDeviceOrientationLandscapeLeft:
+       /* start special animation */
+   //    NSLog(@"UIDeviceOrientationLandscapeLeft");
+	_btnMood01.transform = CGAffineTransformMakeRotation(M_PI/2);
+	_btnMood02.transform = CGAffineTransformMakeRotation(M_PI/2);
+	_btnMood03.transform = CGAffineTransformMakeRotation(M_PI/2);
+		pApp->onViewAOrientationChanged(2);
+       break;
+
+       case UIDeviceOrientationPortraitUpsideDown:
+       /* start special animation */
+  //     NSLog(@"UIDeviceOrientationPortraitUpsideDown");
+	_btnMood01.transform = CGAffineTransformMakeRotation(0);
+	_btnMood02.transform = CGAffineTransformMakeRotation(0);
+	_btnMood03.transform = CGAffineTransformMakeRotation(0);
+		pApp->onViewAOrientationChanged(3);
+       break;
+
+       default:
+       break;
+   };
 }
 
 //--------------------------------------------------------------
@@ -211,6 +272,10 @@
 
 - (void)dealloc {
     [_info release];
+ [_btnMood01 release];
+ [_btnMood02 release];
+ [_btnMood02 release];
+ [_btnMood03 release];
     [super dealloc];
 }
 @end

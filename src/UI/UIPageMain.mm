@@ -207,6 +207,7 @@ void UIPageMain::draw()
 				drawDither();
 			}
 			
+			// for mouse inputs
 			m_cam.begin();
 			m_cam.end();
 		}
@@ -222,6 +223,14 @@ bool UIPageMain::hasMarker()
 		return true;
 	return false;
 }
+
+//--------------------------------------------------------------
+void UIPageMain::onViewAOrientationChanged(int which)
+{
+	m_deviceRotationMode = which;
+	m_cam.resetTransform();
+}
+
 
 
 //--------------------------------------------------------------
@@ -315,6 +324,15 @@ void UIPageMain::drawModel(string markerName)
     	ofPushMatrix();
     	ofMultMatrix(mp_apparelModel->getModelMatrix());
 		glDepthMask(true);
+
+		if (m_bUseVuforia == false)
+		{
+			if (m_deviceRotationMode == 1)
+				ofRotateY(-90);
+			if (m_deviceRotationMode == 2)
+				ofRotateY(90);
+		}
+		
 
 		if (m_bUseVuforia)
 		{

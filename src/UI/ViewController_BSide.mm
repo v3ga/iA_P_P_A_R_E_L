@@ -105,6 +105,8 @@
     [self.view addGestureRecognizer:tapRecognizer];
     tapRecognizer.delegate = self;
 
+	
+
 	[self updateLayout];
 }
 

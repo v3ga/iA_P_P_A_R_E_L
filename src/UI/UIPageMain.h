@@ -31,6 +31,9 @@ class UIPageMain : public UIPage
 		void					setQCARInit			(bool is=true){m_bQCARInit=is;}
 		bool					hasFoundOneMarker	(){return m_bQCARHasFoundOneMarker;}
 		bool					hasMarker			();
+ 
+		void					onViewAOrientationChanged	(int which);
+		int						m_deviceRotationMode;
 
 	private:
 		bool					m_bUseVuforia;

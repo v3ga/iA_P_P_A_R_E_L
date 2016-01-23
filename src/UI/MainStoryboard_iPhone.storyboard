@@ -160,7 +160,10 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="info" destination="pPr-g9-U4f" id="k4D-Sq-irm"/>
+                        <outlet property="btnMood01" destination="rvk-WO-qxy" id="Grs-d3-I5z"/>
+                        <outlet property="btnMood02" destination="5RA-Xh-Cxe" id="fA8-nf-1UX"/>
+                        <outlet property="btnMood03" destination="ZNi-tH-jo8" id="yRg-FC-Lyw"/>
+                        <outlet property="info" destination="pPr-g9-U4f" id="LKR-6M-r9Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

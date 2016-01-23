@@ -21,6 +21,8 @@ class ofApp;
 @property (assign, nonatomic) BOOL m_bViewDidLoad;
 
 
+
+
 - (IBAction)setMood01:(id)sender;
 - (IBAction)setMood02:(id)sender;
 - (IBAction)setMood03:(id)sender;
@@ -32,5 +34,8 @@ class ofApp;
 
 - (IBAction)btnInfoOK:(id)sender;
 
+@property (retain, nonatomic) IBOutlet UIButton *btnMood01;
+@property (retain, nonatomic) IBOutlet UIButton *btnMood02;
+@property (retain, nonatomic) IBOutlet UIButton *btnMood03;
 
 @end

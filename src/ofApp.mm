@@ -325,6 +325,8 @@ void ofApp::update()
 	// PAGE : mods, etc..
 	if (mp_pageMain)
 		mp_pageMain->update(dt);
+ 
+		//ofLog() << ofToString(  );
  }
 
 //--------------------------------------------------------------
@@ -334,6 +336,15 @@ void ofApp::draw()
 	if (mp_pageMain)
 		mp_pageMain->draw();
 }
+
+//--------------------------------------------------------------
+void ofApp::onViewAOrientationChanged(int which)
+{
+	if (mp_pageMain)
+		mp_pageMain->onViewAOrientationChanged(which);
+
+}
+
 
 //--------------------------------------------------------------
 void ofApp::exit()
@@ -413,7 +424,7 @@ void ofApp::gotMemoryWarning(){
 //--------------------------------------------------------------
 void ofApp::deviceOrientationChanged(int newOrientation)
 {
-	
+	// ofLog() << "ORIENTATION = " << ofToString(newOrientation);
 }
 
 

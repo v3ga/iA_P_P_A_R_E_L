@@ -92,6 +92,8 @@ class ofApp : public ofxQCAR_App {
 		UIPageMain*			mp_pageMain;
 		UIManager			m_uiManager;
  
+ 		void				onViewAOrientationChanged	(int which);
+ 
 
 		void				setViewController			(UIView* p){mp_viewInfo = p;}
 		UIView*				mp_viewInfo;
