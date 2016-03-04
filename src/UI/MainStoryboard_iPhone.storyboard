@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
@@ -84,12 +84,13 @@
                                     <constraint firstItem="ZNi-tH-jo8" firstAttribute="leading" secondItem="rvk-WO-qxy" secondAttribute="trailing" constant="62" id="Fxw-r2-aGX"/>
                                     <constraint firstItem="ZNi-tH-jo8" firstAttribute="width" secondItem="Vhp-gE-8qG" secondAttribute="width" id="LLu-QY-b8H"/>
                                     <constraint firstItem="Vhp-gE-8qG" firstAttribute="bottom" secondItem="ZNi-tH-jo8" secondAttribute="bottom" id="ad4-5h-gm4"/>
-                                    <constraint firstAttribute="trailing" secondItem="Vhp-gE-8qG" secondAttribute="trailing" constant="33" id="axU-E7-lmf"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vhp-gE-8qG" secondAttribute="trailing" constant="33" id="axU-E7-lmf"/>
                                     <constraint firstItem="Vhp-gE-8qG" firstAttribute="leading" secondItem="5RA-Xh-Cxe" secondAttribute="trailing" constant="62" id="cj9-Kh-bue"/>
                                     <constraint firstItem="ZNi-tH-jo8" firstAttribute="width" secondItem="5RA-Xh-Cxe" secondAttribute="width" id="gLL-km-RXH"/>
                                     <constraint firstItem="Vhp-gE-8qG" firstAttribute="bottom" secondItem="rvk-WO-qxy" secondAttribute="bottom" id="pcp-t4-X1B"/>
                                     <constraint firstItem="Vhp-gE-8qG" firstAttribute="top" secondItem="rvk-WO-qxy" secondAttribute="top" id="qVy-zl-vCc"/>
                                     <constraint firstItem="Vhp-gE-8qG" firstAttribute="leading" secondItem="rvk-WO-qxy" secondAttribute="trailing" constant="125" id="qvo-rj-mm4"/>
+                                    <constraint firstItem="rvk-WO-qxy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="O6g-uu-D5N" secondAttribute="leading" constant="34" id="vB2-f9-dX1"/>
                                     <constraint firstItem="Vhp-gE-8qG" firstAttribute="top" secondItem="5RA-Xh-Cxe" secondAttribute="top" id="xKQ-1s-OL1"/>
                                 </constraints>
                             </view>
@@ -101,6 +102,9 @@
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
                                         </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="315" id="SHh-C0-MPl"/>
+                                        </constraints>
                                         <attributedString key="attributedText">
                                             <fragment>
                                                 <string key="content">Apparel by Normals is an Augmented Reality app. 
@@ -129,31 +133,23 @@ Point the camera at a valid Apparel target, either by viewing the piece in real 
                                 </subviews>
                                 <color key="backgroundColor" white="0.1002394153" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="HTh-vr-Zqs" secondAttribute="trailing" constant="65" id="71b-u0-qeT"/>
-                                    <constraint firstItem="Tvi-Tc-UbY" firstAttribute="top" secondItem="HTh-vr-Zqs" secondAttribute="bottom" constant="8" symbolic="YES" id="7wk-iO-sjc"/>
-                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="top" secondItem="pPr-g9-U4f" secondAttribute="top" constant="66" id="EA3-dJ-Fuk"/>
-                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="top" secondItem="pPr-g9-U4f" secondAttribute="top" constant="66" id="G4L-iR-k4D"/>
-                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="leading" secondItem="pPr-g9-U4f" secondAttribute="leading" constant="65" id="Izq-hv-d9R"/>
-                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="centerX" secondItem="pPr-g9-U4f" secondAttribute="centerX" id="KoF-UA-u9l"/>
-                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="leading" secondItem="pPr-g9-U4f" secondAttribute="leading" constant="65" id="M25-oc-w71"/>
-                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="leading" secondItem="pPr-g9-U4f" secondAttribute="leading" constant="65" id="T69-aP-Ya4"/>
-                                    <constraint firstItem="Tvi-Tc-UbY" firstAttribute="centerX" secondItem="pPr-g9-U4f" secondAttribute="centerX" id="TNR-Ot-D8D"/>
-                                    <constraint firstItem="Tvi-Tc-UbY" firstAttribute="leading" secondItem="pPr-g9-U4f" secondAttribute="leading" constant="128" id="UnF-jH-Mll"/>
-                                    <constraint firstAttribute="bottom" secondItem="Tvi-Tc-UbY" secondAttribute="bottom" constant="115" id="YW4-I5-2fF"/>
-                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="centerX" secondItem="Tvi-Tc-UbY" secondAttribute="centerX" id="h5n-Rj-Wht"/>
-                                    <constraint firstItem="Tvi-Tc-UbY" firstAttribute="leading" secondItem="pPr-g9-U4f" secondAttribute="leading" constant="128" id="jhZ-ju-m6K"/>
-                                    <constraint firstItem="Tvi-Tc-UbY" firstAttribute="top" secondItem="HTh-vr-Zqs" secondAttribute="bottom" constant="8" id="mEY-RE-VtG"/>
-                                    <constraint firstItem="Tvi-Tc-UbY" firstAttribute="top" secondItem="pPr-g9-U4f" secondAttribute="top" constant="389" id="nkR-AS-jzm"/>
-                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="top" secondItem="pPr-g9-U4f" secondAttribute="top" constant="66" id="riu-gp-Vd7"/>
+                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="centerX" secondItem="Tvi-Tc-UbY" secondAttribute="centerX" id="8mF-xy-wNT"/>
+                                    <constraint firstItem="Tvi-Tc-UbY" firstAttribute="top" secondItem="HTh-vr-Zqs" secondAttribute="bottom" constant="8" symbolic="YES" id="E0p-Ao-qvE"/>
+                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="centerX" secondItem="pPr-g9-U4f" secondAttribute="centerX" id="RTa-lV-zJi"/>
+                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="top" secondItem="pPr-g9-U4f" secondAttribute="top" constant="66" id="n0t-bS-L7V"/>
+                                    <constraint firstItem="HTh-vr-Zqs" firstAttribute="leading" secondItem="pPr-g9-U4f" secondAttribute="leading" constant="65" id="oqN-Xr-8D4"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.14208984375" green="0.14208984375" blue="0.14208984375" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="O6g-uu-D5N" secondAttribute="centerX" id="0GY-H5-9SC"/>
-                            <constraint firstItem="pPr-g9-U4f" firstAttribute="leading" secondItem="O6g-uu-D5N" secondAttribute="leading" id="9gu-75-ozE"/>
+                            <constraint firstItem="pPr-g9-U4f" firstAttribute="trailing" secondItem="O6g-uu-D5N" secondAttribute="trailing" id="88y-Pi-iQl"/>
+                            <constraint firstItem="pPr-g9-U4f" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Hl2-7m-Tbj"/>
+                            <constraint firstItem="pPr-g9-U4f" firstAttribute="leading" secondItem="O6g-uu-D5N" secondAttribute="leading" id="I7M-ty-ghS"/>
                             <constraint firstItem="O6g-uu-D5N" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Ni0-62-171"/>
-                            <constraint firstItem="pPr-g9-U4f" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="XvO-cZ-iJS"/>
+                            <constraint firstAttribute="width" secondItem="O6g-uu-D5N" secondAttribute="width" id="SKf-BZ-J3p"/>
+                            <constraint firstItem="pPr-g9-U4f" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="Z2j-v9-WUq"/>
                             <constraint firstAttribute="bottom" secondItem="O6g-uu-D5N" secondAttribute="bottom" id="htt-Xa-olH"/>
                             <constraint firstAttribute="trailing" secondItem="O6g-uu-D5N" secondAttribute="trailing" id="onk-lC-dzT"/>
                         </constraints>
